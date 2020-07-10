@@ -19,11 +19,10 @@ func _process(delta):
 
 func _physics_process(delta):
 	input()
-	movement()
+	_movement()
 
 func input():
 	
-	var thurster_power = PlayerData.thurster_power
 	var acceleration = PlayerData.acceleration
 	var max_speed = PlayerData.max_speed
 	
@@ -44,7 +43,7 @@ func input():
 		else:
 			velocity.x = lerp(velocity.x, 0, SPEED_SLOWDOWN_AIR)
 
-func movement():
+func _movement():
 	velocity.y = velocity.y + GRAVITY_ACC
 	velocity = move_and_slide(velocity, Vector2(0,-1))
 	
@@ -56,11 +55,14 @@ func movement():
 func _kill_vertical_velocity():
 	velocity.y = 0
 
+
 func update_debug_labels():
-	get_node("DEBUG/velocity").text = "Velocity: " + str(velocity)
-	get_node("DEBUG/fuel").text = "Fuel: " + str(PlayerData.fuel)
-	get_node("DEBUG/on_floor").text = "On floor: " + str(is_on_floor())
-	get_node("DEBUG/on_ceiling").text = "On ceiling: " + str(self.is_on_ceiling())
+	get_node("DEBUG/labels/velocity").text = "Velocity: " + str(velocity)
+	get_node("DEBUG/labels/fuel").text = "Fuel: " + str(PlayerData.fuel)
+	get_node("DEBUG/labels/on_floor").text = "On floor: " + str(is_on_floor())
+	get_node("DEBUG/labels/on_ceiling").text = "On ceiling: " + str(is_on_ceiling())
+	get_node("DEBUG/labels/on_wall").text = "On wall: " + str(is_on_wall())
+	
 
 
 

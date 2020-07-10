@@ -23,6 +23,40 @@ __meta__ = {
 "_edit_lock_": true
 }
 
+[node name="left_wall" type="StaticBody2D" parent="."]
+position = Vector2( -305.566, 685.234 )
+rotation = -1.5708
+
+[node name="Sprite" type="Sprite" parent="left_wall"]
+scale = Vector2( 25, 0.2 )
+texture = ExtResource( 2 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="left_wall"]
+shape = SubResource( 1 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="right_wall" type="StaticBody2D" parent="."]
+position = Vector2( 623.639, 237.19 )
+rotation = -1.5708
+
+[node name="Sprite" type="Sprite" parent="right_wall"]
+scale = Vector2( 25, 0.2 )
+texture = ExtResource( 2 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="right_wall"]
+shape = SubResource( 1 )
+__meta__ = {
+"_edit_lock_": true
+}
+
 [node name="ceiling" type="StaticBody2D" parent="."]
 position = Vector2( -569.99, -281.294 )
 

@@ -15,61 +15,75 @@ texture = ExtResource( 1 )
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource( 1 )
 
-[node name="DEBUG" type="Node2D" parent="."]
-
-[node name="velocity" type="Label" parent="DEBUG"]
-margin_left = 33.321
-margin_top = -50.1862
-margin_right = 73.321
-margin_bottom = -36.1862
+[node name="DEBUG" type="Control" parent="."]
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="fuel" type="Label" parent="DEBUG"]
-margin_left = 36.4832
-margin_top = -33.5845
-margin_right = 76.4832
-margin_bottom = -19.5845
+[node name="ColorRect" type="ColorRect" parent="DEBUG"]
+margin_left = 31.0
+margin_top = -71.0
+margin_right = 194.0
+margin_bottom = 32.0
+color = Color( 0, 0, 0, 0.254902 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="on_floor" type="Label" parent="DEBUG"]
-margin_left = 32.7939
-margin_top = -17.7733
-margin_right = 72.7939
-margin_bottom = -3.77326
+[node name="labels" type="VBoxContainer" parent="DEBUG"]
+margin_left = 35.0
+margin_top = -63.0
+margin_right = 93.0
+margin_bottom = 41.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="on_ceiling" type="Label" parent="DEBUG"]
-margin_left = 33.0574
-margin_top = -1.1715
-margin_right = 73.0574
-margin_bottom = 12.8285
+[node name="velocity" type="Label" parent="DEBUG/labels"]
+margin_right = 58.0
+margin_bottom = 14.0
+text = "velocity"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="left_wall" type="Label" parent="DEBUG"]
-margin_left = 35.1656
-margin_top = 37.8295
-margin_right = 75.1656
-margin_bottom = 51.8295
+[node name="fuel" type="Label" parent="DEBUG/labels"]
+margin_top = 18.0
+margin_right = 58.0
+margin_bottom = 32.0
+text = "fuel"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="right_wall" type="Label" parent="DEBUG"]
-margin_left = 33.321
-margin_top = 18.329
-margin_right = 73.321
-margin_bottom = 32.329
+[node name="on_floor" type="Label" parent="DEBUG/labels"]
+margin_top = 36.0
+margin_right = 58.0
+margin_bottom = 50.0
+text = "floor"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="on_ceiling" type="Label" parent="DEBUG/labels"]
+margin_top = 54.0
+margin_right = 58.0
+margin_bottom = 68.0
+text = "ceiling"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="on_wall" type="Label" parent="DEBUG/labels"]
+margin_top = 72.0
+margin_right = 58.0
+margin_bottom = 86.0
+text = "left wall"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Camera2D" type="Camera2D" parent="."]
 current = true
+
+[node name="RayCast2D" type="RayCast2D" parent="."]

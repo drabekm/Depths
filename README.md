@@ -1,11 +1,14 @@
 # Depths
 
+Game for itnetwork.cz summer coding contest 2020
+
 ## TODO:
 - ### Player movement
 - ### Player drilling
 - ### Blocks with ore
 - ### Map generator
 - ### Procedural water and lava
+- ### Inventory screen
 - ### Earthquake mode when underground for too long
 - ### Stores
 - ### Music
