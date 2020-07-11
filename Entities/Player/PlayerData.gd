@@ -12,6 +12,6 @@ var max_fuel: int = 100
 var capacity: int = 0
 var max_capacity: int = 20
 
-var max_speed: int = 200
+var max_speed: int = 350
 var acceleration: int = 15
 var thurster_power = 20

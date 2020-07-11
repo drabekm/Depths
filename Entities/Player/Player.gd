@@ -32,10 +32,8 @@ func input():
 		pass
 	
 	if Input.is_action_pressed("ui_left"):
-		print("left")
 		velocity.x = max(velocity.x - acceleration, -max_speed)
 	elif Input.is_action_pressed("ui_right"):
-		print("right")
 		velocity.x = min(velocity.x + acceleration, max_speed)
 	else:
 		if(self.is_on_floor()):
@@ -55,7 +53,6 @@ func _movement():
 func _kill_vertical_velocity():
 	velocity.y = 0
 
-
 func update_debug_labels():
 	get_node("DEBUG/labels/velocity").text = "Velocity: " + str(velocity)
 	get_node("DEBUG/labels/fuel").text = "Fuel: " + str(PlayerData.fuel)
@@ -63,7 +60,3 @@ func update_debug_labels():
 	get_node("DEBUG/labels/on_ceiling").text = "On ceiling: " + str(is_on_ceiling())
 	get_node("DEBUG/labels/on_wall").text = "On wall: " + str(is_on_wall())
 	
-
-
-
-
