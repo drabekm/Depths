@@ -22,18 +22,19 @@ func _ready():
 
 
 func spawn_chunks():
-	spawn_chunk(central_chunk.x, central_chunk.y)
-	spawn_chunk(central_chunk.x - 1, central_chunk.y)
-	spawn_chunk(central_chunk.x + 1, central_chunk.y)
+	spawn_chunk(central_chunk.x, central_chunk.y) # central
+	spawn_chunk(central_chunk.x - 1, central_chunk.y) # left
+	spawn_chunk(central_chunk.x + 1, central_chunk.y) # right
+	
+	spawn_chunk(central_chunk.x, central_chunk.y + 1) # central bottom
+	spawn_chunk(central_chunk.x - 1, central_chunk.y + 1) # right bottom
+	spawn_chunk(central_chunk.x + 1, central_chunk.y + 1) # left bottom
 
 func spawn_chunk(var xChunkPos, var yChunkPos):
 	var chunkContainer = Node2D.new()
 	chunkContainer.name = _craftNodeName(xChunkPos, yChunkPos)
 	
-	
-	
 	for y in range(yChunkPos * CHUNK_SIZE, (yChunkPos * CHUNK_SIZE) + CHUNK_SIZE):
-		var index = 0 # TODO: DELETE
 		for x in range(xChunkPos * CHUNK_SIZE, (xChunkPos * CHUNK_SIZE) + CHUNK_SIZE):
 			var block_instance = block.instance()
 			var position = Vector2((BLOCK_SIZE *2) * x, (BLOCK_SIZE * 2) * y)
@@ -44,11 +45,9 @@ func spawn_chunk(var xChunkPos, var yChunkPos):
 			#this is the same as:
 			#chunkContainer.add_child(block_instance)
 			chunkContainer.call_deferred("add_child", block_instance)
-			#But call_deferred calls the method a bit later
-			#and not imediatelly. How does it improve performance?
+			#But call_deferred calls the method a bit later instead of
+			#imediatelly. How does it improve performance?
 			#Fuck if I know, but it somehow works.
-			
-			index += 1
 	
 	self.add_child(chunkContainer)
 
@@ -78,29 +77,52 @@ func _move_triggers_vertically(direction: int):
 func _on_LeftTrigger_body_entered(body):
 	if(_is_body_player(body)):
 		despawn_chunk(central_chunk.x + 1, central_chunk.y)
+		despawn_chunk(central_chunk.x + 1, central_chunk.y - 1)
+		despawn_chunk(central_chunk.x + 1, central_chunk.y + 1)
 		central_chunk.x -= 1
 		spawn_chunk(central_chunk.x - 1, central_chunk.y)
+		if(central_chunk.y > 1):
+			spawn_chunk(central_chunk.x - 1, central_chunk.y - 1)
+		spawn_chunk(central_chunk.x - 1, central_chunk.y + 1)
 		_move_triggers_horizontaly(-1)
+		print(central_chunk)
 
 func _on_RightTrigger_body_entered(body):
 	if(_is_body_player(body)):
-		
 		despawn_chunk(central_chunk.x - 1, central_chunk.y)
+		despawn_chunk(central_chunk.x - 1, central_chunk.y - 1)
+		despawn_chunk(central_chunk.x - 1, central_chunk.y + 1)
 		central_chunk.x += 1
 		spawn_chunk(central_chunk.x + 1, central_chunk.y)
-		
+		if(central_chunk.y > 1):
+			spawn_chunk(central_chunk.x + 1, central_chunk.y - 1)
+		spawn_chunk(central_chunk.x + 1, central_chunk.y + 1)
 		_move_triggers_horizontaly(1)
+		print(central_chunk)
 
 func _on_TopTrigger_body_entered(body):
 	if(_is_body_player(body)):
 		despawn_chunk(central_chunk.x, central_chunk.y + 1)
+		despawn_chunk(central_chunk.x - 1, central_chunk.y + 1)
+		despawn_chunk(central_chunk.x + 1, central_chunk.y + 1)
 		central_chunk.y -= 1
-		spawn_chunk(central_chunk.x, central_chunk.y - 1)
+		
+		if(central_chunk.y > 0):
+			spawn_chunk(central_chunk.x, central_chunk.y - 1)
+			spawn_chunk(central_chunk.x - 1, central_chunk.y - 1)
+			spawn_chunk(central_chunk.x + 1, central_chunk.y - 1)
 		_move_triggers_vertically(-1)
+		print(central_chunk)
 
 func _on_BottomTrigger_body_entered(body):
 	if(_is_body_player(body)):
 		despawn_chunk(central_chunk.x, central_chunk.y - 1)
+		despawn_chunk(central_chunk.x - 1, central_chunk.y - 1)
+		despawn_chunk(central_chunk.x + 1, central_chunk.y - 1)
 		central_chunk.y += 1
-		spawn_chunk(central_chunk.x, central_chunk.y + 1)
+		if(central_chunk.y >= -1):
+			spawn_chunk(central_chunk.x, central_chunk.y + 1)
+			spawn_chunk(central_chunk.x - 1, central_chunk.y + 1)
+			spawn_chunk(central_chunk.x + 1, central_chunk.y + 1)
 		_move_triggers_vertically(1)
+		print(central_chunk)
