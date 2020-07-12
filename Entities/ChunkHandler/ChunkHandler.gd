@@ -23,12 +23,12 @@ const mineral_textures =  [preload("res://Entities/Block/Textures/copper.png"),
 						 preload("res://Entities/Block/Textures/diamonds.png")]
 
 func _ready():
-	
-	
 	chunk_containers_node = get_node("ChunkContainers")
 	
 	check_chunks()
 
+#Is called every time the triggers are hit.
+#Removes distant chunks and spawns in new chunks around player
 func check_chunks():
 	var current_chunks = chunk_containers_node.get_children()
 	
@@ -36,7 +36,6 @@ func check_chunks():
 	var right_threshold = central_chunk.x + CHUNKS_AREA_SIZE
 	var up_threshold = central_chunk.y - CHUNKS_AREA_SIZE
 	var bottom_threshold = central_chunk.y + CHUNKS_AREA_SIZE
-	
 	
 	#Remove distant chunks
 	for current_chunk in current_chunks:
@@ -46,14 +45,16 @@ func check_chunks():
 			current_chunk.positionY > bottom_threshold):
 			despawn_chunk(current_chunk.positionX, current_chunk.positionY)
 	
+	#Spawn new chunks
 	for y in range(up_threshold, bottom_threshold + 1):
 		for x in range(left_threshold, right_threshold + 1):
 			var chunk_name = _craftNodeName(x,y)
+			#Don't spawn already existing chunks
 			if not chunk_containers_node.has_node(chunk_name):
 				spawn_chunk(x,y)
-	print("finished checking")
 
 func spawn_chunk(var xChunkPos, var yChunkPos):
+	#Chunks can't exist above ground level
 	if yChunkPos < 0:
 		return
 	
@@ -79,9 +80,6 @@ func spawn_chunk(var xChunkPos, var yChunkPos):
 	
 	chunk_containers_node.add_child(chunkContainer)
 
-
-
-
 func despawn_chunk(var xChunkPos: int, var yChunkPos: int) -> void:
 	var chunk_name = _craftNodeName(xChunkPos, yChunkPos)
 	if chunk_containers_node.has_node(chunk_name):
@@ -105,60 +103,28 @@ func _move_triggers_vertically(direction: int):
 	for trigger in triggers:
 		trigger.position.y += CHUNK_SIZE * BLOCK_SIZE * direction
 
+
+# Trigger signal handler method
 func _on_LeftTrigger_body_entered(body):
 	if(_is_body_player(body)):
-		
-#		despawn_chunk(central_chunk.x + 1, central_chunk.y)
-#		despawn_chunk(central_chunk.x + 1, central_chunk.y - 1)
-#		despawn_chunk(central_chunk.x + 1, central_chunk.y + 1)
-		
 		central_chunk.x -= 1
 		check_chunks()
-#		spawn_chunk(central_chunk.x - 1, central_chunk.y)
-#		if(central_chunk.y > 1):
-#			spawn_chunk(central_chunk.x - 1, central_chunk.y - 1)
-#		spawn_chunk(central_chunk.x - 1, central_chunk.y + 1)
 		_move_triggers_horizontaly(-1)
-		print(central_chunk)
 
 func _on_RightTrigger_body_entered(body):
 	if(_is_body_player(body)):
-#		despawn_chunk(central_chunk.x - 1, central_chunk.y)
-#		despawn_chunk(central_chunk.x - 1, central_chunk.y - 1)
-#		despawn_chunk(central_chunk.x - 1, central_chunk.y + 1)
 		central_chunk.x += 1
 		check_chunks()
-#		spawn_chunk(central_chunk.x + 1, central_chunk.y)
-#		if(central_chunk.y > 1):
-#			spawn_chunk(central_chunk.x + 1, central_chunk.y - 1)
-#		spawn_chunk(central_chunk.x + 1, central_chunk.y + 1)
 		_move_triggers_horizontaly(1)
-		print(central_chunk)
 
 func _on_TopTrigger_body_entered(body):
 	if(_is_body_player(body)):
-#		despawn_chunk(central_chunk.x, central_chunk.y + 1)
-#		despawn_chunk(central_chunk.x - 1, central_chunk.y + 1)
-#		despawn_chunk(central_chunk.x + 1, central_chunk.y + 1)
 		central_chunk.y -= 1
 		check_chunks()
-#		if(central_chunk.y > 0):
-#			spawn_chunk(central_chunk.x, central_chunk.y - 1)
-#			spawn_chunk(central_chunk.x - 1, central_chunk.y - 1)
-#			spawn_chunk(central_chunk.x + 1, central_chunk.y - 1)
 		_move_triggers_vertically(-1)
-		print(central_chunk)
 
 func _on_BottomTrigger_body_entered(body):
 	if(_is_body_player(body)):
-#		despawn_chunk(central_chunk.x, central_chunk.y - 1)
-#		despawn_chunk(central_chunk.x - 1, central_chunk.y - 1)
-#		despawn_chunk(central_chunk.x + 1, central_chunk.y - 1)
 		central_chunk.y += 1
 		check_chunks()
-#		if(central_chunk.y >= -1):
-#			spawn_chunk(central_chunk.x, central_chunk.y + 1)
-#			spawn_chunk(central_chunk.x - 1, central_chunk.y + 1)
-#			spawn_chunk(central_chunk.x + 1, central_chunk.y + 1)
 		_move_triggers_vertically(1)
-		print(central_chunk)
