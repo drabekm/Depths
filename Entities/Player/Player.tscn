@@ -27,7 +27,7 @@ __meta__ = {
 margin_left = 31.0
 margin_top = -71.0
 margin_right = 194.0
-margin_bottom = 32.0
+margin_bottom = 44.0
 color = Color( 0, 0, 0, 0.254902 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -86,9 +86,17 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="fps" type="Label" parent="DEBUG/labels"]
+margin_top = 90.0
+margin_right = 58.0
+margin_bottom = 104.0
+text = "FPS:"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="Camera2D" type="Camera2D" parent="."]
 current = true
-zoom = Vector2( 4, 4 )
 
 [node name="BottomDrill" type="RayCast2D" parent="."]
 enabled = true

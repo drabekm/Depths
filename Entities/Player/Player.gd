@@ -59,4 +59,4 @@ func update_debug_labels():
 	get_node("DEBUG/labels/on_floor").text = "On floor: " + str(is_on_floor())
 	get_node("DEBUG/labels/on_ceiling").text = "On ceiling: " + str(is_on_ceiling())
 	get_node("DEBUG/labels/on_wall").text = "On wall: " + str(is_on_wall())
-	
+	get_node("DEBUG/labels/fps").text = "FPS: " + str(Engine.get_frames_per_second())

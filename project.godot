@@ -24,8 +24,13 @@ config/icon="res://icon.png"
 PlayerData="*res://Entities/Player/PlayerData.tscn"
 BlockEnums="*res://Entities/Block/BlockEnums.gd"
 
+[debug]
+
+settings/stdout/print_fps=true
+
 [display]
 
+window/vsync/use_vsync=false
 window/stretch/mode="2d"
 window/stretch/aspect="expand"
 
@@ -66,7 +71,5 @@ limits/message_queue/max_size_kb=10240
 
 [rendering]
 
-quality/2d/use_nvidia_rect_flicker_workaround=true
 quality/2d/use_pixel_snap=true
-quality/depth/hdr=false
 environment/default_environment="res://default_env.tres"
