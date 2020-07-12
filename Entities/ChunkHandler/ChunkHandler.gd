@@ -10,17 +10,11 @@ const CHUNKS_AREA_SIZE = 2 # How many chunks are spawned in each direction
 						   # around the central chunk
 
 var chunk_containers_node
-
 var central_chunk: Vector2 = Vector2(0,0)
 
-const material_textures = [preload("res://Entities/Block/Textures/dirt.png"),
-				 preload("res://Entities/Block/Textures/stone.png"),
-				 preload("res://Entities/Block/Textures/strong_stone.png"),
-				 preload("res://Entities/Block/Textures/indestructable.png")]
+var deleted_blocks = {}
 
-const mineral_textures =  [preload("res://Entities/Block/Textures/copper.png"),
-						 preload("res://Entities/Block/Textures/iron.png"),
-						 preload("res://Entities/Block/Textures/diamonds.png")]
+
 
 func _ready():
 	chunk_containers_node = get_node("ChunkContainers")
@@ -63,12 +57,21 @@ func spawn_chunk(var xChunkPos, var yChunkPos):
 	chunkContainer.positionX = xChunkPos
 	chunkContainer.positionY = yChunkPos
 	
+	var deleted_blocks = GlobalMapData.get_deleted_blocks(chunkContainer.name)
+	
 	for y in range(yChunkPos * CHUNK_SIZE, (yChunkPos * CHUNK_SIZE) + CHUNK_SIZE):
 		for x in range(xChunkPos * CHUNK_SIZE, (xChunkPos * CHUNK_SIZE) + CHUNK_SIZE):
 			var block_instance = block.instance()
 			var position = Vector2((BLOCK_SIZE *2) * x, (BLOCK_SIZE * 2) * y)
-			block_instance.init(position, 0, false, 0)
-			block_instance.set_body_texture(material_textures[int(xChunkPos) % 4]) # TODO Set texture from noise seed
+			
+#			if deleted_blocks != []:
+#				print("AAA")
+			
+			if position in deleted_blocks:
+				continue
+			
+			block_instance.init(position, chunkContainer.name)
+			block_instance.set_body_texture(int(xChunkPos) % 4) # TODO Set texture from noise seed			
 			block_instance.name = _craftNodeName(x,y)
 			
 			#this is the same as:
@@ -101,7 +104,7 @@ func _move_triggers_vertically(direction: int):
 	var triggers = get_node("Triggers").get_children()
 	
 	for trigger in triggers:
-		trigger.position.y += CHUNK_SIZE * BLOCK_SIZE * direction
+		trigger.position.y += CHUNK_SIZE * BLOCK_SIZE * direction * 2
 
 
 # Trigger signal handler method

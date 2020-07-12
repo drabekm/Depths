@@ -3,7 +3,7 @@
 [ext_resource path="res://Entities/ChunkHandler/ChunkHandler.gd" type="Script" id=1]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 10, 160 )
+extents = Vector2( 10, 230 )
 
 [sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 224, 10 )
@@ -36,7 +36,7 @@ __meta__ = {
 }
 
 [node name="TopTrigger" type="Area2D" parent="Triggers"]
-position = Vector2( -10.0695, -171.803 )
+position = Vector2( -12.1908, -295.47 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Triggers/TopTrigger"]
 shape = SubResource( 2 )
@@ -45,7 +45,7 @@ __meta__ = {
 }
 
 [node name="BottomTrigger" type="Area2D" parent="Triggers"]
-position = Vector2( -5.49744, 95.0544 )
+position = Vector2( -10.5429, 193.211 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Triggers/BottomTrigger"]
 shape = SubResource( 2 )

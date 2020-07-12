@@ -23,6 +23,7 @@ config/icon="res://icon.png"
 
 PlayerData="*res://Entities/Player/PlayerData.tscn"
 BlockEnums="*res://Entities/Block/BlockEnums.gd"
+GlobalMapData="*res://Entities/ChunkHandler/GlobalMapData.gd"
 
 [debug]
 

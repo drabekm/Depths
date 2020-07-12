@@ -3,14 +3,20 @@ extends KinematicBody2D
 var velocity = Vector2(0,0)
 var speed = 0
 var gravity = 0
+
 var is_thrusters_on: bool = false
 
 const GRAVITY_ACC = 7
 const SPEED_SLOWDOWN = 0.25
 const SPEED_SLOWDOWN_AIR = 0.005
 
+var forwardDrill
+var bottomDrill
 
 func _ready():
+	forwardDrill = get_node("ForwardDrill")
+	bottomDrill = get_node("BottomDrill")
+	
 	set_process(true)
 	set_physics_process(true)
 
@@ -21,20 +27,40 @@ func _physics_process(delta):
 	input()
 	_movement()
 
+func _drill_colides_with_block(drill) -> bool:
+	var collider = drill.get_collider()
+	if collider != null:
+		return collider.is_in_group("Block")
+	return false
+
+func reorient_drill(direction): # -1 = left, 1 = right
+	forwardDrill.scale.x = direction
+
 func input():
-	
 	var acceleration = PlayerData.acceleration
 	var max_speed = PlayerData.max_speed
 	
 	if Input.is_action_pressed("ui_up"):
 		velocity.y = velocity.y - PlayerData.thurster_power
-	elif Input.is_action_pressed("ui_down"):
-		pass
+	elif Input.is_action_pressed("ui_down") and is_on_floor():
+		if _drill_colides_with_block(bottomDrill):
+			bottomDrill.get_collider().destroy()
 	
 	if Input.is_action_pressed("ui_left"):
+		reorient_drill(-1)
 		velocity.x = max(velocity.x - acceleration, -max_speed)
+		if is_on_wall() and is_on_floor():
+			if _drill_colides_with_block(forwardDrill):
+				var collider = forwardDrill.get_collider()
+				collider.destroy()
+		
 	elif Input.is_action_pressed("ui_right"):
+		reorient_drill(1)
 		velocity.x = min(velocity.x + acceleration, max_speed)
+		if is_on_wall() and is_on_floor():
+			if _drill_colides_with_block(forwardDrill):
+				var collider = forwardDrill.get_collider()
+				collider.destroy()
 	else:
 		if(self.is_on_floor()):
 			velocity.x = lerp(velocity.x, 0, SPEED_SLOWDOWN)

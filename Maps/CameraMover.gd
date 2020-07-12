@@ -6,7 +6,6 @@ func _ready():
 	set_physics_process(true)
 
 
-
 func _physics_process(delta):
 	if Input.is_action_pressed("ui_up"):
 		position.y -= 5
