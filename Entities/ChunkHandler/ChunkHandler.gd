@@ -1,20 +1,11 @@
 extends Node2D
 
-var block = preload("res://Entities/Block/Block.tscn")
 var chunk = preload("res://Entities/ChunkHandler/Chunk.tscn")
-
-const BLOCK_SIZE = 32
-const HALF_SIZE = BLOCK_SIZE / 2
-const CHUNK_SIZE = 5 #
-const CHUNKS_AREA_SIZE = 2 # How many chunks are spawned in each direction
-						   # around the central chunk
 
 var chunk_containers_node
 var central_chunk: Vector2 = Vector2(0,0)
 
 var deleted_blocks = {}
-
-
 
 func _ready():
 	chunk_containers_node = get_node("ChunkContainers")
@@ -26,18 +17,18 @@ func _ready():
 func check_chunks():
 	var current_chunks = chunk_containers_node.get_children()
 	
-	var left_threshold = central_chunk.x - CHUNKS_AREA_SIZE
-	var right_threshold = central_chunk.x + CHUNKS_AREA_SIZE
-	var up_threshold = central_chunk.y - CHUNKS_AREA_SIZE
-	var bottom_threshold = central_chunk.y + CHUNKS_AREA_SIZE
+	var left_threshold = central_chunk.x - GlobalMapData.CHUNKS_AREA_SIZE
+	var right_threshold = central_chunk.x + GlobalMapData.CHUNKS_AREA_SIZE
+	var up_threshold = central_chunk.y - GlobalMapData.CHUNKS_AREA_SIZE
+	var bottom_threshold = central_chunk.y + GlobalMapData.CHUNKS_AREA_SIZE
 	
 	#Remove distant chunks
 	for current_chunk in current_chunks:
-		if (current_chunk.positionX > right_threshold or 
-			current_chunk.positionX < left_threshold or
-			current_chunk.positionY < up_threshold or
-			current_chunk.positionY > bottom_threshold):
-			despawn_chunk(current_chunk.positionX, current_chunk.positionY)
+		if (current_chunk.indexX > right_threshold or 
+			current_chunk.indexX < left_threshold or
+			current_chunk.indexY < up_threshold or
+			current_chunk.indexY > bottom_threshold):
+			despawn_chunk(current_chunk.indexX, current_chunk.indexY)
 	
 	#Spawn new chunks
 	for y in range(up_threshold, bottom_threshold + 1):
@@ -54,32 +45,9 @@ func spawn_chunk(var xChunkPos, var yChunkPos):
 	
 	var chunkContainer = chunk.instance()
 	chunkContainer.name = _craftNodeName(xChunkPos, yChunkPos)
-	chunkContainer.positionX = xChunkPos
-	chunkContainer.positionY = yChunkPos
-	
-	var deleted_blocks = GlobalMapData.get_deleted_blocks(chunkContainer.name)
-	
-	for y in range(yChunkPos * CHUNK_SIZE, (yChunkPos * CHUNK_SIZE) + CHUNK_SIZE):
-		for x in range(xChunkPos * CHUNK_SIZE, (xChunkPos * CHUNK_SIZE) + CHUNK_SIZE):
-			var block_instance = block.instance()
-			var position = Vector2((BLOCK_SIZE *2) * x, (BLOCK_SIZE * 2) * y)
-			
-#			if deleted_blocks != []:
-#				print("AAA")
-			
-			if position in deleted_blocks:
-				continue
-			
-			block_instance.init(position, chunkContainer.name)
-			block_instance.set_body_texture(int(xChunkPos) % 4) # TODO Set texture from noise seed			
-			block_instance.name = _craftNodeName(x,y)
-			
-			#this is the same as:
-			#chunkContainer.add_child(block_instance)
-			chunkContainer.call_deferred("add_child", block_instance)
-			#But call_deferred calls the method a bit later instead of
-			#imediatelly. How does it improve performance?
-			#Fuck if I know, but it somehow works.
+	chunkContainer.indexX = xChunkPos
+	chunkContainer.indexY = yChunkPos
+	chunkContainer.spawn_blocks()
 	
 	chunk_containers_node.add_child(chunkContainer)
 
@@ -98,13 +66,13 @@ func _move_triggers_horizontaly(direction: int):
 	var triggers = get_node("Triggers").get_children()
 	
 	for trigger in triggers:
-		trigger.position.x += CHUNK_SIZE * BLOCK_SIZE * direction * 2
+		trigger.position.x += GlobalMapData.CHUNK_SIZE * GlobalMapData.BLOCK_SIZE * direction * 2
 
 func _move_triggers_vertically(direction: int):
 	var triggers = get_node("Triggers").get_children()
 	
 	for trigger in triggers:
-		trigger.position.y += CHUNK_SIZE * BLOCK_SIZE * direction * 2
+		trigger.position.y += GlobalMapData.CHUNK_SIZE * GlobalMapData.BLOCK_SIZE * direction * 2
 
 
 # Trigger signal handler method

@@ -9,9 +9,9 @@ const mineral_textures =  [preload("res://Entities/Block/Textures/copper.png"),
 						 preload("res://Entities/Block/Textures/iron.png"),
 						 preload("res://Entities/Block/Textures/diamonds.png")]
 
-export var material_type: int = 0
-export var has_mineral: bool = false
-export var mineral_type: int = -1
+var material_type: int = 0
+var has_mineral: bool = false
+var mineral_type: int = -1
 var indestructable: bool = false
 
 var chunk_name: String = ""

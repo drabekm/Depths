@@ -15,3 +15,15 @@ var max_capacity: int = 20
 var max_speed: int = 350
 var acceleration: int = 15
 var thurster_power = 20
+
+
+var inventory = {
+	BlockEnums.MineralTypes.COPPER : 0,
+	BlockEnums.MineralTypes.IRON : 0,
+	BlockEnums.MineralTypes.DIAMOND : 0
+}
+
+func add_mineral(type):
+	if type in inventory and capacity < max_capacity:
+		inventory[type] += 1
+		capacity += 1

@@ -8,7 +8,7 @@ Game for itnetwork.cz summer coding contest 2020
 - ### Blocks with ore - 10 %
 - ### Map generator - 25 %
 - ### Procedural water and lava - 0%
-- ### Inventory screen - 0 %
+- ### Inventory screen - 5 %
 - ### Earthquake mode when underground for too long - 0 %
 - ### Stores - 0 %
 - ### Music - 0 %

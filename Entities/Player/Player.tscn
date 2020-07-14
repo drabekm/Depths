@@ -81,7 +81,7 @@ __meta__ = {
 margin_top = 72.0
 margin_right = 58.0
 margin_bottom = 86.0
-text = "left wall"
+text = "On wall:"
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -95,9 +95,8 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Camera2D" type="Camera2D" parent="."]
+[node name="Camera" type="Camera2D" parent="."]
 current = true
-zoom = Vector2( 4, 4 )
 
 [node name="BottomDrill" type="RayCast2D" parent="."]
 enabled = true
