@@ -2,8 +2,8 @@ extends Node2D
 
 var is_player_near: bool = false
 
-var player_node: Node
-var button_marker: Node
+var player_node
+var button_marker
 var y_offset: int = 50 # how much is the marker moved up
 var shop_oppened: bool = false
 
@@ -73,15 +73,13 @@ func _on_Area2D_body_exited(body):
 		set_process(false)
 		set_process_input(true)
 
-
 func _on_ButtonExit_pressed():
 	_close_shop()
 
-
 func _on_ButtonFill_pressed():
-	PlayerData.fuel = floor(PlayerData.fuel)
 	for i in range(PlayerData.max_fuel - PlayerData.fuel):
-		if PlayerData.money > PRICE_PER_UNIT:
+		if PlayerData.money >= PRICE_PER_UNIT:
+			PlayerData.fuel = floor(PlayerData.fuel)
 			PlayerData.fuel += 1
 			PlayerData.money -= 2
 		else:
