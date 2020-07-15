@@ -24,11 +24,11 @@ func spawn_blocks():
 			block_position.x += self.position.x
 			
 			if(block_position.y < GlobalMapData.BLOCK_SIZE * 8):
-				block_instance.set_body_texture(BlockEnums.MaterialTypes.DIRT)
+				block_instance.set_body(BlockEnums.MaterialTypes.DIRT)
 			elif(block_position.y < GlobalMapData.BLOCK_SIZE * 20):
-				block_instance.set_body_texture(BlockEnums.MaterialTypes.STONE)
+				block_instance.set_body(BlockEnums.MaterialTypes.STONE)
 			else:
-				block_instance.set_body_texture(BlockEnums.MaterialTypes.STRONG_STONE)
+				block_instance.set_body(BlockEnums.MaterialTypes.STRONG_STONE)
 			
 			
 			give_block_mineral(block_instance, block_position.x, block_position.y)
@@ -55,11 +55,11 @@ func give_block_mineral(var block, posX, posY):
 	
 	if  noise_value > 0.3:
 		if noise_value < 0.50:
-			block.set_mineral_texture(BlockEnums.MineralTypes.COPPER) 
+			block.set_mineral(BlockEnums.MineralTypes.COPPER) 
 		elif noise_value < 0.85:
-			block.set_mineral_texture(BlockEnums.MineralTypes.IRON) 
+			block.set_mineral(BlockEnums.MineralTypes.IRON) 
 		elif noise_value < 1:
-			block.set_mineral_texture(BlockEnums.MineralTypes.DIAMOND) 
+			block.set_mineral(BlockEnums.MineralTypes.DIAMOND) 
 	
 	return block
 
