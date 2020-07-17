@@ -1,5 +1,7 @@
 extends StaticBody2D
 
+# Main building block of the game up, pun intended
+
 const material_textures = [preload("res://Entities/Block/Textures/dirt.png"),
 				 preload("res://Entities/Block/Textures/stone.png"),
 				 preload("res://Entities/Block/Textures/strong_stone.png"),
@@ -16,13 +18,18 @@ var has_mineral: bool = false
 var mineral_type: int = -1
 var indestructable: bool = false
 
-var chunk_name: String = ""
+var chunk_name: String = "" #chunk name is composed of chunks x and y coordinate
+
 const BASE_SCORE = 5
 var score: int = BASE_SCORE
 
+# destroy is to be called only be the player node. 
+# If you call this in a chunk destructor or anywhere else
+# the globalmapData thing would make chunk empty next time it would load
 func destroy():
 	GlobalMapData.add_deleted_block(self.position, self.chunk_name)
 	self.queue_free()
+
 
 func init(position:Vector2, chunk_name: String) -> void:
 	self.chunk_name = chunk_name

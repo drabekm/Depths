@@ -22,12 +22,14 @@ func _ready():
 	noise.lacunarity = 2
 	noise2.lacunarity = 2
 
+#Used by chunks to assing minerals to ores
+#Needs some more work tho
 func get_noise_value(x: float, y: float) -> float:
 	#print(str(noise.get_noise_2d(x,y) / abs(noise2.get_noise_3d(x,y, sqrt(x + y)))))
 	return noise.get_noise_2d(x,y)
 
 var deleted_blocks = {} # all deleted blocks in chunks
-# it's stored as a dictionary of chunk name -> chunks deleted blocks array
+# it's stored as a dictionary of chunk name -> deleted blocks array
 
 func add_deleted_block(block_position: Vector2, chunk_name: String):
 	if chunk_name in deleted_blocks:

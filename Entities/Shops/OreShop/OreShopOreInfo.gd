@@ -1,5 +1,8 @@
 extends "res://Menus/Inventory/OreInfo.gd"
 
+# Basicaly just like OreInfo node, but has buttons for selling the
+# specific mineral
+
 signal has_been_sold
 
 func _on_ButtonSellOne_pressed():

@@ -1,6 +1,7 @@
 extends Node2D
 
 
+
 var noise = OpenSimplexNoise.new()
 
 func _ready():

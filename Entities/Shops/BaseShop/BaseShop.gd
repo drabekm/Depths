@@ -1,13 +1,20 @@
 extends Node2D
 
+#This is a base node for other shops to inherit from.
+
+
+
 var is_player_near: bool = false
 
 var player_node
-var button_marker
-var y_offset: int = 50 # how much is the marker moved up
+
+var button_marker # button marker is supposed to indicate that a player can
+#enter a shop by displaying a function button above players node
+
+var y_offset: int = 50 # how much is the marker moved above player
 var shop_oppened: bool = false
 
-const PRICE_PER_UNIT = 2
+
 
 func _ready():
 	set_process(false)
@@ -17,6 +24,7 @@ func _ready():
 	# Otherwise pause_mode stays in inherit when player opens the store
 	# and won't be able to leave
 	# Why? Fuck if I know
+	
 	button_marker = get_node("ButtonMarker")
 	_on_ready()
 
@@ -26,7 +34,7 @@ func _on_ready():
 
 func _process(delta):
 	if player_node != null:
-		if player_node.is_on_floor(): # show button market
+		if player_node.is_on_floor(): # show button market 
 			button_marker.visible = true
 			var new_position = player_node.global_position
 			new_position.y -= y_offset

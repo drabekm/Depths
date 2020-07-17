@@ -1,5 +1,11 @@
 extends KinematicBody2D
 
+# I always hated the player script in every game I've made
+# It's the most important thing, with most features usually
+# So it's usually pretty long and clustered full of confusing shit
+
+# The code here isn't that confusing hopefully, but it might change soon
+
 var velocity = Vector2(0,0)
 var speed = 0
 var gravity = 0
@@ -33,6 +39,9 @@ func _physics_process(delta):
 	_movement()
 	_subtract_fuel(delta)
 
+# Drill is represented by a raycast2D node
+# This method is used only when the player is pushing against either a wall or
+# a floor. We need to check if the wall is actually a drillable block
 func _drill_colides_with_block(drill) -> bool:
 	var collider = drill.get_collider()
 	if collider != null:
@@ -48,6 +57,7 @@ func _start_drilling(drill: Node):
 				PlayerData.score += collider.score
 				collider.destroy()
 
+# Change drills direction when player changes side
 func reorient_drill(direction) -> void: # -1 = left, 1 = right
 	forwardDrill.scale.x = direction
 

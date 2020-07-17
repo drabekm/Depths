@@ -1,5 +1,7 @@
 extends Control
 
+# Menu that pauses
+
 var main_menu = preload("res://Menus/MainMenu/MainMenu.tscn")
 
 func _ready():

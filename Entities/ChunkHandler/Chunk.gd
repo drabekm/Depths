@@ -1,5 +1,9 @@
 extends Node2D
 
+# This node serves as a container for blocks and is responsible
+# for spawning them in and setting their minerals and stuff.
+# Chunk size is determined by chunkHandler node
+
 const block = preload("res://Entities/Block/Block.tscn")
 
 var indexX
@@ -10,6 +14,7 @@ func spawn_blocks():
 	
 	var deleted_blocks = GlobalMapData.get_deleted_blocks(self.name)
 	
+	# generate blocks
 	for y in range(0, GlobalMapData.CHUNK_SIZE):
 		for x in range(0, GlobalMapData.CHUNK_SIZE):
 			var block_instance = block.instance()
@@ -44,6 +49,9 @@ func spawn_blocks():
 			#imediatelly. How does it improve performance?
 			#Fuck if I know, but it somehow works.
 
+
+# the noise function really needs some works before it 
+# generates ores in some usable way
 func give_block_mineral(var block, posX, posY):
 	var noise_value = GlobalMapData.get_noise_value(posX, posY)
 	

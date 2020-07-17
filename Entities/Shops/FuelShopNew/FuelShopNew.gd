@@ -1,8 +1,11 @@
 extends "res://Entities/Shops/BaseShop/BaseShop.gd"
 
+# Shop with fuel, pretty simple
+
 var fuel_info
 var fuel_tank
 
+const PRICE_PER_UNIT = 2
 
 # Called when the node enters the scene tree for the first time.
 func _ready():

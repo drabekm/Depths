@@ -1,5 +1,10 @@
 extends Node2D
 
+# Shop with fuel, pretty simple
+
+# THIS IS OLD, DO NOT USE
+# I should probbably delete this shit if it's not used
+
 var is_player_near: bool = false
 
 var player_node
@@ -77,7 +82,7 @@ func _on_ButtonExit_pressed():
 	_close_shop()
 
 func _on_ButtonFill_pressed():
-	for i in range(PlayerData.max_fuel - PlayerData.fuel):
+	for i in range(PlayerData.max_fuel - floor(PlayerData.fuel)):
 		if PlayerData.money >= PRICE_PER_UNIT:
 			PlayerData.fuel = floor(PlayerData.fuel)
 			PlayerData.fuel += 1

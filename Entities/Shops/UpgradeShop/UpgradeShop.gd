@@ -1,5 +1,6 @@
 extends "res://Entities/Shops/BaseShop/BaseShop.gd"
 
+# Shop with upgrades
 
 func _on_ready():
 	var upgrades = get_node("CanvasLayer/UI/CategoryUpgrades/FuelUpgrades/Upgrades").get_children()

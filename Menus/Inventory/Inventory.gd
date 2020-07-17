@@ -1,5 +1,8 @@
 extends Control
 
+# The actuall inventory is stored as an array in the PlayerData singleton
+# This is a control used to shop the invetory contents
+
 const oreInfo = preload("res://Menus/Inventory/OreInfo.tscn")
 
 var rows
@@ -31,8 +34,6 @@ func update_rows():
 	for oreInfo in rows.get_children():
 		if oreInfo.is_in_group("OreInfo"):
 			oreInfo.update_count()
-
-
 
 func show():
 	update_rows()

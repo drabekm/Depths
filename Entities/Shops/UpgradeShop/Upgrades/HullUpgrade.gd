@@ -1,6 +1,6 @@
 extends "res://Entities/Shops/UpgradeShop/Upgrades/BaseUpgrade.gd"
 
-
+# Hull upgrades used in the upgrade shop
 
 func _init():
 	descriptions = [

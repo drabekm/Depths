@@ -1,5 +1,9 @@
 extends HBoxContainer
 
+# Stores information about one type of ore in players inventory
+# It's used in the inventory controll and it's inherited by the OreShopOreInfo
+# node
+
 const ore_icons = ["res://Entities/Block/Textures/copper.png",
 				"res://Entities/Block/Textures/iron.png",
 				"res://Entities/Block/Textures/diamonds.png"]

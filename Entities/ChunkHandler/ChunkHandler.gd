@@ -1,5 +1,9 @@
 extends Node2D
 
+# Spawns in chunks depending on triggers trigged by player
+# Those triggers are around the centraů chunk and form a sort of cage around it.
+# The player can't leave that cage otherwise it would break chunk spawning
+
 var chunk = preload("res://Entities/ChunkHandler/Chunk.tscn")
 
 var chunk_containers_node
@@ -17,6 +21,7 @@ func _ready():
 func check_chunks():
 	var current_chunks = chunk_containers_node.get_children()
 	
+	#Determine chunk generating bounds
 	var left_threshold = central_chunk.x - GlobalMapData.CHUNKS_AREA_SIZE
 	var right_threshold = central_chunk.x + GlobalMapData.CHUNKS_AREA_SIZE
 	var up_threshold = central_chunk.y - GlobalMapData.CHUNKS_AREA_SIZE
@@ -30,7 +35,7 @@ func check_chunks():
 			current_chunk.indexY > bottom_threshold):
 			despawn_chunk(current_chunk.indexX, current_chunk.indexY)
 	
-	#Spawn new chunks
+	#Spawn in new chunks
 	for y in range(up_threshold, bottom_threshold + 1):
 		for x in range(left_threshold, right_threshold + 1):
 			var chunk_name = _craftNodeName(x,y)
@@ -62,6 +67,7 @@ func _craftNodeName(var x: int, var y: int) -> String:
 func _is_body_player(body) -> bool:
 	return body.is_in_group("Player")
 
+# triggers needs to be moved to where the central chunk is
 func _move_triggers_horizontaly(direction: int):
 	var triggers = get_node("Triggers").get_children()
 	

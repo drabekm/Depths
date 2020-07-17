@@ -1,5 +1,9 @@
 extends HBoxContainer
 
+# Base upgrade node for other upgrade nodes to inherit from
+# Upgrade nodes are only used in the upgrade shop
+# Each inherited upgrade node set's it's own values/prices/textures etc.
+
 var buy_button
 var info_button
 
@@ -37,6 +41,8 @@ func _buy():
 		PlayerData.money -= prices[type]
 		_unlock_next_upgrade()
 
+# All upgrades except the first one are initialy locked
+# buying the previous upgrade unlocks the next
 func _unlock_next_upgrade():
 	var other_upgrades = get_parent().get_children()
 	for other_upgrade in other_upgrades:

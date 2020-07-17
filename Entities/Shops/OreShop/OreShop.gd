@@ -1,5 +1,7 @@
 extends "res://Entities/Shops/BaseShop/BaseShop.gd"
 
+#Shop that buys ores
+
 const oreInfo = preload("res://Entities/Shops/OreShop/OreShopOreInfo.tscn")
 
 var inventory_rows

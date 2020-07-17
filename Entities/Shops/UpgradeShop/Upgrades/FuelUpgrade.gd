@@ -1,5 +1,6 @@
 extends "res://Entities/Shops/UpgradeShop/Upgrades/BaseUpgrade.gd"
 
+# Fuel upgrades used in the upgrade shop
 
 func _init():
 	 descriptions = [
@@ -34,7 +35,7 @@ func _ready():
 	get_node("Text/Description").text = descriptions[type]
 	get_node("Text/UpgradeValue").text = upgrade_values[type]
 	_set_buy_button_price(prices[type])
-	if type > 0:
+	if type > 0: # All upgrades except the first one are disabled at first
 		buy_button.disabled = true
 
 func _buy():

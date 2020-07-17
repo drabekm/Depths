@@ -1,5 +1,6 @@
 extends Camera2D
 
+#early testing shit, I'll probably delete it soon
 
 func _ready():
 	
