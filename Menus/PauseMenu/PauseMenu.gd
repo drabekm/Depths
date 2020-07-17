@@ -22,7 +22,6 @@ func hide():
 
 
 func _on_Continue_pressed():
-	print("continue")
 	hide()
 
 

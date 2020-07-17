@@ -1,0 +1,73 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Entities/Shops/BaseShop/BaseShop.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Entities/Shops/OreShop/OreShop.gd" type="Script" id=2]
+
+[node name="OreShop" instance=ExtResource( 1 )]
+script = ExtResource( 2 )
+
+[node name="Background" parent="CanvasLayer/UI" index="0"]
+color = Color( 0.180392, 0.203922, 0.156863, 1 )
+
+[node name="Stats" type="VBoxContainer" parent="CanvasLayer/UI" index="1"]
+margin_left = 34.1367
+margin_top = 156.499
+margin_right = 95.1367
+margin_bottom = 196.499
+rect_scale = Vector2( 4, 4 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Money" type="Label" parent="CanvasLayer/UI/Stats" index="0"]
+margin_right = 61.0
+margin_bottom = 14.0
+text = "Money:"
+
+[node name="Inventory" type="Label" parent="CanvasLayer/UI/Stats" index="1"]
+margin_top = 18.0
+margin_right = 61.0
+margin_bottom = 32.0
+text = "Inventory"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Inventory" type="VBoxContainer" parent="CanvasLayer/UI" index="2"]
+margin_left = 541.537
+margin_top = 119.407
+margin_right = 581.537
+margin_bottom = 159.407
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Title" type="Label" parent="CanvasLayer/UI" index="3"]
+margin_left = 395.221
+margin_top = 36.9994
+margin_right = 447.221
+margin_bottom = 50.9994
+rect_scale = Vector2( 3, 3 )
+text = "Refinery"
+
+[node name="ButtonSellAll" type="Button" parent="CanvasLayer/UI" index="4"]
+margin_left = 39.0
+margin_top = 310.0
+margin_right = 303.0
+margin_bottom = 398.0
+text = "Sell All"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ButtonExit" type="Button" parent="CanvasLayer/UI" index="5"]
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = -83.0
+text = "Exit"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+[connection signal="pressed" from="CanvasLayer/UI/ButtonSellAll" to="." method="_on_ButtonSellAll_pressed"]
+[connection signal="pressed" from="CanvasLayer/UI/ButtonExit" to="." method="_on_ButtonExit_pressed"]

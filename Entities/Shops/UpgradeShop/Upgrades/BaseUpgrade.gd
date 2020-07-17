@@ -1,0 +1,52 @@
+extends HBoxContainer
+
+var buy_button
+var info_button
+
+export(int, 0, 4) var type
+
+var is_bought = false
+
+var values = []
+var prices = []
+
+var descriptions = []
+var upgrade_values = []
+var textures = []
+
+signal not_enough_money(upgrade_name)
+
+func _ready():
+	buy_button = get_node("ButtonBuy")
+	info_button = get_node("ButtonInfo")
+
+func _set_buy_button_price(price: int):
+	buy_button.text = "Buy: [" + str(price) + "]"
+
+func _on_ButtonBuy_pressed():
+	_buy()
+
+func _on_ButtonInfo_pressed():
+	_showInfo()
+
+func _buy():
+	if prices[type] > PlayerData.money:
+		emit_signal("not_enough_money", descriptions[type])
+	else:
+		buy_button.disabled = true
+		PlayerData.money -= prices[type]
+		_unlock_next_upgrade()
+
+func _unlock_next_upgrade():
+	var other_upgrades = get_parent().get_children()
+	for other_upgrade in other_upgrades:
+		if other_upgrade.type > self.type:
+			other_upgrade.enable_buy_button()
+			break
+
+func enable_buy_button():
+	buy_button.disabled = false
+
+func _showInfo():
+	pass
+

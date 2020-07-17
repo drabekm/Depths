@@ -1,0 +1,42 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Menus/Inventory/OreInfo.tscn" type="PackedScene" id=1]
+[ext_resource path="res://icon.png" type="Texture" id=2]
+[ext_resource path="res://Entities/Shops/OreShop/OreShopOreInfo.gd" type="Script" id=3]
+
+[node name="OreShopOreInfo" instance=ExtResource( 1 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 155.0
+margin_bottom = 47.0
+custom_constants/separation = 20
+script = ExtResource( 3 )
+
+[node name="Icon" parent="." index="0"]
+margin_right = 64.0
+margin_bottom = 64.0
+texture = ExtResource( 2 )
+
+[node name="Text" parent="." index="1"]
+margin_left = 84.0
+margin_top = 25.0
+margin_right = 234.0
+margin_bottom = 39.0
+rect_min_size = Vector2( 150, 0 )
+text = "PLACEHOLDER"
+
+[node name="ButtonSellOne" type="Button" parent="." index="2"]
+margin_left = 254.0
+margin_right = 354.0
+margin_bottom = 64.0
+rect_min_size = Vector2( 100, 0 )
+text = "Sell 1"
+
+[node name="ButtonSellAll" type="Button" parent="." index="3"]
+margin_left = 374.0
+margin_right = 474.0
+margin_bottom = 64.0
+rect_min_size = Vector2( 100, 0 )
+text = "Sell All"
+[connection signal="pressed" from="ButtonSellOne" to="." method="_on_ButtonSellOne_pressed"]
+[connection signal="pressed" from="ButtonSellAll" to="." method="_on_ButtonSellAll_pressed"]

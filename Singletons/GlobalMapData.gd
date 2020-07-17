@@ -28,7 +28,6 @@ func get_noise_value(x: float, y: float) -> float:
 
 var deleted_blocks = {} # all deleted blocks in chunks
 # it's stored as a dictionary of chunk name -> chunks deleted blocks array
-#									KEY		->	VALUE
 
 func add_deleted_block(block_position: Vector2, chunk_name: String):
 	if chunk_name in deleted_blocks:
