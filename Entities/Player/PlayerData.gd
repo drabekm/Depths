@@ -21,7 +21,7 @@ var acceleration: int = 15
 var thurster_power = 20
 
 var score: int = 0
-var money: int = 10
+var money: int = 1000
 
 var inventory = {
 	BlockEnums.MineralTypes.COPPER : 0,

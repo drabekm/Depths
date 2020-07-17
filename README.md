@@ -10,7 +10,7 @@ Game for itnetwork.cz summer coding contest 2020
 - ### Procedural water and lava - 0%
 - ### Inventory screen - 30 %
 - ### Earthquake mode when underground for too long - 0 %
-- ### Stores - 10 %
+- ### Stores - 40 %
 - ### Music - 0 %
 - ### Translation - 0 %
 - ### Menus - 15 %
@@ -30,3 +30,6 @@ Game for itnetwork.cz summer coding contest 2020
 
 ### Added money and score and first shop 15.7. 2020
 [![Image from Gyazo](https://i.gyazo.com/909c2b5c0f79569f464a592adc719c11.gif)](https://gyazo.com/909c2b5c0f79569f464a592adc719c11)
+
+### Added more shops and very wip upgrades 17.7. 2020
+[![Image from Gyazo](https://i.gyazo.com/51677b347992c424ce7b9180a1f318f2.gif)](https://gyazo.com/51677b347992c424ce7b9180a1f318f2)
