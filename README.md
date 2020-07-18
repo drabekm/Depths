@@ -7,7 +7,7 @@ Game for itnetwork.cz summer coding contest 2020
 - ### Player drilling - 20 %
 - ### Blocks with ore - 15 %
 - ### Map generator - 25 %
-- ### Procedural water and lava - 0%
+- ### Procedural water and lava - 15%
 - ### Inventory screen - 30 %
 - ### Earthquake mode when underground for too long - 0 %
 - ### Stores - 40 %
@@ -16,7 +16,8 @@ Game for itnetwork.cz summer coding contest 2020
 - ### Menus - 15 %
 - ### Online score saving - 0 %
 - ### Users custom music - 0 %
-
+- ### Light and shadows - 0 %
+- ### Custom particle effects - 0 %
 
 ## FINISHED MILESTONES:
 ### Player movement, 10.7.2020

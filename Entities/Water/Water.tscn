@@ -4,7 +4,7 @@
 [ext_resource path="res://Entities/Water/water.png" type="Texture" id=2]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 16, 16 )
+extents = Vector2( 17, 17 )
 
 [node name="Water" type="Area2D" groups=[
 "Water",
@@ -31,7 +31,7 @@ collide_with_areas = true
 
 [node name="RayCastBottom" type="RayCast2D" parent="RayCasts"]
 enabled = true
-cast_to = Vector2( 0, 18 )
+cast_to = Vector2( 0, 20 )
 collide_with_areas = true
 
 [node name="RayCastUp" type="RayCast2D" parent="RayCasts"]

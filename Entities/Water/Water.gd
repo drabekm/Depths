@@ -8,11 +8,16 @@ var raycast_right
 var raycast_up
 var raycast_bottom
 
+var base_sprite_position
+
 var water = load("res://Entities/Water/Water.tscn")
 const collision_enum = preload("res://Entities/Water/WaterCollisionEnum.gd")
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	base_sprite_position = get_node("Sprite").global_position
+	
+	
 	raycast_left = get_node("RayCasts/RayCastLeft")
 	raycast_left.add_exception(self)
 	
@@ -26,11 +31,12 @@ func _ready():
 	raycast_bottom.add_exception(self)
 	
 	set_physics_process(false)
+	_update_sprite_size()
 
 func init(position, water_fullness):
 	self.position = position
 	self.fullness = water_fullness
-	_update_sprite_size()
+	
 
 # BOTTOM RAYCAST
 func is_bottom_collision() -> bool:
@@ -70,12 +76,15 @@ func _get_raycast_collider(raycast):
 	return raycast.get_collider()
 
 func _get_raycast_collision_type(raycast):
-	if raycast.get_collider().is_in_group("Block"):
-		return collision_enum.Collision.BLOCK
-	if raycast.get_collider().is_in_group("Water"):
-		return collision_enum.Collision.WATER
+	var collider = raycast.get_collider()
+	if collider != null:
+		if raycast.get_collider().is_in_group("Block"):
+			return collision_enum.Collision.BLOCK
+		if raycast.get_collider().is_in_group("Water"):
+			return collision_enum.Collision.WATER
 	
-	return collision_enum.Collision.NONE
+#	return collision_enum.Collision.NONE
+	return null
 
 func add_water(value):
 	fullness = min(fullness + value, 1)
@@ -91,6 +100,7 @@ func remove_water(value):
 
 func _update_sprite_size():
 	get_node("Sprite").scale.y = fullness
+	get_node("Sprite").global_position.y = base_sprite_position.y + (1 - fullness) * 16
 
 func _physics_process(delta):
 	var collider
