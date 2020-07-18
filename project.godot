@@ -16,7 +16,7 @@ _global_script_class_icons={
 [application]
 
 config/name="Depths"
-run/main_scene="res://Maps/ChunkTestWorld.tscn"
+run/main_scene="res://Maps/WaterTest.tscn"
 config/icon="res://icon.png"
 
 [autoload]
