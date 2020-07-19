@@ -1,0 +1,7 @@
+{
+  "mainmenu.newgame" : ["Nová hra", "New game"],
+  "mainmenu.continue" : ["Pokračovat", "Continue"],
+  "mainmenu.settings" : ["Nastavení", "Settings"],
+  "mainmenu.highscore" : ["Skóre", "High score"],
+  "mainmenu.exit" : ["Konec", "Quit"]
+}

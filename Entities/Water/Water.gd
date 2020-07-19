@@ -69,6 +69,17 @@ func get_right_collider_type():
 	return _get_raycast_collision_type(raycast_right)
 
 
+# UP RAYCAST
+func is_up_collision() -> bool:
+	return _is_raycast_colliding(raycast_up)
+
+func get_up_collider():
+	return _get_raycast_collider(raycast_up)
+
+func get_up_collider_type():
+	return _get_raycast_collision_type(raycast_up)
+
+
 func _is_raycast_colliding(raycast):
 	return raycast.is_colliding()
 
@@ -99,8 +110,13 @@ func remove_water(value):
 	_update_sprite_size()
 
 func _update_sprite_size():
-	get_node("Sprite").scale.y = fullness
-	get_node("Sprite").global_position.y = base_sprite_position.y + (1 - fullness) * 16
+	if is_up_collision():
+		if get_up_collider_type() == collision_enum.Collision.WATER:
+			get_node("Sprite").scale.y = 1
+			get_node("Sprite").global_position.y = base_sprite_position.y
+	else:
+		get_node("Sprite").scale.y = fullness
+		get_node("Sprite").global_position.y = base_sprite_position.y + (1 - fullness) * 16
 
 func _physics_process(delta):
 	var collider

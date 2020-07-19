@@ -21,6 +21,7 @@ config/icon="res://icon.png"
 
 [autoload]
 
+Translator="*res://Singletons/Translator.gd"
 GlobalMapData="*res://Singletons/GlobalMapData.gd"
 BlockEnums="*res://Singletons/BlockEnums.gd"
 PlayerData="*res://Singletons/PlayerData.tscn"

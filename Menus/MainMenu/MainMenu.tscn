@@ -42,7 +42,7 @@ __meta__ = {
 [node name="NewGame" type="Button" parent="VBoxContainer"]
 margin_right = 170.0
 margin_bottom = 20.0
-text = "New Game"
+text = "mainMenu.newGame"
 __meta__ = {
 "_edit_lock_": true
 }
@@ -51,7 +51,7 @@ __meta__ = {
 margin_top = 30.0
 margin_right = 170.0
 margin_bottom = 50.0
-text = "Continue"
+text = "MainMenu.Continue"
 __meta__ = {
 "_edit_lock_": true
 }
@@ -60,7 +60,7 @@ __meta__ = {
 margin_top = 60.0
 margin_right = 170.0
 margin_bottom = 80.0
-text = "High Score"
+text = "MainMenu.HighScore"
 __meta__ = {
 "_edit_lock_": true
 }
@@ -69,7 +69,7 @@ __meta__ = {
 margin_top = 90.0
 margin_right = 170.0
 margin_bottom = 110.0
-text = "Settings"
+text = "MainMenu.Settings"
 __meta__ = {
 "_edit_lock_": true
 }
@@ -78,7 +78,7 @@ __meta__ = {
 margin_top = 120.0
 margin_right = 170.0
 margin_bottom = 140.0
-text = "Exit"
+text = "MainMenu.Exit"
 __meta__ = {
 "_edit_lock_": true
 }
