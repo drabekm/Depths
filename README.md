@@ -12,7 +12,7 @@ Game for itnetwork.cz summer coding contest 2020
 - ### Earthquake mode when underground for too long - 0 %
 - ### Stores - 40 %
 - ### Music - 0 %
-- ### Translation - 0 %
+- ### Translation - 50 %
 - ### Menus - 15 %
 - ### Online score saving - 0 %
 - ### Users custom music - 0 %

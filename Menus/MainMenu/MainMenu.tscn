@@ -17,7 +17,7 @@ margin_top = 96.2034
 margin_right = 405.18
 margin_bottom = 110.203
 rect_scale = Vector2( 3, 3 )
-text = "Depths - alpha v. 2"
+text = "Depths - alpha v. 3"
 __meta__ = {
 "_edit_use_anchors_": false
 }

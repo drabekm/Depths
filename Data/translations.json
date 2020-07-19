@@ -3,5 +3,9 @@
   "mainmenu.continue" : ["Pokračovat", "Continue"],
   "mainmenu.settings" : ["Nastavení", "Settings"],
   "mainmenu.highscore" : ["Skóre", "High score"],
-  "mainmenu.exit" : ["Konec", "Quit"]
+  "mainmenu.exit" : ["Konec", "Quit"],
+
+  "ore.copper" : ["Měď", "Copper"],
+  "ore.iron" : ["Železo", "Iron"],
+  "ore.diamond" : ["Diamant", "Diamond"]
 }
