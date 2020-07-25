@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://icon.png" type="Texture" id=1]
 [ext_resource path="res://Entities/Player/Player.gd" type="Script" id=2]
+[ext_resource path="res://Entities/Player/Lights/ambient.png" type="Texture" id=3]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 27.8108, 28.8449 )
@@ -134,3 +135,13 @@ cast_to = Vector2( 0, 33 )
 [node name="ForwardDrill" type="RayCast2D" parent="."]
 enabled = true
 cast_to = Vector2( 33, 0 )
+
+[node name="AmbientLight" type="Light2D" parent="."]
+visible = false
+light_mask = 0
+position = Vector2( -8.409, -6.35676 )
+scale = Vector2( 1.18728, 0.627069 )
+texture = ExtResource( 3 )
+texture_scale = 4.0
+mode = 3
+range_item_cull_mask = 2

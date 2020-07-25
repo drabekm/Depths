@@ -11,15 +11,16 @@ extents = Vector2( 32, 32 )
 ]]
 script = ExtResource( 2 )
 
-[node name="Mineral" type="Sprite" parent="."]
-scale = Vector2( 2, 2 )
-centered = false
-
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2( 32, 32 )
 shape = SubResource( 1 )
 
 [node name="Body" type="Sprite" parent="."]
+light_mask = 2
 scale = Vector2( 2, 2 )
 texture = ExtResource( 1 )
+centered = false
+
+[node name="Mineral" type="Sprite" parent="."]
+scale = Vector2( 2, 2 )
 centered = false

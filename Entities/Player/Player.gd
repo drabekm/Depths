@@ -99,15 +99,23 @@ func _subtract_fuel(delta: float)-> void:
 
 func _movement() -> void:
 	velocity.y = velocity.y + GRAVITY_ACC
+	var previous_vertical_velocity = velocity.y
 	velocity = move_and_slide(velocity, Vector2(0,-1))
 	
+	
 	if self.is_on_floor():
+		_remove_health_from_speed_collision(previous_vertical_velocity)
 		_kill_vertical_velocity()
 	elif self.is_on_ceiling() and is_thrusters_on:
 		_kill_vertical_velocity()
+		_remove_health_from_speed_collision(previous_vertical_velocity)
 
 func _kill_vertical_velocity() -> void:
 	velocity.y = 0
+
+func _remove_health_from_speed_collision(vertical_velocity):
+	if vertical_velocity > 300:
+			PlayerData.health -= sqrt(vertical_velocity)
 
 func update_debug_labels() -> void:
 	get_node("DEBUG/labels/health").text = "Health: " + str(PlayerData.health)

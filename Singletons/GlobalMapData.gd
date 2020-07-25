@@ -6,27 +6,30 @@ const CHUNK_SIZE = 5
 const CHUNKS_AREA_SIZE = 2 # How many chunks are spawned in each direction
 						   # around the central chunk
 
-var noise = OpenSimplexNoise.new()
-var noise2 = OpenSimplexNoise.new()
+var ore_noise = OpenSimplexNoise.new()
+var helper_ore_noise = OpenSimplexNoise.new()
 
 func _ready():
 	randomize()
-	noise.seed = randi()
-	noise2.seed = randi()
-	noise.octaves = 4
-	noise2.octaves = 5
-	noise.period = 64.0
-	noise2.period = 64.0
-	noise.persistence = 0.5
-	noise2.persistence = 0.5
-	noise.lacunarity = 2
-	noise2.lacunarity = 2
+	ore_noise.seed = randi()
+	randomize()
+	helper_ore_noise.seed = randi()
+	ore_noise.octaves = 4
+	helper_ore_noise.octaves = 5
+	ore_noise.period = 0.1
+	helper_ore_noise.period = 0.5
+	ore_noise.persistence = 0.0
+	helper_ore_noise.persistence = 0.0
+	ore_noise.lacunarity = 2
+	helper_ore_noise.lacunarity = 2
 
 #Used by chunks to assing minerals to ores
 #Needs some more work tho
 func get_noise_value(x: float, y: float) -> float:
-	#print(str(noise.get_noise_2d(x,y) / abs(noise2.get_noise_3d(x,y, sqrt(x + y)))))
-	return noise.get_noise_2d(x,y)
+	return ore_noise.get_noise_2d(x,y)
+
+func get_helper_noise_value(x: float, y:float) -> float:
+	return helper_ore_noise.get_noise_2d(x,y)
 
 var deleted_blocks = {} # all deleted blocks in chunks
 # it's stored as a dictionary of chunk name -> deleted blocks array
