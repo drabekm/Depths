@@ -20,7 +20,7 @@ func _on_Continue_pressed():
 
 
 func _on_Scores_pressed():
-	pass # Replace with function body.
+	get_tree().change_scene_to(load("res://Menus/TopScoreMenu/TopScore.tscn"))
 
 
 func _on_Settings_pressed():

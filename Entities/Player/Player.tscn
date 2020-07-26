@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://icon.png" type="Texture" id=1]
 [ext_resource path="res://Entities/Player/Player.gd" type="Script" id=2]
-[ext_resource path="res://Entities/Player/Lights/ambient.png" type="Texture" id=3]
+[ext_resource path="res://Entities/Block/Block.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Entities/Player/Lights/betterShadow.png" type="Texture" id=4]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 27.8108, 28.8449 )
@@ -30,7 +31,7 @@ __meta__ = {
 margin_left = 31.0
 margin_top = -131.0
 margin_right = 194.0
-margin_bottom = 44.0
+margin_bottom = 54.0
 color = Color( 0, 0, 0, 0.254902 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -125,6 +126,15 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="position" type="Label" parent="DEBUG/labels"]
+margin_top = 162.0
+margin_right = 58.0
+margin_bottom = 176.0
+text = "POS:"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="Camera" type="Camera2D" parent="."]
 current = true
 
@@ -136,12 +146,14 @@ cast_to = Vector2( 0, 33 )
 enabled = true
 cast_to = Vector2( 33, 0 )
 
-[node name="AmbientLight" type="Light2D" parent="."]
-visible = false
+[node name="CornerShadow" type="Light2D" parent="."]
 light_mask = 0
-position = Vector2( -8.409, -6.35676 )
-scale = Vector2( 1.18728, 0.627069 )
-texture = ExtResource( 3 )
-texture_scale = 4.0
-mode = 3
+position = Vector2( -1.48837, -0.129835 )
+scale = Vector2( 0.514876, 0.305492 )
+texture = ExtResource( 4 )
+texture_scale = 7.0
+mode = 2
 range_item_cull_mask = 2
+
+[node name="Block" parent="." instance=ExtResource( 3 )]
+position = Vector2( -508.594, 231.807 )

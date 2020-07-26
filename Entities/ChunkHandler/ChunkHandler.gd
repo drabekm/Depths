@@ -12,6 +12,7 @@ var central_chunk: Vector2 = Vector2(0,0)
 var deleted_blocks = {}
 
 func _ready():
+	GlobalMapData.reset()
 	chunk_containers_node = get_node("ChunkContainers")
 	
 	check_chunks()

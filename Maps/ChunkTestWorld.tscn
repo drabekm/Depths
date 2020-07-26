@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://Entities/ChunkHandler/ChunkHandler.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Entities/Player/Player.tscn" type="PackedScene" id=2]
@@ -7,6 +7,7 @@
 [ext_resource path="res://Entities/Shops/OreShop/OreShop.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Entities/Shops/FuelShopNew/FuelShopNew.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Entities/Shops/UpgradeShop/UpgradeShop.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Menus/GameOverMenu/GameOverMenu.tscn" type="PackedScene" id=8]
 
 [node name="Node2D" type="Node2D"]
 position = Vector2( 1, 0 )
@@ -27,7 +28,7 @@ position = Vector2( 503.968, -123.472 )
 position = Vector2( 924.997, -126.479 )
 
 [node name="Player" parent="." instance=ExtResource( 2 )]
-position = Vector2( 201.7, -41.7399 )
+position = Vector2( 202.097, -12.4722 )
 z_index = 1
 
 [node name="Menus" type="CanvasLayer" parent="."]
@@ -35,5 +36,8 @@ z_index = 1
 [node name="Inventory" parent="Menus" instance=ExtResource( 3 )]
 
 [node name="PauseMenu" parent="Menus" instance=ExtResource( 4 )]
+
+[node name="GameOverMenu" parent="Menus" instance=ExtResource( 8 )]
+visible = false
 
 [node name="HUD" type="CanvasLayer" parent="."]

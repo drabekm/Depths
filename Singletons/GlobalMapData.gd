@@ -45,3 +45,10 @@ func get_deleted_blocks(chunk_name: String):
 		var test = deleted_blocks.get(chunk_name)
 		return deleted_blocks.get(chunk_name)
 	return []
+
+func reset():
+	deleted_blocks = {}
+	randomize()
+	ore_noise.seed = randi()
+	randomize()
+	helper_ore_noise.seed = randi()

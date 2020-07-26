@@ -22,22 +22,28 @@ var forwardDrill
 var bottomDrill
 
 var inventory
+var corner_shadow
 
 func _ready():
 	forwardDrill = get_node("ForwardDrill")
 	bottomDrill = get_node("BottomDrill")
 	inventory = get_node("../Menus/Inventory")
-	
+	corner_shadow = get_node("CornerShadow")
+	PlayerData.reset()
 	set_process(true)
 	set_physics_process(true)
 
 func _process(delta):
 	update_debug_labels()
+	_update_shadow_opacity()
 
 func _physics_process(delta):
 	input()
 	_movement()
 	_subtract_fuel(delta)
+
+func _update_shadow_opacity():
+	corner_shadow.energy = min(1, position.y / 720)
 
 # Drill is represented by a raycast2D node
 # This method is used only when the player is pushing against either a wall or
@@ -94,7 +100,8 @@ func input() -> void:
 
 func _subtract_fuel(delta: float)-> void:
 	if is_moving:
-		PlayerData.fuel -= PlayerData.fuel_consumption * delta
+		PlayerData.remove_fuel(PlayerData.fuel_consumption * delta)
+#		PlayerData.fuel -= PlayerData.fuel_consumption * delta
 
 
 func _movement() -> void:
@@ -115,7 +122,8 @@ func _kill_vertical_velocity() -> void:
 
 func _remove_health_from_speed_collision(vertical_velocity):
 	if vertical_velocity > 300:
-			PlayerData.health -= sqrt(vertical_velocity)
+			PlayerData.remove_health(pow(vertical_velocity * 0.01, 2))
+#			PlayerData.health -= pow(vertical_velocity * 0.01, 2)
 
 func update_debug_labels() -> void:
 	get_node("DEBUG/labels/health").text = "Health: " + str(PlayerData.health)
@@ -127,3 +135,4 @@ func update_debug_labels() -> void:
 	get_node("DEBUG/labels/on_ceiling").text = "On ceiling: " + str(is_on_ceiling())
 	get_node("DEBUG/labels/on_wall").text = "On wall: " + str(is_on_wall())
 	get_node("DEBUG/labels/fps").text = "FPS: " + str(Engine.get_frames_per_second())
+	get_node("DEBUG/labels/position").text = "POS: " + str(self.position)

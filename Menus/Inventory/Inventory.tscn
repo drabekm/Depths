@@ -53,9 +53,8 @@ margin_right = 40.0
 margin_bottom = 40.0
 
 [node name="MaxCapacity" type="Label" parent="CenterContainer/Rows/Center2"]
-margin_left = 5.0
 margin_top = 13.0
-margin_right = 91.0
+margin_right = 86.0
 margin_bottom = 27.0
 text = "Max capacity:"
 
@@ -64,9 +63,8 @@ margin_right = 40.0
 margin_bottom = 40.0
 
 [node name="CurCapacity" type="Label" parent="CenterContainer/Rows/Center3"]
-margin_left = -29.0
 margin_top = 13.0
-margin_right = 68.0
+margin_right = 97.0
 margin_bottom = 27.0
 text = "Currently used:"
 
