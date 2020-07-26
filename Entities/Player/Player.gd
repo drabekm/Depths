@@ -24,6 +24,8 @@ var bottomDrill
 var inventory
 var corner_shadow
 
+var current_drill_block
+
 func _ready():
 	forwardDrill = get_node("ForwardDrill")
 	bottomDrill = get_node("BottomDrill")
@@ -38,12 +40,29 @@ func _process(delta):
 	_update_shadow_opacity()
 
 func _physics_process(delta):
-	input()
-	_movement()
+	if current_drill_block == null:
+		input()
+		_movement()
+	else:
+		_drilling_move(delta)
+	
+	
 	_subtract_fuel(delta)
 
 func _update_shadow_opacity():
 	corner_shadow.energy = min(1, position.y / 720)
+
+func _drilling_move(delta):
+	self.position = self.position.linear_interpolate(Vector2(self.position.x, current_drill_block.global_position.y + 32), 2.0 * delta)
+	self.position = self.position.linear_interpolate(Vector2(current_drill_block.global_position.x + 32, self.position.y), 4.0 * delta)
+	print(self.global_position.distance_to(current_drill_block.global_position + Vector2(32,32)))
+#	print(self.global_position)
+#	print(current_drill_block_position + Vector2(32,32))
+#	print("====")
+	if self.position.distance_to(current_drill_block.global_position + Vector2(32,32)) < 10:
+		current_drill_block.destroy()
+		$CollisionShape2D.disabled = false
+		current_drill_block = null
 
 # Drill is represented by a raycast2D node
 # This method is used only when the player is pushing against either a wall or
@@ -59,9 +78,10 @@ func _start_drilling(drill: Node):
 				var collider = drill.get_collider()
 				if collider.has_mineral:
 					PlayerData.add_mineral(collider.mineral_type)
-				
+				current_drill_block = collider
+				$CollisionShape2D.disabled = true
 				PlayerData.score += collider.score
-				collider.destroy()
+#				collider.destroy()
 
 # Change drills direction when player changes side
 func reorient_drill(direction) -> void: # -1 = left, 1 = right
