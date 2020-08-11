@@ -1,42 +1,45 @@
 [gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://Menus/Inventory/OreInfo.tscn" type="PackedScene" id=1]
-[ext_resource path="res://icon.png" type="Texture" id=2]
+[ext_resource path="res://fontDump/textFont.tres" type="DynamicFont" id=2]
 [ext_resource path="res://Entities/Shops/OreShop/OreShopOreInfo.gd" type="Script" id=3]
 
 [node name="OreShopOreInfo" instance=ExtResource( 1 )]
+anchor_left = 0.0
+anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
 margin_right = 155.0
 margin_bottom = 47.0
-custom_constants/separation = 20
 script = ExtResource( 3 )
 
-[node name="Icon" parent="." index="0"]
-margin_right = 64.0
-margin_bottom = 64.0
-texture = ExtResource( 2 )
+[node name="InfoColumns" parent="." index="0"]
+margin_left = 227.0
+margin_top = 156.0
+margin_right = 439.0
+margin_bottom = 191.0
 
-[node name="Text" parent="." index="1"]
-margin_left = 84.0
-margin_top = 25.0
-margin_right = 234.0
-margin_bottom = 39.0
-rect_min_size = Vector2( 150, 0 )
-text = "PLACEHOLDER"
+[node name="Icon" parent="InfoColumns" index="0"]
+margin_bottom = 35.0
 
-[node name="ButtonSellOne" type="Button" parent="." index="2"]
-margin_left = 254.0
-margin_right = 354.0
-margin_bottom = 64.0
+[node name="Text" parent="InfoColumns" index="1"]
+margin_top = 3.0
+margin_bottom = 32.0
+
+[node name="ButtonSellOne" type="Button" parent="InfoColumns" index="2"]
+margin_left = 8.0
+margin_right = 108.0
+margin_bottom = 35.0
 rect_min_size = Vector2( 100, 0 )
+custom_fonts/font = ExtResource( 2 )
 text = "Sell 1"
 
-[node name="ButtonSellAll" type="Button" parent="." index="3"]
-margin_left = 374.0
-margin_right = 474.0
-margin_bottom = 64.0
+[node name="ButtonSellAll" type="Button" parent="InfoColumns" index="3"]
+margin_left = 112.0
+margin_right = 212.0
+margin_bottom = 35.0
 rect_min_size = Vector2( 100, 0 )
+custom_fonts/font = ExtResource( 2 )
 text = "Sell All"
-[connection signal="pressed" from="ButtonSellOne" to="." method="_on_ButtonSellOne_pressed"]
-[connection signal="pressed" from="ButtonSellAll" to="." method="_on_ButtonSellAll_pressed"]
+[connection signal="pressed" from="InfoColumns/ButtonSellOne" to="." method="_on_ButtonSellOne_pressed"]
+[connection signal="pressed" from="InfoColumns/ButtonSellAll" to="." method="_on_ButtonSellAll_pressed"]

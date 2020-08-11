@@ -1,12 +1,19 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://Entities/Shops/BaseShop/BaseShop.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Entities/Shops/UpgradeShop/Upgrades/FuelUpgrade.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Entities/Shops/UpgradeShop/UpgradeShop.gd" type="Script" id=3]
 [ext_resource path="res://Entities/Shops/UpgradeShop/Upgrades/HullUpgrade.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Entities/Shops/UpgradeShop/textures/idle/upgrade_shop_idle.png" type="Texture" id=5]
+[ext_resource path="res://fontDump/textFont.tres" type="DynamicFont" id=6]
+[ext_resource path="res://fontDump/headerFont.tres" type="DynamicFont" id=7]
 
 [node name="UpgradeShop" instance=ExtResource( 1 )]
 script = ExtResource( 3 )
+
+[node name="Building" parent="." index="0"]
+scale = Vector2( 3, 3 )
+texture = ExtResource( 5 )
 
 [node name="Background" parent="CanvasLayer/UI" index="0"]
 margin_top = -1.25992
@@ -15,11 +22,11 @@ color = Color( 0.188235, 0.227451, 0.313726, 1 )
 
 [node name="Title" type="Label" parent="CanvasLayer/UI" index="1"]
 anchor_right = 1.0
-margin_left = 1.18921
-margin_top = 22.5949
-margin_right = -766.811
-margin_bottom = 36.5949
-rect_scale = Vector2( 4, 4 )
+margin_left = 354.189
+margin_top = 32.5949
+margin_right = -341.811
+margin_bottom = 92.5949
+custom_fonts/font = ExtResource( 7 )
 text = "Upgrades"
 align = 1
 valign = 1
@@ -42,53 +49,59 @@ __meta__ = {
 }
 
 [node name="ButtonFuel" type="Button" parent="CanvasLayer/UI/CategorySwitches" index="0"]
-margin_right = 39.0
+margin_right = 43.0
 margin_bottom = 40.0
+custom_fonts/font = ExtResource( 6 )
 text = "Fuel"
 __meta__ = {
 "_edit_lock_": true
 }
 
 [node name="ButtonHull" type="Button" parent="CanvasLayer/UI/CategorySwitches" index="1"]
-margin_left = 59.0
-margin_right = 97.0
+margin_left = 63.0
+margin_right = 103.0
 margin_bottom = 40.0
+custom_fonts/font = ExtResource( 6 )
 text = "Hull"
 __meta__ = {
 "_edit_lock_": true
 }
 
 [node name="ButtonEngine" type="Button" parent="CanvasLayer/UI/CategorySwitches" index="2"]
-margin_left = 117.0
-margin_right = 171.0
+margin_left = 123.0
+margin_right = 184.0
 margin_bottom = 40.0
+custom_fonts/font = ExtResource( 6 )
 text = "Engine"
 __meta__ = {
 "_edit_lock_": true
 }
 
 [node name="ButtonCargo" type="Button" parent="CanvasLayer/UI/CategorySwitches" index="3"]
-margin_left = 191.0
-margin_right = 238.0
+margin_left = 204.0
+margin_right = 263.0
 margin_bottom = 40.0
+custom_fonts/font = ExtResource( 6 )
 text = "Cargo"
 __meta__ = {
 "_edit_lock_": true
 }
 
 [node name="ButtonDrill" type="Button" parent="CanvasLayer/UI/CategorySwitches" index="4"]
-margin_left = 258.0
-margin_right = 297.0
+margin_left = 283.0
+margin_right = 325.0
 margin_bottom = 40.0
+custom_fonts/font = ExtResource( 6 )
 text = "Drill"
 __meta__ = {
 "_edit_lock_": true
 }
 
 [node name="ButtonCooling" type="Button" parent="CanvasLayer/UI/CategorySwitches" index="5"]
-margin_left = 317.0
-margin_right = 376.0
+margin_left = 345.0
+margin_right = 412.0
 margin_bottom = 40.0
+custom_fonts/font = ExtResource( 6 )
 text = "Cooling"
 __meta__ = {
 "_edit_lock_": true

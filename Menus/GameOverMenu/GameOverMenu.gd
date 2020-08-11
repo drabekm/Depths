@@ -18,10 +18,28 @@ func _hide():
 
 
 func _on_btnSave_pressed():
-	get_tree().paused = false
-	get_tree().change_scene_to(load("res://Menus/TopScoreMenu/TopScore.tscn"))
+#	get_tree().paused = false
+	
+	_make_save_score_request()
+	
+#	get_tree().change_scene_to(load("res://Menus/TopScoreMenu/TopScore.tscn"))
+
+func _make_save_score_request():
+	$HTTPRequest.request("http://www.drabas.cz/depths/saveScore.php?playerName=" + PlayerData.player_name + "&playerScore=" + str(PlayerData.score))
 
 
 func _on_btnNoSave_pressed():
-	get_tree().paused = false
-	get_tree().change_scene_to(load("res://Menus/MainMenu/MainMenu.tscn"))
+	get_node("SkipSaving").show()
+#	get_tree().paused = false
+#	get_tree().change_scene_to(load("res://Menus/MainMenu/MainMenu.tscn"))
+
+
+func _on_HTTPRequest_request_completed(result, response_code, headers, body):
+	body = body.get_string_from_utf8()
+	if body == "succes":
+		get_tree().paused = false
+		Saver.delete_save_files()
+		get_tree().change_scene_to(load("res://Menus/TopScoreMenu/TopScore.tscn"))
+	else:
+		print("fail")
+		pass

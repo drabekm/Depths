@@ -1,13 +1,20 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://Menus/Inventory/Inventory.gd" type="Script" id=1]
+[ext_resource path="res://fontDump/textFont.tres" type="DynamicFont" id=2]
+[ext_resource path="res://fontDump/headerFont.tres" type="DynamicFont" id=3]
+[ext_resource path="res://Menus/UITheme.tres" type="Theme" id=4]
 
 [node name="Inventory" type="Control"]
 pause_mode = 2
 visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
+theme = ExtResource( 4 )
 script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="ColorRect" type="ColorRect" parent="."]
 anchor_right = 1.0
@@ -22,55 +29,91 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -49.0
-margin_top = -170.0
-margin_right = 49.0
-margin_bottom = 170.0
+margin_left = -512.0
+margin_top = -300.0
+margin_right = 512.0
+margin_bottom = 300.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Rows" type="VBoxContainer" parent="CenterContainer"]
-margin_top = 133.0
-margin_right = 98.0
-margin_bottom = 207.0
+[node name="MarginContainer" type="MarginContainer" parent="CenterContainer"]
+margin_left = 323.0
+margin_top = 183.0
+margin_right = 700.0
+margin_bottom = 417.0
+
+[node name="ColorRect2" type="ColorRect" parent="CenterContainer/MarginContainer"]
+margin_right = 377.0
+margin_bottom = 234.0
+rect_min_size = Vector2( 100, 40 )
+size_flags_horizontal = 3
+size_flags_vertical = 3
+color = Color( 0, 0, 0, 0.6 )
+
+[node name="MarginContainer" type="MarginContainer" parent="CenterContainer/MarginContainer"]
+margin_right = 377.0
+margin_bottom = 234.0
+
+[node name="Rows" type="VBoxContainer" parent="CenterContainer/MarginContainer/MarginContainer"]
+margin_right = 377.0
+margin_bottom = 234.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Center1" type="CenterContainer" parent="CenterContainer/Rows"]
-margin_right = 98.0
-margin_bottom = 14.0
+[node name="Center1" type="CenterContainer" parent="CenterContainer/MarginContainer/MarginContainer/Rows"]
+margin_right = 377.0
+margin_bottom = 68.0
 
-[node name="Title" type="Label" parent="CenterContainer/Rows/Center1"]
-margin_left = 18.0
-margin_right = 79.0
-margin_bottom = 14.0
+[node name="Title" type="Label" parent="CenterContainer/MarginContainer/MarginContainer/Rows/Center1"]
+margin_right = 377.0
+margin_bottom = 68.0
+custom_fonts/font = ExtResource( 3 )
 text = "Inventory"
 
-[node name="Center2" type="CenterContainer" parent="CenterContainer/Rows"]
-margin_right = 40.0
-margin_bottom = 40.0
+[node name="Center2" type="CenterContainer" parent="CenterContainer/MarginContainer/MarginContainer/Rows"]
+margin_top = 72.0
+margin_right = 377.0
+margin_bottom = 109.0
 
-[node name="MaxCapacity" type="Label" parent="CenterContainer/Rows/Center2"]
-margin_top = 13.0
-margin_right = 86.0
-margin_bottom = 27.0
+[node name="MaxCapacity" type="Label" parent="CenterContainer/MarginContainer/MarginContainer/Rows/Center2"]
+margin_left = 129.0
+margin_right = 247.0
+margin_bottom = 37.0
+custom_fonts/font = ExtResource( 2 )
 text = "Max capacity:"
 
-[node name="Center3" type="CenterContainer" parent="CenterContainer/Rows"]
-margin_right = 40.0
-margin_bottom = 40.0
+[node name="Center3" type="CenterContainer" parent="CenterContainer/MarginContainer/MarginContainer/Rows"]
+margin_top = 113.0
+margin_right = 377.0
+margin_bottom = 150.0
 
-[node name="CurCapacity" type="Label" parent="CenterContainer/Rows/Center3"]
-margin_top = 13.0
-margin_right = 97.0
-margin_bottom = 27.0
+[node name="CurCapacity" type="Label" parent="CenterContainer/MarginContainer/MarginContainer/Rows/Center3"]
+margin_left = 126.0
+margin_right = 250.0
+margin_bottom = 37.0
+custom_fonts/font = ExtResource( 2 )
 text = "Currently used:"
 
-[node name="ExitButton" type="Button" parent="CenterContainer/Rows"]
-margin_top = 54.0
-margin_right = 98.0
-margin_bottom = 74.0
+[node name="Center4" type="CenterContainer" parent="CenterContainer/MarginContainer/MarginContainer/Rows"]
+margin_top = 154.0
+margin_right = 377.0
+margin_bottom = 193.0
+
+[node name="Spacing" type="Label" parent="CenterContainer/MarginContainer/MarginContainer/Rows/Center4"]
+margin_left = 184.0
+margin_right = 192.0
+margin_bottom = 39.0
+text = "
+"
+
+[node name="ExitButton" type="Button" parent="CenterContainer/MarginContainer/MarginContainer/Rows"]
+margin_top = 197.0
+margin_right = 377.0
+margin_bottom = 234.0
+custom_fonts/font = ExtResource( 2 )
 text = "Back to game"
-[connection signal="pressed" from="CenterContainer/Rows/ExitButton" to="." method="_on_ExitButton_pressed"]
+[connection signal="resized" from="CenterContainer" to="." method="_on_CenterContainer_resized"]
+[connection signal="sort_children" from="CenterContainer" to="." method="_on_CenterContainer_sort_children"]
+[connection signal="pressed" from="CenterContainer/MarginContainer/MarginContainer/Rows/ExitButton" to="." method="_on_ExitButton_pressed"]

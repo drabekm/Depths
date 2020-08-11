@@ -3,17 +3,26 @@ extends Node
 const BLOCK_SIZE = 32
 const HALF_SIZE = BLOCK_SIZE / 2
 const CHUNK_SIZE = 5
-const CHUNKS_AREA_SIZE = 2 # How many chunks are spawned in each direction
+const CHUNKS_AREA_SIZE = 3 # How many chunks are spawned in each direction
 						   # around the central chunk
 
 var ore_noise = OpenSimplexNoise.new()
 var helper_ore_noise = OpenSimplexNoise.new()
 
 func _ready():
-	randomize()
-	ore_noise.seed = randi()
-	randomize()
-	helper_ore_noise.seed = randi()
+	
+	if MenuStatus.is_game_new:
+		randomize()
+		ore_noise.seed = randi()
+		randomize()
+		helper_ore_noise.seed = randi()
+	else:
+		ore_noise.seed = Saver.map_ore_seed
+		helper_ore_noise.seed = Saver.map_ore_seed_helper
+		
+		if Saver.map_deleted_blocks != {}:
+			deleted_blocks = Saver.map_deleted_blocks
+
 	ore_noise.octaves = 4
 	helper_ore_noise.octaves = 5
 	ore_noise.period = 0.1
@@ -41,7 +50,7 @@ func add_deleted_block(block_position: Vector2, chunk_name: String):
 		deleted_blocks[chunk_name] = [block_position]
 
 func get_deleted_blocks(chunk_name: String):
-	if chunk_name in deleted_blocks:
+	if deleted_blocks.has(chunk_name):
 		var test = deleted_blocks.get(chunk_name)
 		return deleted_blocks.get(chunk_name)
 	return []

@@ -1,83 +1,98 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://icon.png" type="Texture" id=1]
 [ext_resource path="res://Menus/MainMenu/MainMenu.gd" type="Script" id=2]
+[ext_resource path="res://fontDump/headerFont.tres" type="DynamicFont" id=3]
+[ext_resource path="res://fontDump/textFont.tres" type="DynamicFont" id=4]
+[ext_resource path="res://Menus/UITheme.tres" type="Theme" id=7]
 
 [node name="MainMenu" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
+margin_left = -2.00903
+margin_top = 0.707092
+margin_right = -2.00903
+margin_bottom = 0.707092
+theme = ExtResource( 7 )
 script = ExtResource( 2 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Title" type="Label" parent="."]
-margin_left = 285.18
-margin_top = 96.2034
-margin_right = 405.18
-margin_bottom = 110.203
-rect_scale = Vector2( 3, 3 )
-text = "Depths - alpha v. 4"
+margin_left = 218.126
+margin_top = 118.398
+margin_right = 997.126
+margin_bottom = 178.398
+custom_fonts/font = ExtResource( 3 )
+text = "Depths - alpha v. 5"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="TextureRect" type="TextureRect" parent="Title"]
-margin_left = -77.0601
-margin_top = -21.7345
-margin_right = -13.0601
-margin_bottom = 42.2655
+margin_left = -170.297
+margin_top = -43.1675
+margin_right = -15.2973
+margin_bottom = 105.832
 texture = ExtResource( 1 )
+expand = true
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 margin_left = 59.6406
-margin_top = 290.367
+margin_top = 293.364
 margin_right = 229.641
-margin_bottom = 430.367
+margin_bottom = 433.364
 custom_constants/separation = 10
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="NewGame" type="Button" parent="VBoxContainer"]
-margin_right = 170.0
-margin_bottom = 20.0
+margin_right = 171.0
+margin_bottom = 37.0
+custom_fonts/font = ExtResource( 4 )
 text = "mainMenu.newGame"
 __meta__ = {
 "_edit_lock_": true
 }
 
 [node name="Continue" type="Button" parent="VBoxContainer"]
-margin_top = 30.0
-margin_right = 170.0
-margin_bottom = 50.0
+margin_top = 47.0
+margin_right = 171.0
+margin_bottom = 84.0
+custom_fonts/font = ExtResource( 4 )
+disabled = true
 text = "MainMenu.Continue"
 __meta__ = {
 "_edit_lock_": true
 }
 
 [node name="Scores" type="Button" parent="VBoxContainer"]
-margin_top = 60.0
-margin_right = 170.0
-margin_bottom = 80.0
+margin_top = 94.0
+margin_right = 171.0
+margin_bottom = 131.0
+custom_fonts/font = ExtResource( 4 )
 text = "MainMenu.HighScore"
 __meta__ = {
 "_edit_lock_": true
 }
 
 [node name="Settings" type="Button" parent="VBoxContainer"]
-margin_top = 90.0
-margin_right = 170.0
-margin_bottom = 110.0
+margin_top = 141.0
+margin_right = 171.0
+margin_bottom = 178.0
+custom_fonts/font = ExtResource( 4 )
 text = "MainMenu.Settings"
 __meta__ = {
 "_edit_lock_": true
 }
 
 [node name="Exit" type="Button" parent="VBoxContainer"]
-margin_top = 120.0
-margin_right = 170.0
-margin_bottom = 140.0
+margin_top = 188.0
+margin_right = 171.0
+margin_bottom = 225.0
+custom_fonts/font = ExtResource( 4 )
 text = "MainMenu.Exit"
 __meta__ = {
 "_edit_lock_": true

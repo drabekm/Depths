@@ -55,3 +55,14 @@ position = Vector2( 80, -336 )
 
 [node name="Water4" parent="WaterHandler" instance=ExtResource( 2 )]
 position = Vector2( 112, -304 )
+
+[node name="Button" type="Button" parent="."]
+margin_left = 192.0
+margin_top = -280.0
+margin_right = 352.0
+margin_bottom = -192.0
+text = "Back to menu"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+[connection signal="pressed" from="Button" to="Block" method="_on_Button_pressed"]

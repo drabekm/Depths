@@ -4,7 +4,7 @@
 extends Node
 
 var is_alive: bool = true
-var is_imortal: bool = false # for debug
+export var is_imortal: bool = false # for debug
 
 var health: int = 100
 var max_health: int = 100
@@ -22,6 +22,10 @@ var thurster_power = 20
 
 var score: int = 0
 var money: int = 1000
+
+var position: Vector2 = Vector2(0,0)
+
+var player_name: String = "Testing Name"
 
 signal player_dead
 
@@ -42,6 +46,8 @@ func reset():
 	 max_speed = 650 # 350
 	 acceleration = 25 # 15
 	 thurster_power = 20
+	
+	 position = Vector2(0,0)
 	
 	 score = 0
 	 money = 1000

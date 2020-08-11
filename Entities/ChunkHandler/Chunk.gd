@@ -20,7 +20,7 @@ func spawn_blocks():
 			var block_instance = block.instance()
 			var block_position = Vector2((GlobalMapData.BLOCK_SIZE * 2) * x, (GlobalMapData.BLOCK_SIZE * 2) * y)
 			
-			if block_position in deleted_blocks:
+			if deleted_blocks.has(str(block_position)) or deleted_blocks.has(block_position):
 				continue
 			
 			block_instance.init(block_position, self.name)

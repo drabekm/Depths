@@ -1,0 +1,129 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://fontDump/textFont.tres" type="DynamicFont" id=1]
+[ext_resource path="res://Menus/GameOverMenu/GameOverSkipSaveConfirm.gd" type="Script" id=2]
+[ext_resource path="res://Menus/UITheme.tres" type="Theme" id=3]
+
+[sub_resource type="InputEventAction" id=1]
+action = "escape"
+
+[sub_resource type="ShortCut" id=2]
+shortcut = SubResource( 1 )
+
+[sub_resource type="InputEventAction" id=3]
+action = "ui_select"
+
+[sub_resource type="ShortCut" id=4]
+shortcut = SubResource( 3 )
+
+[node name="SkipSaving" type="Control"]
+pause_mode = 2
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -0.66748
+margin_right = -0.66748
+theme = ExtResource( 3 )
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="BG" type="ColorRect" parent="."]
+margin_left = -106.0
+margin_top = -66.0
+margin_right = 1203.0
+margin_bottom = 682.0
+color = Color( 0, 0, 0, 0.341176 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MarginContainer2" type="MarginContainer" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -165.5
+margin_top = -94.0
+margin_right = 165.5
+margin_bottom = 94.0
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="ColorRect" type="ColorRect" parent="MarginContainer2"]
+margin_right = 331.0
+margin_bottom = 188.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+color = Color( 0, 0, 0, 0.74902 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Center" type="CenterContainer" parent="MarginContainer2"]
+margin_right = 331.0
+margin_bottom = 188.0
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer2/Center"]
+margin_left = 65.0
+margin_top = 49.0
+margin_right = 265.0
+margin_bottom = 138.0
+custom_constants/separation = 15
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="MarginContainer2/Center/VBoxContainer"]
+margin_right = 200.0
+margin_bottom = 37.0
+custom_fonts/font = ExtResource( 1 )
+text = "Pokračovat bez uložení?"
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer2/Center/VBoxContainer"]
+margin_top = 52.0
+margin_right = 200.0
+margin_bottom = 89.0
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="btnNo" type="Button" parent="MarginContainer2/Center/VBoxContainer/HBoxContainer"]
+margin_right = 70.0
+margin_bottom = 37.0
+rect_min_size = Vector2( 70, 0 )
+size_flags_horizontal = 2
+custom_fonts/font = ExtResource( 1 )
+shortcut = SubResource( 2 )
+text = "Ne"
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="btnYes" type="Button" parent="MarginContainer2/Center/VBoxContainer/HBoxContainer"]
+margin_left = 130.0
+margin_right = 200.0
+margin_bottom = 37.0
+rect_min_size = Vector2( 70, 0 )
+size_flags_horizontal = 0
+size_flags_vertical = 0
+custom_fonts/font = ExtResource( 1 )
+shortcut = SubResource( 4 )
+text = "Ano"
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+[connection signal="pressed" from="MarginContainer2/Center/VBoxContainer/HBoxContainer/btnNo" to="." method="_on_btnNo_pressed"]
+[connection signal="pressed" from="MarginContainer2/Center/VBoxContainer/HBoxContainer/btnYes" to="." method="_on_btnYes_pressed"]

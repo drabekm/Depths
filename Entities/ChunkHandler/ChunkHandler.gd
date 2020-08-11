@@ -1,4 +1,4 @@
-extends Node2D
+extends Node
 
 # Spawns in chunks depending on triggers trigged by player
 # Those triggers are around the centraů chunk and form a sort of cage around it.
@@ -12,7 +12,24 @@ var central_chunk: Vector2 = Vector2(0,0)
 var deleted_blocks = {}
 
 func _ready():
-	GlobalMapData.reset()
+	if PlayerData.position != Vector2(0,0):
+		
+		get_node("Triggers").global_position = PlayerData.position
+		
+		var central_chunk_x_pos: int = 0
+		if (PlayerData.position.x > 0):
+			central_chunk_x_pos = floor(PlayerData.position.x / (GlobalMapData.CHUNK_SIZE * GlobalMapData.BLOCK_SIZE)) / 2
+		else:
+			central_chunk_x_pos = ceil(PlayerData.position.x / (GlobalMapData.CHUNK_SIZE * GlobalMapData.BLOCK_SIZE)) / 2
+		
+		var central_chunk_y_pos
+		if PlayerData.position.y > 0:
+			central_chunk_y_pos = floor(PlayerData.position.y / (GlobalMapData.CHUNK_SIZE * GlobalMapData.BLOCK_SIZE)) / 2
+		else:
+			central_chunk_y_pos = ceil(PlayerData.position.y / (GlobalMapData.CHUNK_SIZE * GlobalMapData.BLOCK_SIZE)) / 2
+		
+		central_chunk = Vector2(central_chunk_x_pos, central_chunk_y_pos)
+	# GlobalMapData.reset() # Don't use 
 	chunk_containers_node = get_node("ChunkContainers")
 	
 	check_chunks()

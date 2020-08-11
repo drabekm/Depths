@@ -18,6 +18,8 @@ const GRAVITY_ACC = 7
 const SPEED_SLOWDOWN = 0.25
 const SPEED_SLOWDOWN_AIR = 0.005
 
+var sprite : AnimatedSprite
+
 var forwardDrill
 var bottomDrill
 
@@ -27,17 +29,22 @@ var corner_shadow
 var current_drill_block
 
 func _ready():
+	sprite = get_node("Sprite")
 	forwardDrill = get_node("ForwardDrill")
 	bottomDrill = get_node("BottomDrill")
 	inventory = get_node("../Menus/Inventory")
 	corner_shadow = get_node("CornerShadow")
-	PlayerData.reset()
+	
+	if PlayerData.position != Vector2(0,0):
+		self.global_position = PlayerData.position
+	
 	set_process(true)
 	set_physics_process(true)
 
 func _process(delta):
 	update_debug_labels()
 	_update_shadow_opacity()
+	_update_animation()
 
 func _physics_process(delta):
 	if current_drill_block == null:
@@ -80,8 +87,14 @@ func _start_drilling(drill: Node):
 				PlayerData.score += collider.score
 
 # Change drills direction when player changes side
-func reorient_drill(direction) -> void: # -1 = left, 1 = right
+func _reorient_drill(direction) -> void: # -1 = left, 1 = right
 	forwardDrill.scale.x = direction
+
+func _reorient_sprite(direction) -> void:
+	sprite.scale.x = direction
+
+func _reorient_collision(direction) -> void:
+	get_node("CollisionShape2D").scale.x = direction
 
 func input() -> void:
 	is_moving = false
@@ -96,14 +109,18 @@ func input() -> void:
 			_start_drilling(bottomDrill)
 	
 	if Input.is_action_pressed("ui_left"):
-		reorient_drill(-1)
+		_reorient_drill(-1)
+		_reorient_sprite(-1)
+		_reorient_collision(-1)
 		is_moving = true
 		velocity.x = max(velocity.x - acceleration, -max_speed)
 		if is_on_wall() and is_on_floor():
 			_start_drilling(forwardDrill)
 		
 	elif Input.is_action_pressed("ui_right"):
-		reorient_drill(1)
+		_reorient_drill(1)
+		_reorient_sprite(1)
+		_reorient_collision(1)
 		is_moving = true
 		velocity.x = min(velocity.x + acceleration, max_speed)
 		if is_on_wall() and is_on_floor():
@@ -113,6 +130,13 @@ func input() -> void:
 			velocity.x = lerp(velocity.x, 0, SPEED_SLOWDOWN)
 		else:
 			velocity.x = lerp(velocity.x, 0, SPEED_SLOWDOWN_AIR)
+
+func _update_animation():
+	if is_moving and sprite.animation != "moving":
+		sprite.play("moving")
+	elif not is_moving and sprite.animation == "moving":
+		sprite.play("idle")
+	
 
 func _subtract_fuel(delta: float)-> void:
 	if is_moving:
@@ -124,7 +148,7 @@ func _movement() -> void:
 	velocity.y = velocity.y + GRAVITY_ACC
 	var previous_vertical_velocity = velocity.y
 	velocity = move_and_slide(velocity, Vector2(0,-1))
-	
+	PlayerData.position = self.global_position
 	
 	if self.is_on_floor():
 		_remove_health_from_speed_collision(previous_vertical_velocity)

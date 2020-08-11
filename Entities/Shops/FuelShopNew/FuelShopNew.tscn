@@ -1,11 +1,18 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Entities/Shops/BaseShop/BaseShop.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Entities/Shops/FuelShopNew/FuelShopNew.gd" type="Script" id=2]
+[ext_resource path="res://Entities/Shops/FuelShopNew/textures/idle/fuel_pump.png" type="Texture" id=3]
+[ext_resource path="res://fontDump/textFont.tres" type="DynamicFont" id=4]
+[ext_resource path="res://fontDump/headerFont.tres" type="DynamicFont" id=5]
 
 [node name="FuelShopNew" instance=ExtResource( 1 )]
 process_priority = 1
 script = ExtResource( 2 )
+
+[node name="Building" parent="." index="0"]
+scale = Vector2( 3, 3 )
+texture = ExtResource( 3 )
 
 [node name="Background" parent="CanvasLayer/UI" index="0"]
 color = Color( 0.223529, 0.141176, 0.141176, 1 )
@@ -26,6 +33,7 @@ margin_left = -20.0
 margin_top = -7.0
 margin_right = 20.0
 margin_bottom = 7.0
+custom_fonts/font = ExtResource( 4 )
 text = "0/10"
 
 [node name="ButtonFillTank" type="Button" parent="CanvasLayer/UI" index="2"]
@@ -33,6 +41,7 @@ margin_left = 98.1784
 margin_top = 388.0
 margin_right = 406.178
 margin_bottom = 465.0
+custom_fonts/font = ExtResource( 4 )
 text = "Fill tank"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -43,14 +52,22 @@ anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_top = -84.0
+custom_fonts/font = ExtResource( 4 )
 text = "Exit"
 
 [node name="Title" type="Label" parent="CanvasLayer/UI" index="4"]
-margin_left = 367.081
-margin_top = 64.0723
-margin_right = 452.081
-margin_bottom = 78.0723
-rect_scale = Vector2( 3, 3 )
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -234.686
+margin_top = -246.375
+margin_right = 257.314
+margin_bottom = -186.375
+custom_fonts/font = ExtResource( 5 )
 text = "Pump station"
+__meta__ = {
+"_edit_use_anchors_": false
+}
 [connection signal="pressed" from="CanvasLayer/UI/ButtonFillTank" to="." method="_on_ButtonFillTank_pressed"]
 [connection signal="pressed" from="CanvasLayer/UI/ButtonExit" to="." method="_on_ButtonExit_pressed"]

@@ -1,22 +1,37 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://Menus/Inventory/OreInfo.gd" type="Script" id=1]
+[ext_resource path="res://fontDump/textFont.tres" type="DynamicFont" id=2]
+[ext_resource path="res://Menus/UITheme.tres" type="Theme" id=3]
 
-[node name="oreInfo" type="HBoxContainer" groups=[
+[node name="oreInfo" type="CenterContainer" groups=[
 "OreInfo",
 ]]
-anchor_right = 1.0
-anchor_bottom = 1.0
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -512.0
+margin_top = -300.0
+margin_right = 512.0
+margin_bottom = 300.0
+theme = ExtResource( 3 )
 script = ExtResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Icon" type="TextureRect" parent="."]
-margin_bottom = 600.0
+[node name="InfoColumns" type="HBoxContainer" parent="."]
+margin_left = 506.0
+margin_top = 281.0
+margin_right = 518.0
+margin_bottom = 318.0
 
-[node name="Text" type="Label" parent="."]
+[node name="Icon" type="TextureRect" parent="InfoColumns"]
+margin_bottom = 37.0
+
+[node name="Text" type="Label" parent="InfoColumns"]
 margin_left = 4.0
-margin_top = 293.0
-margin_right = 4.0
-margin_bottom = 307.0
+margin_right = 12.0
+margin_bottom = 37.0
+custom_fonts/font = ExtResource( 2 )

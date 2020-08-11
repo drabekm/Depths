@@ -12,7 +12,7 @@ $password='Corvo153';
 $database = 'Depths';
 
 $playerNameParameterName = 'playerName'; //GET parameter names
-$playerScoreValueParameterName = 'playerValue';
+$playerScoreValueParameterName = 'playerScore';
 
 $connect= new mysqli($servername,$username,$password, $database);
 
@@ -20,10 +20,14 @@ $name = $_GET[$playerNameParameterName];
 $score = $_GET[$playerScoreValueParameterName];
 
 
-if (isset($_GET['playerName']) && isset($_GET["scoreValue"]))
+if (isset($_GET[$playerNameParameterName]) && isset($_GET[$playerScoreValueParameterName]))
 {
 	$connect->query("INSERT INTO Scores (ScoreID, ScorePlayerName, ScoreValue) VALUES (null, '" . $name . "', " . $score . ")");
-	echo("Score succesfully added!");
+	echo("succes");
+}
+else
+{
+	echo("fail");
 }
 $connect->close();
 

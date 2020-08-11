@@ -34,3 +34,5 @@ Game for itnetwork.cz summer coding contest 2020
 
 ### Added more shops and very wip upgrades 17.7. 2020
 [![Image from Gyazo](https://i.gyazo.com/51677b347992c424ce7b9180a1f318f2.gif)](https://gyazo.com/51677b347992c424ce7b9180a1f318f2)
+
+### Added gameover menu, smooth drilling movement, online score, improved world generating

@@ -1,0 +1,34 @@
+[remap]
+
+importer="texture"
+type="StreamTexture"
+path="res://.import/palyer_new_movement4.png-c4f4fc650b2dcd6c982f04fd34c28e56.stex"
+metadata={
+"vram_texture": false
+}
+
+[deps]
+
+source_file="res://Entities/Player/textures/movement_new/palyer_new_movement4.png"
+dest_files=[ "res://.import/palyer_new_movement4.png-c4f4fc650b2dcd6c982f04fd34c28e56.stex" ]
+
+[params]
+
+compress/mode=0
+compress/lossy_quality=0.7
+compress/hdr_mode=0
+compress/bptc_ldr=0
+compress/normal_map=0
+flags/repeat=0
+flags/filter=false
+flags/mipmaps=false
+flags/anisotropic=false
+flags/srgb=2
+process/fix_alpha_border=true
+process/premult_alpha=false
+process/HDR_as_SRGB=false
+process/invert_color=false
+stream=false
+size_limit=0
+detect_3d=true
+svg/scale=1.0

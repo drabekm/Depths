@@ -43,7 +43,7 @@ func _process(delta):
 			button_marker.visible = false
 
 func _input(event):
-	if event.is_action_pressed("function") and is_player_near and player_node.is_on_floor():
+	if event.is_action_pressed("function") and is_player_near and player_node.is_on_floor() and not (MenuStatus.inventory_opened or MenuStatus.pause_menu_opened or MenuStatus.shop_opened):
 		if !shop_oppened:
 			_open_shop()
 		elif shop_oppened:
@@ -53,11 +53,13 @@ func _input(event):
 		_close_shop()
 
 func _open_shop():
+	MenuStatus.shop_opened = true
 	get_tree().paused = true
 	shop_oppened = true
 	get_node("CanvasLayer/UI").visible = true
 
 func _close_shop():
+	MenuStatus.shop_opened = false
 	get_tree().paused = false
 	shop_oppened = false
 	get_node("CanvasLayer/UI").visible = false

@@ -1,10 +1,17 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Entities/Shops/BaseShop/BaseShop.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Entities/Shops/OreShop/OreShop.gd" type="Script" id=2]
+[ext_resource path="res://Entities/Shops/OreShop/textures/idle/refinery_idle.png" type="Texture" id=3]
+[ext_resource path="res://fontDump/textFont.tres" type="DynamicFont" id=4]
+[ext_resource path="res://fontDump/headerFont.tres" type="DynamicFont" id=5]
 
 [node name="OreShop" instance=ExtResource( 1 )]
 script = ExtResource( 2 )
+
+[node name="Building" parent="." index="0"]
+scale = Vector2( 3, 3 )
+texture = ExtResource( 3 )
 
 [node name="Background" parent="CanvasLayer/UI" index="0"]
 color = Color( 0.180392, 0.203922, 0.156863, 1 )
@@ -14,20 +21,22 @@ margin_left = 34.1367
 margin_top = 156.499
 margin_right = 95.1367
 margin_bottom = 196.499
-rect_scale = Vector2( 4, 4 )
+rect_scale = Vector2( 2, 2 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Money" type="Label" parent="CanvasLayer/UI/Stats" index="0"]
-margin_right = 61.0
-margin_bottom = 14.0
+margin_right = 74.0
+margin_bottom = 29.0
+custom_fonts/font = ExtResource( 4 )
 text = "Money:"
 
 [node name="Inventory" type="Label" parent="CanvasLayer/UI/Stats" index="1"]
-margin_top = 18.0
-margin_right = 61.0
-margin_bottom = 32.0
+margin_top = 33.0
+margin_right = 74.0
+margin_bottom = 62.0
+custom_fonts/font = ExtResource( 4 )
 text = "Inventory"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -43,11 +52,11 @@ __meta__ = {
 }
 
 [node name="Title" type="Label" parent="CanvasLayer/UI" index="3"]
-margin_left = 395.221
-margin_top = 36.9994
-margin_right = 447.221
-margin_bottom = 50.9994
-rect_scale = Vector2( 3, 3 )
+margin_left = 369.058
+margin_top = 34.621
+margin_right = 697.058
+margin_bottom = 94.621
+custom_fonts/font = ExtResource( 5 )
 text = "Refinery"
 
 [node name="ButtonSellAll" type="Button" parent="CanvasLayer/UI" index="4"]
@@ -55,6 +64,7 @@ margin_left = 39.0
 margin_top = 310.0
 margin_right = 303.0
 margin_bottom = 398.0
+custom_fonts/font = ExtResource( 4 )
 text = "Sell All"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -65,6 +75,7 @@ anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_top = -83.0
+custom_fonts/font = ExtResource( 4 )
 text = "Exit"
 __meta__ = {
 "_edit_use_anchors_": false

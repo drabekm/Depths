@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://Entities/Shops/BaseShop/BaseShop.gd" type="Script" id=1]
 [ext_resource path="res://icon.png" type="Texture" id=2]
+[ext_resource path="res://Menus/UITheme.tres" type="Theme" id=3]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 168, 168 )
@@ -31,6 +32,7 @@ texture = ExtResource( 2 )
 visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
+theme = ExtResource( 3 )
 __meta__ = {
 "_edit_use_anchors_": false
 }

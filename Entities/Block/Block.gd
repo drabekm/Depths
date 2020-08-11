@@ -44,3 +44,7 @@ func set_mineral(mineral_type: int):
 	self.has_mineral = true
 	self.score = mineral_scores[mineral_type]
 	get_node("Mineral").texture = mineral_textures[mineral_type]
+
+
+func _on_Button_pressed():
+	get_tree().change_scene_to(load("res://Menus/MainMenu/MainMenu.tscn"))
