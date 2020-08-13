@@ -8,8 +8,12 @@ var pageCountRequest: HTTPRequest
 
 var page: int = 0
 var max_page: int = 1
+
+var back_to_menu: bool = false
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	get_node("Transitioner").open()
 	scorePageRequest = get_node("ScorePageRequest")
 	pageCountRequest = get_node("PageCountRequest")	
 	
@@ -68,7 +72,8 @@ func _on_btnLast_pressed():
 		_update_title()
 
 func _on_btnExit_pressed():
-	get_tree().change_scene_to(load("res://Menus/MainMenu/MainMenu.tscn"))
+	back_to_menu = true
+	get_node("Transitioner").close()
 
 
 func _on_ScorePageRequest_request_completed(http_result, response_code, headers, body):
@@ -94,3 +99,8 @@ func _on_PageCountRequest_request_completed(http_result, response_code, headers,
 	body = body.get_string_from_utf8()
 	if body != "error":
 		max_page = int(body)
+
+
+func _on_Transitioner_transition_finished():
+	if back_to_menu:
+		get_tree().change_scene_to(load("res://Menus/MainMenu/MainMenu.tscn"))

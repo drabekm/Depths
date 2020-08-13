@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Menus/TopScoreMenu/TopScore.gd" type="Script" id=1]
 [ext_resource path="res://fontDump/textFont.tres" type="DynamicFont" id=2]
 [ext_resource path="res://fontDump/headerFont.tres" type="DynamicFont" id=3]
 [ext_resource path="res://Menus/UITheme.tres" type="Theme" id=4]
+[ext_resource path="res://Helpers/Transitioner.tscn" type="PackedScene" id=5]
 
 [node name="TopScore" type="Control"]
 anchor_right = 1.0
@@ -101,6 +102,8 @@ text = "Exit"
 [node name="ScorePageRequest" type="HTTPRequest" parent="."]
 
 [node name="PageCountRequest" type="HTTPRequest" parent="."]
+
+[node name="Transitioner" parent="." instance=ExtResource( 5 )]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/Buttons/btnFirst" to="." method="_on_btnFirst_pressed"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/Buttons/btnPrev" to="." method="_on_btnPrev_pressed"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/Buttons/btnNext" to="." method="_on_btnNext_pressed"]
@@ -108,3 +111,4 @@ text = "Exit"
 [connection signal="pressed" from="MarginContainer/VBoxContainer/btnExit" to="." method="_on_btnExit_pressed"]
 [connection signal="request_completed" from="ScorePageRequest" to="." method="_on_ScorePageRequest_request_completed"]
 [connection signal="request_completed" from="PageCountRequest" to="." method="_on_PageCountRequest_request_completed"]
+[connection signal="transition_finished" from="Transitioner" to="." method="_on_Transitioner_transition_finished"]
