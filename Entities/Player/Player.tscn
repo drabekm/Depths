@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=2]
+[gd_scene load_steps=18 format=2]
 
 [ext_resource path="res://Entities/Player/textures/movement_new/palyer_new_movement4.png" type="Texture" id=1]
 [ext_resource path="res://Entities/Player/Player.gd" type="Script" id=2]
@@ -11,6 +11,7 @@
 [ext_resource path="res://Entities/Player/textures/movement_new/palyer_new_movement3.png" type="Texture" id=9]
 [ext_resource path="res://Entities/Player/textures/movement_new/palyer_new_movement2.png" type="Texture" id=10]
 [ext_resource path="res://Entities/Player/textures/idle/palyer_new_idle2.png" type="Texture" id=11]
+[ext_resource path="res://Entities/Player/HUD/HUD.tscn" type="PackedScene" id=12]
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
@@ -19,15 +20,15 @@ animations = [ {
 "name": "idle",
 "speed": 5.0
 }, {
-"frames": [  ],
-"loop": true,
-"name": "drilling",
-"speed": 5.0
-}, {
 "frames": [ ExtResource( 6 ), ExtResource( 10 ), ExtResource( 9 ), ExtResource( 1 ) ],
 "loop": true,
 "name": "moving",
 "speed": 15.0
+}, {
+"frames": [  ],
+"loop": true,
+"name": "drilling",
+"speed": 5.0
 } ]
 
 [sub_resource type="Curve" id=2]
@@ -233,3 +234,5 @@ range_item_cull_mask = 2
 __meta__ = {
 "_edit_lock_": true
 }
+
+[node name="CanvasLayer" parent="." instance=ExtResource( 12 )]

@@ -8,7 +8,10 @@ enum CHANGE_STATE{
 
 var current_change = CHANGE_STATE.none
 
+var main_menu_scene 
+
 func _ready():
+	main_menu_scene = load("res://Menus/MainMenu/MainMenu.tscn")
 	get_node("Transitioner").open()
 	_load_settings()
 
@@ -43,8 +46,8 @@ func _on_ExitWithSave_pressed():
 
 func _on_Transitioner_transition_finished():
 	if current_change == CHANGE_STATE.without_save:
-		get_tree().change_scene_to(load("res://Menus/MainMenu/MainMenu.tscn"))
+		get_tree().change_scene_to(main_menu_scene)
 	
 	if current_change == CHANGE_STATE.with_save:
 		_save_settings()
-		get_tree().change_scene_to(load("res://Menus/MainMenu/MainMenu.tscn"))
+		get_tree().change_scene_to(main_menu_scene)

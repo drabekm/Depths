@@ -4,19 +4,19 @@ Game for itnetwork.cz summer coding contest 2020
 
 ## TODO:
 - ### Player movement - 70 %
-- ### Player drilling - 20 %
+- ### Player drilling - 50 %
 - ### Blocks with ore - 15 %
-- ### Map generator - 40 %
+- ### Map generator - 70 %
 - ### Procedural water and lava - 20%
-- ### Inventory screen - 30 %
+- ### Inventory screen - 70 %
 - ### Earthquake mode when underground for too long - 0 %
-- ### Stores - 40 %
+- ### Stores - 60 %
 - ### Music - 0 %
 - ### Translation - 50 %
-- ### Menus - 15 %
-- ### Online score saving - 50 %
+- ### Menus - 75 %
+- ### Online score saving - 90 %
 - ### Users custom music - 0 %
-- ### Light and shadows - 20 %
+- ### Light and shadows - 40 %
 - ### Custom particle effects - 0 %
 
 ## FINISHED MILESTONES:
@@ -36,3 +36,6 @@ Game for itnetwork.cz summer coding contest 2020
 [![Image from Gyazo](https://i.gyazo.com/51677b347992c424ce7b9180a1f318f2.gif)](https://gyazo.com/51677b347992c424ce7b9180a1f318f2)
 
 ### Added gameover menu, smooth drilling movement, online score, improved world generating
+
+### Added more menus, better online score, textures and stuff 16.8. 2020
+[![Image from Gyazo](https://i.gyazo.com/1c93ecc118e7e881680ab74e5e46fa44.gif)](https://gyazo.com/1c93ecc118e7e881680ab74e5e46fa44)

@@ -1,0 +1,16 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://Entities/Lava/LavaHandler.gd" type="Script" id=1]
+
+[node name="LavaHandler" type="Node2D"]
+script = ExtResource( 1 )
+
+[node name="LavaMovementTimer" type="Timer" parent="."]
+wait_time = 0.1
+autostart = true
+
+[node name="HandlerStart" type="Timer" parent="."]
+wait_time = 0.1
+autostart = true
+[connection signal="timeout" from="LavaMovementTimer" to="." method="_on_LavaMovement_timeout"]
+[connection signal="timeout" from="HandlerStart" to="." method="_on_HandlerStart_timeout"]

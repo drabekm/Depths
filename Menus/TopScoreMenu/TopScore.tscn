@@ -31,7 +31,7 @@ margin_left = 20.0
 margin_top = 20.0
 margin_right = 1004.0
 margin_bottom = 580.0
-custom_constants/separation = 30
+custom_constants/separation = 10
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -44,21 +44,21 @@ text = "Top score - page: 1"
 align = 1
 
 [node name="ScoreContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer"]
-margin_top = 98.0
+margin_top = 78.0
 margin_right = 984.0
-margin_bottom = 98.0
+margin_bottom = 445.0
+size_flags_vertical = 3
 
 [node name="Buttons" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
-margin_top = 443.0
+margin_top = 455.0
 margin_right = 984.0
-margin_bottom = 480.0
-size_flags_vertical = 10
+margin_bottom = 500.0
 custom_constants/separation = 50
 
 [node name="btnFirst" type="Button" parent="MarginContainer/VBoxContainer/Buttons"]
 margin_right = 208.0
-margin_bottom = 37.0
-rect_min_size = Vector2( 0, 30 )
+margin_bottom = 45.0
+rect_min_size = Vector2( 0, 45 )
 size_flags_horizontal = 3
 custom_fonts/font = ExtResource( 2 )
 text = "First"
@@ -66,8 +66,8 @@ text = "First"
 [node name="btnPrev" type="Button" parent="MarginContainer/VBoxContainer/Buttons"]
 margin_left = 258.0
 margin_right = 466.0
-margin_bottom = 37.0
-rect_min_size = Vector2( 0, 30 )
+margin_bottom = 45.0
+rect_min_size = Vector2( 0, 45 )
 size_flags_horizontal = 3
 custom_fonts/font = ExtResource( 2 )
 text = "Previous"
@@ -75,8 +75,8 @@ text = "Previous"
 [node name="btnNext" type="Button" parent="MarginContainer/VBoxContainer/Buttons"]
 margin_left = 516.0
 margin_right = 724.0
-margin_bottom = 37.0
-rect_min_size = Vector2( 0, 30 )
+margin_bottom = 45.0
+rect_min_size = Vector2( 0, 45 )
 size_flags_horizontal = 3
 custom_fonts/font = ExtResource( 2 )
 text = "Next"
@@ -84,8 +84,8 @@ text = "Next"
 [node name="btnLast" type="Button" parent="MarginContainer/VBoxContainer/Buttons"]
 margin_left = 774.0
 margin_right = 984.0
-margin_bottom = 37.0
-rect_min_size = Vector2( 0, 30 )
+margin_bottom = 45.0
+rect_min_size = Vector2( 0, 45 )
 size_flags_horizontal = 3
 custom_fonts/font = ExtResource( 2 )
 text = "last"

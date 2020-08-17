@@ -11,6 +11,9 @@ var max_page: int = 1
 
 var back_to_menu: bool = false
 
+
+
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	get_node("Transitioner").open()

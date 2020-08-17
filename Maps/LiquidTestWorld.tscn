@@ -1,0 +1,55 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Entities/Block/Block.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Entities/Liquids/LiquidHandler.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Entities/Liquids/Liquid.tscn" type="PackedScene" id=3]
+
+[node name="LiquidTestWorld" type="Node2D"]
+position = Vector2( 128, 96 )
+
+[node name="LiquidHandler" parent="." instance=ExtResource( 2 )]
+
+[node name="Block" parent="." instance=ExtResource( 1 )]
+modulate = Color( 1, 1, 1, 0.384314 )
+position = Vector2( 0, 160 )
+
+[node name="Block2" parent="." instance=ExtResource( 1 )]
+modulate = Color( 1, 1, 1, 0.513726 )
+position = Vector2( 128, 224 )
+
+[node name="Block3" parent="." instance=ExtResource( 1 )]
+modulate = Color( 1, 1, 1, 0.45098 )
+position = Vector2( 0, 96 )
+
+[node name="Block8" parent="." instance=ExtResource( 1 )]
+modulate = Color( 1, 1, 1, 0.45098 )
+position = Vector2( -64, 96 )
+
+[node name="Block9" parent="." instance=ExtResource( 1 )]
+modulate = Color( 1, 1, 1, 0.45098 )
+position = Vector2( -64, 32 )
+
+[node name="Block10" parent="." instance=ExtResource( 1 )]
+modulate = Color( 1, 1, 1, 0.45098 )
+position = Vector2( 192, 32 )
+
+[node name="Block5" parent="." instance=ExtResource( 1 )]
+modulate = Color( 1, 1, 1, 0.45098 )
+position = Vector2( 0, 224 )
+
+[node name="Block6" parent="." instance=ExtResource( 1 )]
+modulate = Color( 1, 1, 1, 0.45098 )
+position = Vector2( 64, 224 )
+
+[node name="Block7" parent="." instance=ExtResource( 1 )]
+modulate = Color( 1, 1, 1, 0.45098 )
+position = Vector2( 128, 96 )
+
+[node name="Block4" parent="." instance=ExtResource( 1 )]
+modulate = Color( 1, 1, 1, 0.45098 )
+position = Vector2( 128, 160 )
+
+[node name="Liquid" parent="." groups=[
+"Water",
+] instance=ExtResource( 3 )]
+position = Vector2( 160, 64 )

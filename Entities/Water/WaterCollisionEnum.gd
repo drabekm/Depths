@@ -1,3 +1,3 @@
 extends Node
 
-enum Collision {WATER, BLOCK, NONE}
+enum Collision {WATER, LAVA, UP_LAVA, BLOCK, NONE}

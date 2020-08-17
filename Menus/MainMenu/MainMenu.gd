@@ -9,6 +9,11 @@ enum CHANGE_STATE{
   quit
 }
 
+
+var top_score_scene = preload("res://Menus/TopScoreMenu/TopScore.tscn")
+var settings_scene = preload("res://Menus/Settings/SettingsMenu.tscn")
+var game_scene = preload("res://Maps/ChunkTestWorld.tscn")
+
 var current_change = CHANGE_STATE.none
 
 func _ready():
@@ -66,12 +71,12 @@ func _on_Exit_pressed():
 
 func _on_Transitioner_transition_finished():
 	if current_change == CHANGE_STATE.new_game:
-		get_tree().change_scene_to(load("res://Maps/ChunkTestWorld.tscn"))
+		get_tree().change_scene_to(game_scene)
 	elif current_change == CHANGE_STATE.continue_game:
-		get_tree().change_scene_to(load("res://Maps/ChunkTestWorld.tscn"))
+		get_tree().change_scene_to(game_scene)
 	elif current_change == CHANGE_STATE.scores:
-		get_tree().change_scene_to(load("res://Menus/TopScoreMenu/TopScore.tscn"))
+		get_tree().change_scene_to(top_score_scene)
 	elif current_change == CHANGE_STATE.settings:
-		get_tree().change_scene_to(load("res://Menus/Settings/SettingsMenu.tscn"))
+		get_tree().change_scene_to(settings_scene)
 	elif current_change == CHANGE_STATE.quit:
 		get_tree().quit(1)

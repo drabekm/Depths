@@ -33,6 +33,7 @@ func _physics_process(delta):
 	pass
 
 func _move_water_nodes():
+	print("water")
 	var water_nodes = _get_water_nodes()
 	
 	var collider_type
@@ -48,7 +49,6 @@ func _move_water_nodes():
 					collider.add_water(WATER_FLOW)
 					water_node.remove_water(WATER_FLOW)
 				elif collider_type == collision_enum.Collision.BLOCK or collider_type == collision_enum.Collision.WATER and collider.fullness >= 1: # water_node sits on a block
-	#				continue
 					if water_node.is_left_collision():
 						collider_type = water_node.get_left_collider_type()
 						if collider_type != null:
@@ -78,11 +78,12 @@ func _move_water_nodes():
 							spawn_position.x += 32
 							water_node.remove_water(WATER_FLOW)
 							_spawn_water(spawn_position)
-		else:
-			var spawn_position = water_node.position
-			spawn_position.y += 32
-			water_node.remove_water(WATER_FLOW)
-			_spawn_water(spawn_position)
+			else:
+				print("add water")
+				var spawn_position = water_node.position
+				spawn_position.y += 32
+				water_node.remove_water(WATER_FLOW)
+				_spawn_water(spawn_position)
 
 func _spawn_water(position):
 	var water_instance = water.instance() # nothing below the water_node
