@@ -9,13 +9,13 @@ var score_label: Label
 var money_label: Label
 
 func _ready():
-	health_bar = get_node("HUDRoot/ValueSliders/Health/HealthBar")
-	fuel_bar = get_node("HUDRoot/ValueSliders/Fuel/FuelBar")
-	capacity_bar = get_node("HUDRoot/ValueSliders/Capacity/CapacityBar")
+	health_bar = get_node("HUDRoot/TopValueSliders/Health/HealthBar")
+	fuel_bar = get_node("HUDRoot/TopValueSliders/Fuel/FuelBar")
+	capacity_bar = get_node("HUDRoot/CapacitySlider/CapacityBar")
 	
-	depth_label = get_node("HUDRoot/ValueTexts/DepthLabelPair/Depth")
-	score_label = get_node("HUDRoot/ValueTexts/ScoreLabelPair/Score")
-	money_label = get_node("HUDRoot/ValueTexts/MoneyLabelPair/Money")
+	depth_label = get_node("HUDRoot/TopValueTexts/DepthLabelPair/Depth")
+	score_label = get_node("HUDRoot/ScoreLabelPair/Score")
+	money_label = get_node("HUDRoot/TopValueTexts/MoneyLabelPair/Money")
 	set_process(true)
 
 func _process(delta):

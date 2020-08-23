@@ -4,6 +4,7 @@ extends "res://Entities/Shops/BaseShop/BaseShop.gd"
 
 var fuel_info
 var fuel_tank
+var monitor_sprite: AnimatedSprite
 
 const PRICE_PER_UNIT = 2
 
@@ -11,11 +12,18 @@ const PRICE_PER_UNIT = 2
 func _ready():
 	fuel_tank = get_node("CanvasLayer/UI/FuelTank")
 	fuel_info = get_node("CanvasLayer/UI/FuelTank/FuelInfo")
+	monitor_sprite = get_node("Building/Monitor")
 
 func _update_fuel_info():
 	fuel_info.text = str(PlayerData.fuel) + "/" + str(PlayerData.max_fuel)
 	fuel_tank.max_value = PlayerData.max_fuel
 	fuel_tank.value = PlayerData.fuel
+
+func _player_entered():
+	monitor_sprite.play("run")
+
+func _player_left():
+	monitor_sprite.play("idle")
 
 func _open_shop():
 	._open_shop()

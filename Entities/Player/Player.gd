@@ -27,6 +27,11 @@ var inventory
 var corner_shadow
 
 var current_drill_block
+var drill_sprite: AnimatedSprite
+var drill_sprite_mover : AnimationPlayer
+var was_drilling_up: bool = false
+var was_drilling_down: bool = false
+
 
 func _ready():
 	sprite = get_node("Sprite")
@@ -34,6 +39,9 @@ func _ready():
 	bottomDrill = get_node("BottomDrill")
 	inventory = get_node("../Menus/Inventory")
 	corner_shadow = get_node("CornerShadow")
+	drill_sprite = get_node("Sprite/Drill")
+	drill_sprite_mover = get_node("Sprite/Drill/DrilMover")
+	
 	
 	if PlayerData.position != Vector2(0,0):
 		self.global_position = PlayerData.position
@@ -67,6 +75,14 @@ func _drilling_move(delta):
 		current_drill_block.destroy()
 		$CollisionShape2D.disabled = false
 		current_drill_block = null
+		if was_drilling_down:
+			drill_sprite_mover.play_backwards("move_down")
+		if was_drilling_up:
+			drill_sprite_mover.play_backwards("move_up")
+		
+		drill_sprite.play("idle")
+		was_drilling_down = false
+		was_drilling_up = false
 
 # Drill is represented by a raycast2D node
 # This method is used only when the player is pushing against either a wall or
@@ -77,8 +93,16 @@ func _drill_colides_with_block(drill) -> bool:
 		return collider.is_in_group("Block")
 	return false
 
-func _start_drilling(drill: Node):
+func _start_drilling(drill: Node, is_bottom_drill, is_up_drill):
 	if _drill_colides_with_block(drill):
+				if is_bottom_drill:
+					was_drilling_down = true
+					drill_sprite.play("elongate")
+					drill_sprite_mover.play("move_down")
+				else:
+					drill_sprite.play("drill")
+				
+				
 				var collider = drill.get_collider()
 				if collider.has_mineral:
 					PlayerData.add_mineral(collider.mineral_type)
@@ -106,7 +130,7 @@ func input() -> void:
 		is_moving = true
 	elif Input.is_action_pressed("ui_down"):
 		if is_on_floor():
-			_start_drilling(bottomDrill)
+			_start_drilling(bottomDrill, true, false)
 	
 	if Input.is_action_pressed("ui_left"):
 		_reorient_drill(-1)
@@ -115,7 +139,7 @@ func input() -> void:
 		is_moving = true
 		velocity.x = max(velocity.x - acceleration, -max_speed)
 		if is_on_wall() and is_on_floor():
-			_start_drilling(forwardDrill)
+			_start_drilling(forwardDrill, false, false)
 		
 	elif Input.is_action_pressed("ui_right"):
 		_reorient_drill(1)
@@ -124,7 +148,7 @@ func input() -> void:
 		is_moving = true
 		velocity.x = min(velocity.x + acceleration, max_speed)
 		if is_on_wall() and is_on_floor():
-			_start_drilling(forwardDrill)
+			_start_drilling(forwardDrill, false, false)
 	else:
 		if(self.is_on_floor()):
 			velocity.x = lerp(velocity.x, 0, SPEED_SLOWDOWN)
@@ -176,3 +200,8 @@ func update_debug_labels() -> void:
 	get_node("DEBUG/labels/on_wall").text = "On wall: " + str(is_on_wall())
 	get_node("DEBUG/labels/fps").text = "FPS: " + str(Engine.get_frames_per_second())
 	get_node("DEBUG/labels/position").text = "POS: " + str(self.position)
+
+
+func _on_Drill_animation_finished():
+	if drill_sprite.animation == "elongate":
+		drill_sprite.play("elongate_drill")

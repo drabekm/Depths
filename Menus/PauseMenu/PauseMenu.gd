@@ -36,6 +36,7 @@ func _on_Settings_pressed():
 
 func _on_Exit_pressed():
 	get_tree().paused = false
+	MenuStatus.pause_menu_opened = false
 	Saver.is_in_game = false
 	Saver.save_data()
 	get_tree().change_scene_to(main_menu)

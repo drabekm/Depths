@@ -1,15 +1,16 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://Entities/Player/HUD/textures/fuel_can.png" type="Texture" id=1]
 [ext_resource path="res://Entities/Player/HUD/textures/health_progress.png" type="Texture" id=2]
 [ext_resource path="res://Entities/Player/HUD/textures/health_cross.png" type="Texture" id=3]
-[ext_resource path="res://Entities/Player/HUD/textures/cargo_icon.png" type="Texture" id=4]
+[ext_resource path="res://Entities/Player/HUD/textures/overlay..png" type="Texture" id=4]
 [ext_resource path="res://Entities/Player/HUD/textures/under.png" type="Texture" id=5]
 [ext_resource path="res://Menus/UITheme.tres" type="Theme" id=6]
 [ext_resource path="res://Entities/Player/HUD/textures/fuel_progress..png" type="Texture" id=7]
 [ext_resource path="res://Entities/Player/HUD/textures/capacity_progress..png" type="Texture" id=8]
 [ext_resource path="res://Entities/Player/HUD/textures/over.png" type="Texture" id=9]
 [ext_resource path="res://Entities/Player/HUD/HUD.gd" type="Script" id=10]
+[ext_resource path="res://Entities/Player/HUD/textures/cargo_icon.png" type="Texture" id=11]
 
 [node name="HUD" type="CanvasLayer"]
 pause_mode = 2
@@ -20,27 +21,46 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = -1.05948
 margin_right = -1.05945
+size_flags_horizontal = 3
+size_flags_vertical = 3
 theme = ExtResource( 6 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="ValueSliders" type="VBoxContainer" parent="HUDRoot"]
-margin_right = 268.0
-margin_bottom = 200.0
-rect_scale = Vector2( 0.8, 0.8 )
+[node name="Overlay" type="TextureRect" parent="HUDRoot"]
+modulate = Color( 1, 1, 1, 0.596078 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 1.36285
+margin_top = 0.890915
+margin_right = 1.36279
+margin_bottom = 0.89093
+size_flags_horizontal = 3
+size_flags_vertical = 3
+texture = ExtResource( 4 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Health" type="HBoxContainer" parent="HUDRoot/ValueSliders"]
-margin_right = 268.0
+[node name="TopValueSliders" type="VBoxContainer" parent="HUDRoot"]
+margin_left = 22.5281
+margin_top = 17.1122
+margin_right = 420.528
+margin_bottom = 149.112
+rect_scale = Vector2( 0.6, 0.6 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Health" type="HBoxContainer" parent="HUDRoot/TopValueSliders"]
+margin_right = 448.0
 margin_bottom = 64.0
 __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="TextureRect" type="TextureRect" parent="HUDRoot/ValueSliders/Health"]
+[node name="TextureRect" type="TextureRect" parent="HUDRoot/TopValueSliders/Health"]
 margin_right = 64.0
 margin_bottom = 64.0
 texture = ExtResource( 3 )
@@ -48,11 +68,11 @@ __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="HealthBar" type="TextureProgress" parent="HUDRoot/ValueSliders/Health"]
+[node name="HealthBar" type="TextureProgress" parent="HUDRoot/TopValueSliders/Health"]
 margin_left = 68.0
-margin_right = 268.0
+margin_right = 448.0
 margin_bottom = 64.0
-rect_min_size = Vector2( 200, 0 )
+rect_min_size = Vector2( 380, 0 )
 value = 50.0
 texture_under = ExtResource( 5 )
 texture_over = ExtResource( 9 )
@@ -64,15 +84,15 @@ __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="Fuel" type="HBoxContainer" parent="HUDRoot/ValueSliders"]
+[node name="Fuel" type="HBoxContainer" parent="HUDRoot/TopValueSliders"]
 margin_top = 68.0
-margin_right = 268.0
+margin_right = 448.0
 margin_bottom = 132.0
 __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="TextureRect" type="TextureRect" parent="HUDRoot/ValueSliders/Fuel"]
+[node name="TextureRect" type="TextureRect" parent="HUDRoot/TopValueSliders/Fuel"]
 margin_right = 64.0
 margin_bottom = 64.0
 texture = ExtResource( 1 )
@@ -80,11 +100,11 @@ __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="FuelBar" type="TextureProgress" parent="HUDRoot/ValueSliders/Fuel"]
+[node name="FuelBar" type="TextureProgress" parent="HUDRoot/TopValueSliders/Fuel"]
 margin_left = 68.0
-margin_right = 268.0
+margin_right = 448.0
 margin_bottom = 64.0
-rect_min_size = Vector2( 200, 0 )
+rect_min_size = Vector2( 380, 0 )
 value = 50.0
 texture_under = ExtResource( 5 )
 texture_over = ExtResource( 9 )
@@ -96,68 +116,38 @@ __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="Capacity" type="HBoxContainer" parent="HUDRoot/ValueSliders"]
-margin_top = 136.0
-margin_right = 268.0
-margin_bottom = 200.0
-__meta__ = {
-"_edit_lock_": true
-}
-
-[node name="TextureRect" type="TextureRect" parent="HUDRoot/ValueSliders/Capacity"]
-margin_right = 64.0
-margin_bottom = 64.0
-grow_horizontal = 0
-texture = ExtResource( 4 )
-__meta__ = {
-"_edit_lock_": true
-}
-
-[node name="CapacityBar" type="TextureProgress" parent="HUDRoot/ValueSliders/Capacity"]
-margin_left = 68.0
-margin_right = 268.0
-margin_bottom = 64.0
-rect_min_size = Vector2( 200, 0 )
-value = 50.0
-texture_under = ExtResource( 5 )
-texture_over = ExtResource( 9 )
-texture_progress = ExtResource( 8 )
-nine_patch_stretch = true
-stretch_margin_left = 16
-stretch_margin_right = 16
-__meta__ = {
-"_edit_lock_": true
-}
-
-[node name="ValueTexts" type="VBoxContainer" parent="HUDRoot"]
+[node name="TopValueTexts" type="VBoxContainer" parent="HUDRoot"]
 anchor_left = 1.0
 anchor_right = 1.0
-margin_left = -185.0
-margin_bottom = 119.0
+margin_left = -283.0
+margin_top = -4.0
+margin_right = -98.0001
+margin_bottom = 74.0
+rect_scale = Vector2( 1.5, 1.5 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="DepthLabelPair" type="HBoxContainer" parent="HUDRoot/ValueTexts"]
+[node name="DepthLabelPair" type="HBoxContainer" parent="HUDRoot/TopValueTexts"]
 margin_right = 185.0
 margin_bottom = 37.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Label" type="Label" parent="HUDRoot/ValueTexts/DepthLabelPair"]
+[node name="Label" type="Label" parent="HUDRoot/TopValueTexts/DepthLabelPair"]
 margin_right = 61.0
 margin_bottom = 37.0
 text = "Depth: "
 
-[node name="Depth" type="Label" parent="HUDRoot/ValueTexts/DepthLabelPair"]
+[node name="Depth" type="Label" parent="HUDRoot/TopValueTexts/DepthLabelPair"]
 margin_left = 65.0
 margin_right = 185.0
 margin_bottom = 37.0
 rect_min_size = Vector2( 120, 0 )
 text = "0 "
 
-[node name="ScoreLabelPair" type="HBoxContainer" parent="HUDRoot/ValueTexts"]
+[node name="MoneyLabelPair" type="HBoxContainer" parent="HUDRoot/TopValueTexts"]
 margin_top = 41.0
 margin_right = 185.0
 margin_bottom = 78.0
@@ -165,34 +155,78 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Label" type="Label" parent="HUDRoot/ValueTexts/ScoreLabelPair"]
-margin_right = 57.0
-margin_bottom = 37.0
-text = "Score:"
-
-[node name="Score" type="Label" parent="HUDRoot/ValueTexts/ScoreLabelPair"]
-margin_left = 61.0
-margin_right = 181.0
-margin_bottom = 37.0
-rect_min_size = Vector2( 120, 0 )
-text = "0 "
-
-[node name="MoneyLabelPair" type="HBoxContainer" parent="HUDRoot/ValueTexts"]
-margin_top = 82.0
-margin_right = 185.0
-margin_bottom = 119.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Label" type="Label" parent="HUDRoot/ValueTexts/MoneyLabelPair"]
+[node name="Label" type="Label" parent="HUDRoot/TopValueTexts/MoneyLabelPair"]
 margin_right = 61.0
 margin_bottom = 37.0
 text = "Money:"
 
-[node name="Money" type="Label" parent="HUDRoot/ValueTexts/MoneyLabelPair"]
+[node name="Money" type="Label" parent="HUDRoot/TopValueTexts/MoneyLabelPair"]
 margin_left = 65.0
 margin_right = 185.0
 margin_bottom = 37.0
 rect_min_size = Vector2( 120, 0 )
 text = "0"
+
+[node name="ScoreLabelPair" type="HBoxContainer" parent="HUDRoot"]
+margin_left = 349.766
+margin_top = -4.72885
+margin_right = 530.766
+margin_bottom = 32.2711
+rect_scale = Vector2( 2, 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="HUDRoot/ScoreLabelPair"]
+margin_right = 57.0
+margin_bottom = 37.0
+text = "Score:"
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Score" type="Label" parent="HUDRoot/ScoreLabelPair"]
+margin_left = 61.0
+margin_right = 181.0
+margin_bottom = 37.0
+rect_min_size = Vector2( 120, 0 )
+text = "0 "
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="CapacitySlider" type="VBoxContainer" parent="HUDRoot"]
+margin_left = 942.294
+margin_top = 323.027
+margin_right = 1006.29
+margin_bottom = 455.027
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect" type="TextureRect" parent="HUDRoot/CapacitySlider"]
+margin_right = 64.0
+margin_bottom = 64.0
+texture = ExtResource( 11 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="CapacityBar" type="TextureProgress" parent="HUDRoot/CapacitySlider"]
+margin_top = 68.0
+margin_right = 64.0
+margin_bottom = 258.0
+rect_min_size = Vector2( 0, 190 )
+value = 50.0
+texture_under = ExtResource( 5 )
+texture_over = ExtResource( 9 )
+texture_progress = ExtResource( 8 )
+fill_mode = 3
+nine_patch_stretch = true
+stretch_margin_left = 16
+stretch_margin_top = 16
+stretch_margin_right = 16
+stretch_margin_bottom = 16
+__meta__ = {
+"_edit_lock_": true
+}

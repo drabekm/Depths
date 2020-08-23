@@ -5,6 +5,19 @@
   "mainmenu.highscore" : ["Skóre", "High score"],
   "mainmenu.exit" : ["Konec", "Quit"],
 
+  "settings.apply" : ["Uložit", "Apply"],
+  "settings.exitandsave" : ["Odejít s uložením", "Exit and save"],
+  "settings.exitwithoutsaving" : ["Odejít bez uložení", "Exit without saving"],
+
+  "settings.graphics.title" : ["Grafika", "Graphics"],
+  "settings.graphics.fullscreen" : ["Celá obrazovka", "Fullscreen"],
+  "settings.graphics.vsync" : ["Vsync", "Vsync"],
+  "settings.graphics.showfps" : ["Zobrazit FPS", "Show FPS"],
+  "settings.graphics.workaround" : ["Nvidia workaround", "Nvidia workaround"],
+  "settings.graphics.workaroundtext" : ["(Náročné na výkon, \n použijte pouze pokud vidíte grafické chyby\n a používáte nvidia GPU)", "(FPS intensive\n only use when experiencing\n graphical glitches with nvidia GPU)"],
+
+
+
   "ore.copper" : ["Měď", "Copper"],
   "ore.iron" : ["Železo", "Iron"],
   "ore.diamond" : ["Diamant", "Diamond"]

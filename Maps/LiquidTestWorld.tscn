@@ -53,3 +53,9 @@ position = Vector2( 128, 160 )
 "Water",
 ] instance=ExtResource( 3 )]
 position = Vector2( 160, 64 )
+
+[node name="Liquid2" parent="." groups=[
+"Lava",
+] instance=ExtResource( 3 )]
+position = Vector2( 32, 64 )
+liquid_type = 1

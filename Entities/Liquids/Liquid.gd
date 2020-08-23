@@ -148,7 +148,6 @@ func update_sprite_size():
 	else:
 		get_node("Sprite").scale.y = fullness * 2
 		get_node("Sprite").global_position.y = base_sprite_position.y + (1 - fullness) * 32
-		print("aaaaaaa")
 #
 #func _physics_process(delta):
 #	var collider

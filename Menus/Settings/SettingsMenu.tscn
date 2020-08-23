@@ -230,23 +230,23 @@ margin_left = 262.0
 margin_right = 417.0
 setting_key = "debug/settings/stdout/print_fps"
 
-[node name="ExitWithoutSave" type="Button" parent="MarginContainer/Rows"]
+[node name="ExitWithSave" type="Button" parent="MarginContainer/Rows"]
 margin_top = 458.0
 margin_right = 1004.0
 margin_bottom = 508.0
 rect_min_size = Vector2( 0, 50 )
 custom_fonts/font = ExtResource( 3 )
-text = "Do menu bez uložení"
+text = "Do menu s uložením"
 
-[node name="ExitWithSave" type="Button" parent="MarginContainer/Rows"]
+[node name="ExitWithoutSave" type="Button" parent="MarginContainer/Rows"]
 margin_top = 528.0
 margin_right = 1004.0
 margin_bottom = 578.0
 rect_min_size = Vector2( 0, 50 )
 custom_fonts/font = ExtResource( 3 )
-text = "Do menu s uložením"
+text = "Do menu bez uložení"
 
 [node name="Transitioner" parent="." instance=ExtResource( 6 )]
-[connection signal="pressed" from="MarginContainer/Rows/ExitWithoutSave" to="." method="_on_ExitWithoutSave_pressed"]
 [connection signal="pressed" from="MarginContainer/Rows/ExitWithSave" to="." method="_on_ExitWithSave_pressed"]
+[connection signal="pressed" from="MarginContainer/Rows/ExitWithoutSave" to="." method="_on_ExitWithoutSave_pressed"]
 [connection signal="transition_finished" from="Transitioner" to="." method="_on_Transitioner_transition_finished"]

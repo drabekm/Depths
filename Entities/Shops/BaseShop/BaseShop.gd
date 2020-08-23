@@ -64,6 +64,13 @@ func _close_shop():
 	shop_oppened = false
 	get_node("CanvasLayer/UI").visible = false
 
+func _player_entered():
+	pass
+
+func _player_left():
+	pass
+
+
 func _on_Area2D_body_entered(body):
 	if body.is_in_group("Player"):
 		is_player_near = true
@@ -71,6 +78,7 @@ func _on_Area2D_body_entered(body):
 		button_marker.visible = true
 		set_process(true)
 		set_process_input(true)
+		_player_entered()
 
 func _on_Area2D_body_exited(body):
 	if body.is_in_group("Player"):
@@ -79,5 +87,6 @@ func _on_Area2D_body_exited(body):
 		button_marker.visible = false
 		set_process(false)
 		set_process_input(true)
+		_player_left()
 
 

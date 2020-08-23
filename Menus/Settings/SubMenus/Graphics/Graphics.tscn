@@ -1,0 +1,114 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Menus/Settings/SubMenus/BaseSubSetting/BaseSubSettings.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Menus/Settings/SettingsSwitchButton.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Menus/Settings/SubMenus/Graphics/Graphics.gd" type="Script" id=3]
+
+[node name="Graphics" instance=ExtResource( 1 )]
+script = ExtResource( 3 )
+
+[node name="Title" parent="MarginContainer/Rows" index="0"]
+text = "settings.graphics.title"
+
+[node name="Options" parent="MarginContainer/Rows/ScrollContainer" index="0"]
+margin_left = 293.0
+margin_right = 691.0
+
+[node name="FullScreen" type="HBoxContainer" parent="MarginContainer/Rows/ScrollContainer/Options" index="0"]
+margin_top = 41.0
+margin_right = 398.0
+margin_bottom = 78.0
+
+[node name="Label" type="Label" parent="MarginContainer/Rows/ScrollContainer/Options/FullScreen" index="0" groups=[
+"translate",
+]]
+margin_right = 222.0
+margin_bottom = 37.0
+rect_min_size = Vector2( 170, 0 )
+text = "settings.graphics.fullscreen"
+align = 1
+
+[node name="SettingsSwitch" parent="MarginContainer/Rows/ScrollContainer/Options/FullScreen" index="1" instance=ExtResource( 2 )]
+margin_left = 226.0
+margin_right = 381.0
+
+[node name="Vsync" type="HBoxContainer" parent="MarginContainer/Rows/ScrollContainer/Options" index="1"]
+margin_top = 82.0
+margin_right = 398.0
+margin_bottom = 119.0
+
+[node name="Label" type="Label" parent="MarginContainer/Rows/ScrollContainer/Options/Vsync" index="0" groups=[
+"translate",
+]]
+margin_right = 193.0
+margin_bottom = 37.0
+rect_min_size = Vector2( 170, 0 )
+text = "settings.graphics.vsync"
+align = 1
+
+[node name="SettingsSwitch" parent="MarginContainer/Rows/ScrollContainer/Options/Vsync" index="1" instance=ExtResource( 2 )]
+margin_left = 197.0
+margin_right = 352.0
+
+[node name="FPS" type="HBoxContainer" parent="MarginContainer/Rows/ScrollContainer/Options" index="2"]
+margin_top = 123.0
+margin_right = 398.0
+margin_bottom = 160.0
+
+[node name="Label" type="Label" parent="MarginContainer/Rows/ScrollContainer/Options/FPS" index="0" groups=[
+"translate",
+]]
+margin_right = 212.0
+margin_bottom = 37.0
+rect_min_size = Vector2( 170, 0 )
+text = "settings.graphics.showfps"
+align = 1
+
+[node name="SettingsSwitch" parent="MarginContainer/Rows/ScrollContainer/Options/FPS" index="1" instance=ExtResource( 2 )]
+margin_left = 216.0
+margin_right = 371.0
+
+[node name="Spacer" type="HBoxContainer" parent="MarginContainer/Rows/ScrollContainer/Options" index="3"]
+margin_top = 164.0
+margin_right = 398.0
+margin_bottom = 201.0
+
+[node name="Label" type="Label" parent="MarginContainer/Rows/ScrollContainer/Options/Spacer" index="0" groups=[
+"translate",
+]]
+margin_right = 170.0
+margin_bottom = 37.0
+rect_min_size = Vector2( 170, 0 )
+align = 1
+
+[node name="Workaround wrapper" type="VBoxContainer" parent="MarginContainer/Rows/ScrollContainer/Options" index="4"]
+margin_top = 205.0
+margin_right = 398.0
+margin_bottom = 279.0
+custom_constants/separation = 0
+
+[node name="WorkAround" type="HBoxContainer" parent="MarginContainer/Rows/ScrollContainer/Options/Workaround wrapper" index="0"]
+margin_right = 398.0
+margin_bottom = 37.0
+
+[node name="Label" type="Label" parent="MarginContainer/Rows/ScrollContainer/Options/Workaround wrapper/WorkAround" index="0" groups=[
+"translate",
+]]
+margin_right = 239.0
+margin_bottom = 37.0
+rect_min_size = Vector2( 170, 0 )
+text = "settings.graphics.workaround"
+align = 1
+
+[node name="SettingsSwitch" parent="MarginContainer/Rows/ScrollContainer/Options/Workaround wrapper/WorkAround" index="1" instance=ExtResource( 2 )]
+margin_left = 243.0
+margin_right = 398.0
+
+[node name="Label" type="Label" parent="MarginContainer/Rows/ScrollContainer/Options/Workaround wrapper" index="1" groups=[
+"translate",
+]]
+margin_top = 37.0
+margin_right = 398.0
+margin_bottom = 74.0
+text = "settings.graphics.workaroundtext"
+align = 1

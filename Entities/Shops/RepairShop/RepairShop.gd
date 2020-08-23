@@ -14,6 +14,13 @@ func _update_hull_info():
 	hull_tank.max_value = PlayerData.max_health
 	hull_tank.value = PlayerData.health
 
+
+func _player_entered():
+	get_node("Building").play("player_enter")
+
+func _player_left():
+	get_node("Building").play("player_leave")
+
 func _open_shop():
 	._open_shop()
 	_update_hull_info()
@@ -31,3 +38,8 @@ func _on_btnRepair_pressed():
 
 func _on_Exit_pressed():
 	._close_shop()
+
+
+func _on_Building_animation_finished():
+	if get_node("Building").animation == "player_leave":
+		get_node("Building").play("idle")

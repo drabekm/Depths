@@ -1,17 +1,79 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=30 format=2]
 
 [ext_resource path="res://Entities/Shops/BaseShop/BaseShop.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Entities/Shops/OreShop/OreShop.gd" type="Script" id=2]
-[ext_resource path="res://Entities/Shops/OreShop/textures/idle/refinery_idle.png" type="Texture" id=3]
+[ext_resource path="res://Entities/Shops/OreShop/textures/idle/refinery_idle3.png" type="Texture" id=3]
 [ext_resource path="res://fontDump/textFont.tres" type="DynamicFont" id=4]
 [ext_resource path="res://fontDump/headerFont.tres" type="DynamicFont" id=5]
+[ext_resource path="res://Entities/Shops/OreShop/textures/idle/refinery_idle4.png" type="Texture" id=6]
+[ext_resource path="res://Entities/Shops/OreShop/textures/idle/refinery_idle1.png" type="Texture" id=7]
+[ext_resource path="res://Entities/Shops/OreShop/textures/idle/refinery_idle2.png" type="Texture" id=8]
+[ext_resource path="res://Entities/Shops/OreShop/textures/player_near/refinery v2_player_near2.png" type="Texture" id=9]
+[ext_resource path="res://Entities/Shops/OreShop/textures/player_near/refinery v2_player_near7.png" type="Texture" id=10]
+[ext_resource path="res://Entities/Shops/OreShop/textures/player_near/refinery v2_player_near1.png" type="Texture" id=11]
+[ext_resource path="res://Entities/Shops/OreShop/textures/player_near/refinery v2_player_near3.png" type="Texture" id=12]
+[ext_resource path="res://Entities/Shops/OreShop/textures/player_near/refinery v2_player_near4.png" type="Texture" id=13]
+[ext_resource path="res://Entities/Shops/OreShop/textures/player_near/refinery v2_player_near6.png" type="Texture" id=14]
+[ext_resource path="res://Entities/Shops/OreShop/textures/player_near/refinery v2_player_near9.png" type="Texture" id=15]
+[ext_resource path="res://Entities/Shops/OreShop/textures/player_near/refinery v2_player_near10.png" type="Texture" id=16]
+[ext_resource path="res://Entities/Shops/OreShop/textures/player_near/refinery v2_player_near11.png" type="Texture" id=17]
+[ext_resource path="res://Entities/Shops/OreShop/textures/player_near/refinery v2_player_near13.png" type="Texture" id=18]
+[ext_resource path="res://Entities/Shops/OreShop/textures/player_near/refinery v2_player_near5.png" type="Texture" id=19]
+[ext_resource path="res://Entities/Shops/OreShop/textures/player_near/refinery v2_player_near12.png" type="Texture" id=20]
+[ext_resource path="res://Entities/Shops/OreShop/textures/player_near/refinery v2_player_near14.png" type="Texture" id=21]
+[ext_resource path="res://Entities/Shops/OreShop/textures/player_near/refinery v2_player_near8.png" type="Texture" id=22]
+
+[sub_resource type="SpriteFrames" id=1]
+animations = [ {
+"frames": [ ExtResource( 7 ), ExtResource( 8 ), ExtResource( 3 ), ExtResource( 6 ) ],
+"loop": true,
+"name": "idle",
+"speed": 7.0
+}, {
+"frames": [ ExtResource( 11 ), ExtResource( 9 ), ExtResource( 12 ), ExtResource( 13 ), ExtResource( 19 ), ExtResource( 14 ), ExtResource( 10 ), ExtResource( 22 ), ExtResource( 15 ), ExtResource( 16 ), ExtResource( 17 ), ExtResource( 20 ), ExtResource( 18 ), ExtResource( 21 ) ],
+"loop": true,
+"name": "player_near",
+"speed": 10.0
+} ]
+
+[sub_resource type="Gradient" id=2]
+colors = PoolColorArray( 0, 0, 0, 1, 0.285156, 0.285156, 0.285156, 1 )
+
+[sub_resource type="GradientTexture" id=3]
+gradient = SubResource( 2 )
+
+[sub_resource type="CurveTexture" id=4]
+
+[sub_resource type="Curve" id=5]
+_data = [ Vector2( 0.0424528, 0.835227 ), 0.0, -1.07291, 0, 0, Vector2( 1, 1 ), 0.0, 0.0, 0, 0 ]
+
+[sub_resource type="CurveTexture" id=6]
+curve = SubResource( 5 )
+
+[sub_resource type="ParticlesMaterial" id=7]
+emission_shape = 2
+emission_box_extents = Vector3( 25, 1, 1 )
+flag_disable_z = true
+gravity = Vector3( 0, -98, 0 )
+angular_velocity = 164.21
+angular_velocity_random = 0.51
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
+scale = 8.0
+scale_random = 0.5
+scale_curve = SubResource( 6 )
+color_ramp = SubResource( 3 )
+hue_variation_curve = SubResource( 4 )
 
 [node name="OreShop" instance=ExtResource( 1 )]
 script = ExtResource( 2 )
 
 [node name="Building" parent="." index="0"]
 scale = Vector2( 3, 3 )
-texture = ExtResource( 3 )
+frames = SubResource( 1 )
+animation = "player_near"
+frame = 12
+playing = true
 
 [node name="Background" parent="CanvasLayer/UI" index="0"]
 color = Color( 0.180392, 0.203922, 0.156863, 1 )
@@ -80,5 +142,11 @@ text = "Exit"
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="Particles2D" type="Particles2D" parent="." index="4"]
+position = Vector2( 102.53, -90.5097 )
+amount = 80
+lifetime = 2.0
+process_material = SubResource( 7 )
 [connection signal="pressed" from="CanvasLayer/UI/ButtonSellAll" to="." method="_on_ButtonSellAll_pressed"]
 [connection signal="pressed" from="CanvasLayer/UI/ButtonExit" to="." method="_on_ButtonExit_pressed"]

@@ -2,7 +2,7 @@ extends StaticBody2D
 
 # Main building block of the game up, pun intended
 
-const material_textures = [preload("res://Entities/Block/Textures/dirt.png"),
+const material_textures = [preload("res://Entities/Block/Textures/blocks/dirt/dirtt.png"),
 				 preload("res://Entities/Block/Textures/stone.png"),
 				 preload("res://Entities/Block/Textures/strong_stone.png"),
 				 preload("res://Entities/Block/Textures/indestructable.png")]

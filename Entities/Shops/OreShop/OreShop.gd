@@ -28,6 +28,12 @@ func _open_shop():
 	_update_stats()
 
 
+func _player_entered():
+	get_node("Building").play("player_near")
+
+func _player_left():
+	get_node("Building").play("idle")
+
 func _update_stats():
 	print("update")
 	get_node("CanvasLayer/UI/Stats/Money").text = "Money: " + str(PlayerData.money)
