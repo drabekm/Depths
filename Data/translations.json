@@ -8,13 +8,27 @@
   "settings.apply" : ["Uložit", "Apply"],
   "settings.exitandsave" : ["Odejít s uložením", "Exit and save"],
   "settings.exitwithoutsaving" : ["Odejít bez uložení", "Exit without saving"],
-
+  
+  "settings.main.tomenu" : ["Do hlavního menu", "To main menu"],
+  "settings.main.title" : ["Nastavení", "Settings"],
   "settings.graphics.title" : ["Grafika", "Graphics"],
   "settings.graphics.fullscreen" : ["Celá obrazovka", "Fullscreen"],
   "settings.graphics.vsync" : ["Vsync", "Vsync"],
   "settings.graphics.showfps" : ["Zobrazit FPS", "Show FPS"],
   "settings.graphics.workaround" : ["Nvidia workaround", "Nvidia workaround"],
   "settings.graphics.workaroundtext" : ["(Náročné na výkon, \n použijte pouze pokud vidíte grafické chyby\n a používáte nvidia GPU)", "(FPS intensive\n only use when experiencing\n graphical glitches with nvidia GPU)"],
+
+  "settings.sound.title" : ["Zvuky", "Audio"],
+  "settings.sound.music" : ["Hudba", "Music"],
+  "settings.sound.master" : ["Hlavní", "Master"],
+  "settings.sound.effects" : ["Efekty", "Effects"],
+
+  "settings.other.title" : ["Ostatní", "Other"],
+  "settings.other.languages" : ["Jazyk", "Language"],
+  "settings.other.scoreserver" : ["Server se skóre", "Score server"],
+  "settings.other.scoreservertext" : ["Server na který se ukládá vaše skóre po dohrání hry. Pokud zadáte nefunkční url serveru nebudete moct uložit svoje skóre.", "Server where your score is saved after you finish the game. If you use invalid url you cannot save your score."],
+  "settings.other.czech" : ["Česky", "Czech"],
+  "settings.other.english" : ["Anglicky", "English"],
 
 
 

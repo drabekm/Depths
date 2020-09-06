@@ -5,9 +5,12 @@ extends Node2D
 # Chunk size is determined by chunkHandler node
 
 const block = preload("res://Entities/Block/Block.tscn")
-
+const liquid = preload("res://Entities/Liquids/Liquid.tscn")
 var indexX
 var indexY
+
+func _ready():
+	spawn_blocks()
 
 func spawn_blocks():
 	self.position = Vector2(GlobalMapData.BLOCK_SIZE * GlobalMapData.CHUNK_SIZE * indexX * 2, GlobalMapData.BLOCK_SIZE * GlobalMapData.CHUNK_SIZE * indexY * 2)
@@ -23,19 +26,26 @@ func spawn_blocks():
 			if deleted_blocks.has(str(block_position)) or deleted_blocks.has(block_position):
 				continue
 			
-			block_instance.init(block_position, self.name)
+			var global_block_position = Vector2(block_position.x + self.position.x, block_position.y + self.position.y)
 			
-			block_position.y += self.position.y
-			block_position.x += self.position.x
+#			if _is_water(x,y):
+#				print("water")
+#				var liquid_instance = liquid.instance()
+#				liquid_instance.init(global_block_position, 1, 0)
+#				var liquid_container = get_tree().get_nodes_in_group("LiquidContainer")[0]
+#				liquid_container.call_deferred("add_child", liquid_instance)
+#			else:
+			block_instance.init(block_position, global_block_position, self.name, Vector2(indexX, indexY))
 			
-			if(block_position.y < GlobalMapData.BLOCK_SIZE * 8):
-				block_instance.set_body(BlockEnums.MaterialTypes.DIRT)
-			elif(block_position.y < GlobalMapData.BLOCK_SIZE * 20):
-				block_instance.set_body(BlockEnums.MaterialTypes.STONE)
-			else:
-				block_instance.set_body(BlockEnums.MaterialTypes.STRONG_STONE)
+#			block_position.y += self.position.y
+#			block_position.x += self.position.x
 			
 			
+			
+			
+			
+			
+			give_block_material(block_instance, global_block_position.x, global_block_position.y)
 #			give_block_mineral(block_instance, block_position.x, block_position.y)
 			give_block_mineral(block_instance, indexX * GlobalMapData.CHUNK_SIZE + x * 2, indexY * GlobalMapData.CHUNK_SIZE + y)
 			
@@ -50,6 +60,14 @@ func spawn_blocks():
 			#imediatelly. How does it improve performance?
 			#Fuck if I know, but it somehow works.
 
+
+func give_block_material(var block, posX, posY):
+	if(posY < GlobalMapData.BLOCK_SIZE * 2 * GlobalMapData.CHUNK_SIZE * 2):
+		block.set_body(BlockEnums.MaterialTypes.DIRT)
+	elif(posY < GlobalMapData.BLOCK_SIZE * 2 * GlobalMapData.CHUNK_SIZE * 4):
+		block.set_body(BlockEnums.MaterialTypes.STONE)
+	else:
+		block.set_body(BlockEnums.MaterialTypes.STRONG_STONE)
 
 # the noise function really needs some works before it 
 # generates ores in some usable way
@@ -95,6 +113,27 @@ func _level_1_ore_generation(x,y, noise_value):
 		return BlockEnums.MineralTypes.COPPER
 	
 	return null
+
+func _is_water(x,y)-> bool:
+	var value = GlobalMapData.get_noise_value(x,y) + GlobalMapData.get_noise_value(x + 1,y) + GlobalMapData.get_noise_value(x,y + 1)
+	if y < 3:
+		return false
+	elif y < 15:
+		if value < 0.5:
+			return true
+	elif y < 25:
+		if value < 0.5:
+			return true
+	else:
+		if value < 0.5:
+			return true
+	return false
+
+func _level_2_is_water(x,y, noise_value)-> bool:
+	return false
+
+func _level_3_is_water(x,y, noise_value)-> bool:
+	return false
 
 func _level_2_ore_generation(x,y, noise_value):
 	if noise_value > 0.72:

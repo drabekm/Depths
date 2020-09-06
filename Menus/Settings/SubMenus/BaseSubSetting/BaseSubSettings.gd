@@ -1,7 +1,7 @@
 extends Control
 
 
-var menu_scene = preload("res://Menus/Settings/SettingsMenu.tscn")
+var menu_scene = load("res://Menus/Settings/SettingsMenu.tscn")
 var transitioner
 var is_exit: bool = false
 
@@ -15,7 +15,6 @@ func _translate_labels_and_buttons():
 	for node in nodes:
 		if node is Label or node is Button:
 			node.text = Translator.translate(node.text)
-			print(node.text)
 
 
 func _load_settings():
@@ -25,16 +24,19 @@ func _save_settings():
 	pass
 
 func _on_btnApply_pressed():
+	$ButtonPressedAudio.play()
 	_save_settings()
 
 
 func _on_btnSave_pressed():
+	$ButtonPressedAudio.play()
 	_save_settings()
 	is_exit = true
 	transitioner.close()
 
 
 func _on_btnNoSave_pressed():
+	$ButtonPressedAudio.play()
 	is_exit = true
 	transitioner.close()
 

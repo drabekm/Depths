@@ -2,6 +2,7 @@ extends Control
 
 var score_line = preload("res://Menus/TopScoreMenu/TopScoreLine.tscn")
 var score_line_container
+var main_menu = load("res://Menus/MainMenu/MainMenu.tscn")
 
 var scorePageRequest: HTTPRequest
 var pageCountRequest: HTTPRequest
@@ -16,6 +17,7 @@ var back_to_menu: bool = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	print(get_node("MarginContainer/VBoxContainer/ScoreContainer").rect_size.y)
 	get_node("Transitioner").open()
 	scorePageRequest = get_node("ScorePageRequest")
 	pageCountRequest = get_node("PageCountRequest")	
@@ -35,17 +37,18 @@ func _update_title():
 
 
 func _disable_buttons():
-	var buttons = get_node("MarginContainer/VBoxContainer/Buttons").get_children()
+	var buttons = get_node("MarginContainer/VBoxContainer/VBoxContainer/Buttons").get_children()
 	for button in buttons:
 		button.disabled = true
 
 func _enable_buttons():
-	var buttons = get_node("MarginContainer/VBoxContainer/Buttons").get_children()
+	var buttons = get_node("MarginContainer/VBoxContainer/VBoxContainer/Buttons").get_children()
 	for button in buttons:
 		button.disabled = false
 
 
 func _on_btnFirst_pressed():
+	$ButtonPressedAudio.play()
 	if page != 0:
 		_disable_buttons()
 		page = 0
@@ -53,6 +56,7 @@ func _on_btnFirst_pressed():
 		_make_score_request()
 
 func _on_btnPrev_pressed():
+	$ButtonPressedAudio.play()
 	if page > 0:
 		_disable_buttons()
 		page -= 1
@@ -60,6 +64,7 @@ func _on_btnPrev_pressed():
 		_update_title()
 
 func _on_btnNext_pressed():
+	$ButtonPressedAudio.play()
 	# todo: get max page count
 	if page < max_page - 1:
 		_disable_buttons()
@@ -68,6 +73,7 @@ func _on_btnNext_pressed():
 		_update_title()
 
 func _on_btnLast_pressed():
+	$ButtonPressedAudio.play()
 	if page != max_page - 1:
 		page = max_page - 1
 		_disable_buttons()
@@ -75,6 +81,7 @@ func _on_btnLast_pressed():
 		_update_title()
 
 func _on_btnExit_pressed():
+	$ButtonPressedAudio.play()
 	back_to_menu = true
 	get_node("Transitioner").close()
 
@@ -94,7 +101,7 @@ func _on_ScorePageRequest_request_completed(http_result, response_code, headers,
 			score_line_instance.set_data(name, score, 0, 123)
 			score_line_container.add_child(score_line_instance)
 	
-	
+	print(get_node("MarginContainer/VBoxContainer/ScoreContainer").rect_size.y)
 	_enable_buttons()
 
 
@@ -106,4 +113,4 @@ func _on_PageCountRequest_request_completed(http_result, response_code, headers,
 
 func _on_Transitioner_transition_finished():
 	if back_to_menu:
-		get_tree().change_scene_to(load("res://Menus/MainMenu/MainMenu.tscn"))
+		get_tree().change_scene_to(main_menu)

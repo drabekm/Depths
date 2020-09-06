@@ -19,14 +19,10 @@ func _ready():
 	set_process(true)
 
 func _process(delta):
-	print(MenuStatus.shop_opened)
 	if MenuStatus.shop_opened or MenuStatus.inventory_opened or MenuStatus.pause_menu_opened or MenuStatus.game_over_opened:
 		get_node("HUDRoot").visible = false
-		print("not visible")
 	else:
 		get_node("HUDRoot").visible = true
-		print("visible")
-	
 	health_bar.value = PlayerData.health
 	health_bar.max_value = PlayerData.max_health
 	

@@ -50,5 +50,6 @@ func hide():
 	self.visible = false
 
 func _on_ExitButton_pressed():
+	$ButtonPressedAudio.play()
 	hide()
 

@@ -7,6 +7,7 @@ var selected_language = Language_indexes.CZECH
 var _translation_dict = {"text.hovno" : ["Hovno", "Shit", "Merde"], "text.test" : ["AA", "BB", "CC"]}
 
 func _ready():
+	Translator.selected_language = ProjectSettings.get_setting("application/config/language")
 	_load_translations()
 
 func _load_translations():

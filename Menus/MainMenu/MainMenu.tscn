@@ -1,10 +1,11 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://icon.png" type="Texture" id=1]
 [ext_resource path="res://Menus/MainMenu/MainMenu.gd" type="Script" id=2]
 [ext_resource path="res://fontDump/headerFont.tres" type="DynamicFont" id=3]
 [ext_resource path="res://fontDump/textFont.tres" type="DynamicFont" id=4]
 [ext_resource path="res://Helpers/Transitioner.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Sound/Menu/ButtonPressedAudio.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Menus/UITheme.tres" type="Theme" id=7]
 
 [node name="MainMenu" type="Control"]
@@ -96,6 +97,8 @@ __meta__ = {
 }
 
 [node name="Transitioner" parent="." instance=ExtResource( 5 )]
+
+[node name="ButtonPressedAudio" parent="." instance=ExtResource( 6 )]
 [connection signal="pressed" from="VBoxContainer/NewGame" to="." method="_on_NewGame_pressed"]
 [connection signal="pressed" from="VBoxContainer/Continue" to="." method="_on_Continue_pressed"]
 [connection signal="pressed" from="VBoxContainer/Scores" to="." method="_on_Scores_pressed"]

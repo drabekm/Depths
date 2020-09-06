@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://Sound/Menu/button.ogg" type="AudioStream" id=1]
+
+[node name="ButtonPressedAudio" type="AudioStreamPlayer"]
+stream = ExtResource( 1 )

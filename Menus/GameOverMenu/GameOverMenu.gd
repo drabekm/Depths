@@ -18,8 +18,9 @@ func _hide():
 
 
 func _on_btnSave_pressed():
+	$ButtonPressedAudio.play()
 #	get_tree().paused = false
-	
+	Earthquake.game_end()
 	_make_save_score_request()
 	
 #	get_tree().change_scene_to(load("res://Menus/TopScoreMenu/TopScore.tscn"))
@@ -29,6 +30,8 @@ func _make_save_score_request():
 
 
 func _on_btnNoSave_pressed():
+	$ButtonPressedAudio.play()
+	Earthquake.game_end()
 	get_node("SkipSaving").show()
 #	get_tree().paused = false
 #	get_tree().change_scene_to(load("res://Menus/MainMenu/MainMenu.tscn"))

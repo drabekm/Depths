@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Menus/TopScoreMenu/TopScore.gd" type="Script" id=1]
 [ext_resource path="res://fontDump/textFont.tres" type="DynamicFont" id=2]
 [ext_resource path="res://fontDump/headerFont.tres" type="DynamicFont" id=3]
 [ext_resource path="res://Menus/UITheme.tres" type="Theme" id=4]
 [ext_resource path="res://Helpers/Transitioner.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Sound/Menu/ButtonPressedAudio.tscn" type="PackedScene" id=6]
 
 [node name="TopScore" type="Control"]
 anchor_right = 1.0
@@ -46,16 +47,30 @@ align = 1
 [node name="ScoreContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer"]
 margin_top = 78.0
 margin_right = 984.0
-margin_bottom = 445.0
-size_flags_vertical = 3
+margin_bottom = 398.0
+rect_min_size = Vector2( 0, 320 )
+rect_clip_content = true
 
-[node name="Buttons" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
-margin_top = 455.0
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer"]
+margin_top = 408.0
 margin_right = 984.0
-margin_bottom = 500.0
-custom_constants/separation = 50
+margin_bottom = 558.0
+rect_min_size = Vector2( 0, 150 )
+size_flags_vertical = 0
+custom_constants/separation = 10
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
-[node name="btnFirst" type="Button" parent="MarginContainer/VBoxContainer/Buttons"]
+[node name="Buttons" type="HBoxContainer" parent="MarginContainer/VBoxContainer/VBoxContainer"]
+margin_top = 22.0
+margin_right = 984.0
+margin_bottom = 67.0
+size_flags_vertical = 6
+custom_constants/separation = 50
+alignment = 2
+
+[node name="btnFirst" type="Button" parent="MarginContainer/VBoxContainer/VBoxContainer/Buttons"]
 margin_right = 208.0
 margin_bottom = 45.0
 rect_min_size = Vector2( 0, 45 )
@@ -63,7 +78,7 @@ size_flags_horizontal = 3
 custom_fonts/font = ExtResource( 2 )
 text = "First"
 
-[node name="btnPrev" type="Button" parent="MarginContainer/VBoxContainer/Buttons"]
+[node name="btnPrev" type="Button" parent="MarginContainer/VBoxContainer/VBoxContainer/Buttons"]
 margin_left = 258.0
 margin_right = 466.0
 margin_bottom = 45.0
@@ -72,7 +87,7 @@ size_flags_horizontal = 3
 custom_fonts/font = ExtResource( 2 )
 text = "Previous"
 
-[node name="btnNext" type="Button" parent="MarginContainer/VBoxContainer/Buttons"]
+[node name="btnNext" type="Button" parent="MarginContainer/VBoxContainer/VBoxContainer/Buttons"]
 margin_left = 516.0
 margin_right = 724.0
 margin_bottom = 45.0
@@ -81,7 +96,7 @@ size_flags_horizontal = 3
 custom_fonts/font = ExtResource( 2 )
 text = "Next"
 
-[node name="btnLast" type="Button" parent="MarginContainer/VBoxContainer/Buttons"]
+[node name="btnLast" type="Button" parent="MarginContainer/VBoxContainer/VBoxContainer/Buttons"]
 margin_left = 774.0
 margin_right = 984.0
 margin_bottom = 45.0
@@ -90,10 +105,10 @@ size_flags_horizontal = 3
 custom_fonts/font = ExtResource( 2 )
 text = "last"
 
-[node name="btnExit" type="Button" parent="MarginContainer/VBoxContainer"]
-margin_top = 510.0
+[node name="btnExit" type="Button" parent="MarginContainer/VBoxContainer/VBoxContainer"]
+margin_top = 100.0
 margin_right = 984.0
-margin_bottom = 560.0
+margin_bottom = 150.0
 rect_min_size = Vector2( 0, 50 )
 size_flags_vertical = 0
 custom_fonts/font = ExtResource( 2 )
@@ -104,11 +119,13 @@ text = "Exit"
 [node name="PageCountRequest" type="HTTPRequest" parent="."]
 
 [node name="Transitioner" parent="." instance=ExtResource( 5 )]
-[connection signal="pressed" from="MarginContainer/VBoxContainer/Buttons/btnFirst" to="." method="_on_btnFirst_pressed"]
-[connection signal="pressed" from="MarginContainer/VBoxContainer/Buttons/btnPrev" to="." method="_on_btnPrev_pressed"]
-[connection signal="pressed" from="MarginContainer/VBoxContainer/Buttons/btnNext" to="." method="_on_btnNext_pressed"]
-[connection signal="pressed" from="MarginContainer/VBoxContainer/Buttons/btnLast" to="." method="_on_btnLast_pressed"]
-[connection signal="pressed" from="MarginContainer/VBoxContainer/btnExit" to="." method="_on_btnExit_pressed"]
+
+[node name="ButtonPressedAudio" parent="." instance=ExtResource( 6 )]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/VBoxContainer/Buttons/btnFirst" to="." method="_on_btnFirst_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/VBoxContainer/Buttons/btnPrev" to="." method="_on_btnPrev_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/VBoxContainer/Buttons/btnNext" to="." method="_on_btnNext_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/VBoxContainer/Buttons/btnLast" to="." method="_on_btnLast_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/VBoxContainer/btnExit" to="." method="_on_btnExit_pressed"]
 [connection signal="request_completed" from="ScorePageRequest" to="." method="_on_ScorePageRequest_request_completed"]
 [connection signal="request_completed" from="PageCountRequest" to="." method="_on_PageCountRequest_request_completed"]
 [connection signal="transition_finished" from="Transitioner" to="." method="_on_Transitioner_transition_finished"]

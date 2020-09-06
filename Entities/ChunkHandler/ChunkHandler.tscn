@@ -13,41 +13,46 @@ script = ExtResource( 1 )
 
 [node name="Triggers" type="Node2D" parent="."]
 position = Vector2( 185, 0 )
+z_index = 5
 
 [node name="LeftTrigger" type="Area2D" parent="Triggers"]
-position = Vector2( -170, -42.025 )
+position = Vector2( -170.891, -9.95264 )
 collision_layer = 0
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Triggers/LeftTrigger"]
 shape = SubResource( 1 )
+disabled = true
 __meta__ = {
 "_edit_lock_": true
 }
 
 [node name="RightTrigger" type="Area2D" parent="Triggers"]
-position = Vector2( 170, -37.647 )
+position = Vector2( 173.564, -8.24734 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Triggers/RightTrigger"]
 shape = SubResource( 1 )
+disabled = true
 __meta__ = {
 "_edit_lock_": true
 }
 
 [node name="TopTrigger" type="Area2D" parent="Triggers"]
-position = Vector2( -12.191, -170 )
+position = Vector2( -5.0638, -181.582 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Triggers/TopTrigger"]
 shape = SubResource( 2 )
+disabled = true
 __meta__ = {
 "_edit_lock_": true
 }
 
 [node name="BottomTrigger" type="Area2D" parent="Triggers"]
-position = Vector2( -10.543, 170 )
+position = Vector2( -5.19766, 139.709 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Triggers/BottomTrigger"]
 shape = SubResource( 2 )
+disabled = true
 __meta__ = {
 "_edit_lock_": true
 }

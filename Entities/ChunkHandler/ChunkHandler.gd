@@ -12,6 +12,8 @@ var central_chunk: Vector2 = Vector2(0,0)
 var deleted_blocks = {}
 
 func _ready():
+	set_process(true)
+	
 	if PlayerData.position != Vector2(0,0):
 		
 		get_node("Triggers").global_position = PlayerData.position
@@ -33,6 +35,23 @@ func _ready():
 	chunk_containers_node = get_node("ChunkContainers")
 	
 	check_chunks()
+
+func _process(delta):
+	var new_central_chunk_y_pos
+	if PlayerData.position.y > 0:
+		new_central_chunk_y_pos = floor(PlayerData.position.y / (GlobalMapData.CHUNK_SIZE * GlobalMapData.BLOCK_SIZE)) / 2
+	else:
+		new_central_chunk_y_pos = ceil(PlayerData.position.y / (GlobalMapData.CHUNK_SIZE * GlobalMapData.BLOCK_SIZE)) / 2
+	
+	var new_central_chunk_x_pos: int = 0
+	if (PlayerData.position.x > 0):
+		new_central_chunk_x_pos = floor(PlayerData.position.x / (GlobalMapData.CHUNK_SIZE * GlobalMapData.BLOCK_SIZE)) / 2
+	else:
+		new_central_chunk_x_pos = ceil(PlayerData.position.x / (GlobalMapData.CHUNK_SIZE * GlobalMapData.BLOCK_SIZE)) / 2
+	
+	if new_central_chunk_x_pos != central_chunk.x or new_central_chunk_y_pos != central_chunk.y:
+		central_chunk = Vector2(new_central_chunk_x_pos, new_central_chunk_y_pos)
+		check_chunks()
 
 #Is called every time the triggers are hit.
 #Removes distant chunks and spawns in new chunks around player
@@ -70,7 +89,7 @@ func spawn_chunk(var xChunkPos, var yChunkPos):
 	chunkContainer.name = _craftNodeName(xChunkPos, yChunkPos)
 	chunkContainer.indexX = xChunkPos
 	chunkContainer.indexY = yChunkPos
-	chunkContainer.spawn_blocks()
+	#chunkContainer.spawn_blocks()
 	
 	chunk_containers_node.add_child(chunkContainer)
 

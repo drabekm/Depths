@@ -1,0 +1,86 @@
+[gd_scene load_steps=11 format=2]
+
+[ext_resource path="res://icon.png" type="Texture" id=1]
+[ext_resource path="res://Entities/RisingLava/RisingLava.gd" type="Script" id=2]
+
+[sub_resource type="SpriteFrames" id=1]
+animations = [ {
+"frames": [ ExtResource( 1 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 812.18, 10 )
+
+[sub_resource type="Gradient" id=6]
+offsets = PoolRealArray( 0.126638, 1 )
+colors = PoolColorArray( 0.985352, 0.169425, 0.0423393, 1, 0.379883, 0.379883, 0.379883, 1 )
+
+[sub_resource type="GradientTexture" id=7]
+gradient = SubResource( 6 )
+
+[sub_resource type="ParticlesMaterial" id=5]
+emission_shape = 2
+emission_box_extents = Vector3( 600, 1, 1 )
+flag_disable_z = true
+direction = Vector3( 0.4, -500, 0 )
+gravity = Vector3( 0, 250, 0 )
+initial_velocity = 403.45
+initial_velocity_random = 0.68
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
+scale = 13.0
+color_ramp = SubResource( 7 )
+
+[sub_resource type="Gradient" id=8]
+colors = PoolColorArray( 0.0976563, 0.0976563, 0.0976563, 1, 0.421875, 0.421875, 0.421875, 1 )
+
+[sub_resource type="GradientTexture" id=9]
+gradient = SubResource( 8 )
+
+[sub_resource type="ParticlesMaterial" id=10]
+emission_shape = 2
+emission_box_extents = Vector3( 600, 1, 1 )
+flag_disable_z = true
+direction = Vector3( 0.4, -500, 0 )
+gravity = Vector3( 0, 250, 0 )
+initial_velocity = 515.39
+initial_velocity_random = 0.68
+angular_velocity = 236.42
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
+scale = 6.0
+color_ramp = SubResource( 9 )
+
+[node name="RisingLava" type="Area2D"]
+collision_layer = 0
+collision_mask = 4
+script = ExtResource( 2 )
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+position = Vector2( 558.355, 568.383 )
+scale = Vector2( 18.396, 1 )
+z_index = 1
+frames = SubResource( 1 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( 424.009, 543.993 )
+shape = SubResource( 2 )
+
+[node name="BigParticles" type="Particles2D" parent="."]
+position = Vector2( 489.295, 587.631 )
+amount = 16
+lifetime = 2.0
+process_material = SubResource( 5 )
+
+[node name="SmallParticles" type="Particles2D" parent="."]
+position = Vector2( 489.295, 587.631 )
+amount = 32
+lifetime = 2.0
+process_material = SubResource( 10 )
+
+[node name="SpeedTimer" type="Timer" parent="."]
+wait_time = 0.2
+[connection signal="body_entered" from="." to="." method="_on_RisingLava_body_entered"]

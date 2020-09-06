@@ -3,9 +3,9 @@
 [ext_resource path="res://TestingScenes/NoiseTest.gd" type="Script" id=1]
 
 [sub_resource type="OpenSimplexNoise" id=1]
-octaves = 4
 period = 0.1
-persistence = 0.0
+persistence = 0.157
+lacunarity = 1.78
 
 [sub_resource type="NoiseTexture" id=2]
 width = 100

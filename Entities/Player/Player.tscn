@@ -1,10 +1,11 @@
-[gd_scene load_steps=34 format=2]
+[gd_scene load_steps=43 format=2]
 
 [ext_resource path="res://Entities/Player/textures_new/movement/player_even_newer_movement3.png" type="Texture" id=1]
 [ext_resource path="res://Entities/Player/Player.gd" type="Script" id=2]
 [ext_resource path="res://Entities/Player/textures_new/movement/player_even_newer_movement2.png" type="Texture" id=3]
 [ext_resource path="res://Entities/Player/Lights/betterShadow2.png" type="Texture" id=4]
 [ext_resource path="res://Entities/Player/textures_new/idle/player_even_newer_idle1.png" type="Texture" id=5]
+[ext_resource path="res://Sound/player/drill.wav" type="AudioStream" id=6]
 [ext_resource path="res://Entities/Player/textures_new/movement/player_even_newer_movement1.png" type="Texture" id=7]
 [ext_resource path="res://Entities/Player/textures_new/drill/idle/drill_idle.png" type="Texture" id=8]
 [ext_resource path="res://Entities/Player/textures_new/drill/elongate_drilling/.elongate_drill5.png" type="Texture" id=9]
@@ -23,6 +24,7 @@
 [ext_resource path="res://Entities/Player/textures_new/drill/elongate/elongate4.png" type="Texture" id=22]
 [ext_resource path="res://Entities/Player/textures_new/drill/elongate/elongate2.png" type="Texture" id=23]
 [ext_resource path="res://Entities/Player/textures_new/drill/drilling/drilling1.png" type="Texture" id=24]
+[ext_resource path="res://Sound/player/rocket.wav" type="AudioStream" id=25]
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
@@ -31,15 +33,15 @@ animations = [ {
 "name": "idle",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 7 ), ExtResource( 3 ), ExtResource( 1 ) ],
-"loop": true,
-"name": "moving",
-"speed": 15.0
-}, {
 "frames": [  ],
 "loop": true,
 "name": "drilling",
 "speed": 5.0
+}, {
+"frames": [ ExtResource( 7 ), ExtResource( 3 ), ExtResource( 1 ) ],
+"loop": true,
+"name": "moving",
+"speed": 15.0
 } ]
 
 [sub_resource type="Curve" id=2]
@@ -67,7 +69,29 @@ color = Color( 0, 0, 0, 1 )
 hue_variation = 0.52
 hue_variation_curve = SubResource( 3 )
 
-[sub_resource type="SpriteFrames" id=6]
+[sub_resource type="Gradient" id=5]
+offsets = PoolRealArray( 0.154286, 1 )
+colors = PoolColorArray( 0.833496, 0.620524, 0.136745, 1, 0.177246, 0.177246, 0.177246, 1 )
+
+[sub_resource type="GradientTexture" id=6]
+gradient = SubResource( 5 )
+
+[sub_resource type="ParticlesMaterial" id=7]
+lifetime_randomness = 0.5
+emission_shape = 1
+emission_sphere_radius = 2.0
+flag_disable_z = true
+gravity = Vector3( 0, 200, 0 )
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
+radial_accel = 80.0
+radial_accel_random = 0.25
+tangential_accel = 1.0
+tangential_accel_random = 1.0
+scale = 3.0
+color_ramp = SubResource( 6 )
+
+[sub_resource type="SpriteFrames" id=8]
 animations = [ {
 "frames": [ ExtResource( 8 ) ],
 "loop": true,
@@ -90,8 +114,7 @@ animations = [ {
 "speed": 5.0
 } ]
 
-[sub_resource type="Animation" id=7]
-resource_name = "move_center_from_bottom"
+[sub_resource type="Animation" id=9]
 length = 0.5
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:rotation_degrees")
@@ -106,8 +129,7 @@ tracks/0/keys = {
 "values": [ 90.0, 0.0 ]
 }
 
-[sub_resource type="Animation" id=8]
-resource_name = "move_center_from_up"
+[sub_resource type="Animation" id=10]
 length = 0.5
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:rotation_degrees")
@@ -122,8 +144,7 @@ tracks/0/keys = {
 "values": [ -90.0, 0.0 ]
 }
 
-[sub_resource type="Animation" id=9]
-resource_name = "move_down"
+[sub_resource type="Animation" id=11]
 length = 0.5
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:rotation_degrees")
@@ -138,8 +159,7 @@ tracks/0/keys = {
 "values": [ 0.0, 90.0 ]
 }
 
-[sub_resource type="Animation" id=10]
-resource_name = "move_up"
+[sub_resource type="Animation" id=12]
 length = 0.5
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:rotation_degrees")
@@ -154,13 +174,33 @@ tracks/0/keys = {
 "values": [ 0.0, -90.0 ]
 }
 
-[sub_resource type="RectangleShape2D" id=5]
+[sub_resource type="Gradient" id=13]
+offsets = PoolRealArray( 0, 0.460967, 0.992565 )
+colors = PoolColorArray( 0, 0, 0, 1, 0.757813, 0.549008, 0.298981, 1, 0.399414, 0.399414, 0.399414, 1 )
+
+[sub_resource type="GradientTexture" id=14]
+gradient = SubResource( 13 )
+
+[sub_resource type="ParticlesMaterial" id=15]
+emission_shape = 1
+emission_sphere_radius = 9.0
+flag_disable_z = true
+gravity = Vector3( -50, 0, 0 )
+orbit_velocity = 0.1
+orbit_velocity_random = 0.52
+scale = 4.0
+scale_random = 0.27
+color_ramp = SubResource( 14 )
+
+[sub_resource type="RectangleShape2D" id=16]
 extents = Vector2( 25.2965, 23.5135 )
+
+[sub_resource type="RectangleShape2D" id=17]
+extents = Vector2( 32, 32 )
 
 [node name="Player" type="KinematicBody2D" groups=[
 "Player",
 ]]
-collision_layer = 3
 script = ExtResource( 2 )
 
 [node name="Sprite" type="AnimatedSprite" parent="."]
@@ -171,28 +211,63 @@ __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="Particles2D" type="Particles2D" parent="Sprite"]
+[node name="Smoke" type="Particles2D" parent="Sprite"]
 position = Vector2( -21.8169, -21.6514 )
 amount = 128
 lifetime = 1.5
 local_coords = false
 process_material = SubResource( 4 )
 
+[node name="Thruster" type="Particles2D" parent="Sprite"]
+position = Vector2( 3.61066, 13.3085 )
+emitting = false
+amount = 64
+lifetime = 0.77
+process_material = SubResource( 7 )
+
 [node name="Drill" type="AnimatedSprite" parent="Sprite"]
 position = Vector2( -3.56718, -6.34184 )
-frames = SubResource( 6 )
+frames = SubResource( 8 )
 animation = "elongate_drill"
 offset = Vector2( 31.2052, 4.07056 )
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="DrilMover" type="AnimationPlayer" parent="Sprite/Drill"]
-anims/move_center_from_bottom = SubResource( 7 )
-anims/move_center_from_up = SubResource( 8 )
-anims/move_down = SubResource( 9 )
-anims/move_up = SubResource( 10 )
+anims/move_center_from_bottom = SubResource( 9 )
+anims/move_center_from_up = SubResource( 10 )
+anims/move_down = SubResource( 11 )
+anims/move_up = SubResource( 12 )
+
+[node name="DrillParticles" type="Particles2D" parent="Sprite/Drill"]
+position = Vector2( 55.7706, 0.27071 )
+emitting = false
+amount = 50
+one_shot = true
+process_material = SubResource( 15 )
+
+[node name="DrillResetTimer" type="Timer" parent="Sprite/Drill"]
+wait_time = 3.0
+one_shot = true
+
+[node name="DrillSound" type="AudioStreamPlayer" parent="Sprite/Drill"]
+stream = ExtResource( 6 )
+volume_db = -16.0
+pitch_scale = 0.32
+
+[node name="DrillSoundEndTimer" type="Timer" parent="Sprite/Drill/DrillSound"]
+wait_time = 0.3
+one_shot = true
+
+[node name="RocketSoundPlayer" type="AudioStreamPlayer2D" parent="Sprite"]
+stream = ExtResource( 25 )
+volume_db = -15.0
+pitch_scale = 3.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2( 3.66916, -0.55767 )
-shape = SubResource( 5 )
+shape = SubResource( 16 )
 __meta__ = {
 "_edit_lock_": true
 }
@@ -347,4 +422,13 @@ __meta__ = {
 }
 
 [node name="CanvasLayer" parent="." instance=ExtResource( 12 )]
+
+[node name="ChunkBody" type="StaticBody2D" parent="."]
+collision_layer = 2
+collision_mask = 0
+
+[node name="ChunkCollision" type="CollisionShape2D" parent="ChunkBody"]
+shape = SubResource( 17 )
 [connection signal="animation_finished" from="Sprite/Drill" to="." method="_on_Drill_animation_finished"]
+[connection signal="timeout" from="Sprite/Drill/DrillResetTimer" to="." method="_on_DrillResetTimer_timeout"]
+[connection signal="timeout" from="Sprite/Drill/DrillSound/DrillSoundEndTimer" to="." method="_on_DrillSoundEnd_timeout"]

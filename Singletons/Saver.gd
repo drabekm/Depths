@@ -9,10 +9,10 @@ var map_ore_seed: int = 0
 var map_ore_seed_helper: int = 0
 
 func _ready():
-	_load_data()
+	load_data()
 	get_tree().set_auto_accept_quit(false)
 
-func _load_data():
+func load_data():
 	if _load_map() and _load_player():
 		continue_data_ready = true
 

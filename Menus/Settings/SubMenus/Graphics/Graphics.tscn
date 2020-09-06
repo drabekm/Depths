@@ -31,6 +31,7 @@ align = 1
 [node name="SettingsSwitch" parent="MarginContainer/Rows/ScrollContainer/Options/FullScreen" index="1" instance=ExtResource( 2 )]
 margin_left = 226.0
 margin_right = 381.0
+setting_key = "display/window/size/fullscreen"
 
 [node name="Vsync" type="HBoxContainer" parent="MarginContainer/Rows/ScrollContainer/Options" index="1"]
 margin_top = 82.0
@@ -49,6 +50,7 @@ align = 1
 [node name="SettingsSwitch" parent="MarginContainer/Rows/ScrollContainer/Options/Vsync" index="1" instance=ExtResource( 2 )]
 margin_left = 197.0
 margin_right = 352.0
+setting_key = "display/window/vsync/use_vsync"
 
 [node name="FPS" type="HBoxContainer" parent="MarginContainer/Rows/ScrollContainer/Options" index="2"]
 margin_top = 123.0
@@ -67,6 +69,7 @@ align = 1
 [node name="SettingsSwitch" parent="MarginContainer/Rows/ScrollContainer/Options/FPS" index="1" instance=ExtResource( 2 )]
 margin_left = 216.0
 margin_right = 371.0
+setting_key = "debug/settings/stdout/print_fps"
 
 [node name="Spacer" type="HBoxContainer" parent="MarginContainer/Rows/ScrollContainer/Options" index="3"]
 margin_top = 164.0
@@ -103,6 +106,7 @@ align = 1
 [node name="SettingsSwitch" parent="MarginContainer/Rows/ScrollContainer/Options/Workaround wrapper/WorkAround" index="1" instance=ExtResource( 2 )]
 margin_left = 243.0
 margin_right = 398.0
+setting_key = "rendering/quality/2d/use_nvidia_rect_flicker_workaround"
 
 [node name="Label" type="Label" parent="MarginContainer/Rows/ScrollContainer/Options/Workaround wrapper" index="1" groups=[
 "translate",
@@ -112,3 +116,6 @@ margin_right = 398.0
 margin_bottom = 74.0
 text = "settings.graphics.workaroundtext"
 align = 1
+
+[node name="Transitioner" parent="." index="1"]
+visible = true

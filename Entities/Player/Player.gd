@@ -29,11 +29,15 @@ var corner_shadow
 var current_drill_block
 var drill_sprite: AnimatedSprite
 var drill_sprite_mover : AnimationPlayer
+var is_drilling: bool = false
 var was_drilling_up: bool = false
 var was_drilling_down: bool = false
-
+var drill_particles: Particles2D
+var drill_sound: AudioStreamPlayer
+var drill_sound_end_timer: Timer
 
 func _ready():
+	Earthquake.game_start()
 	sprite = get_node("Sprite")
 	forwardDrill = get_node("ForwardDrill")
 	bottomDrill = get_node("BottomDrill")
@@ -41,8 +45,9 @@ func _ready():
 	corner_shadow = get_node("CornerShadow")
 	drill_sprite = get_node("Sprite/Drill")
 	drill_sprite_mover = get_node("Sprite/Drill/DrilMover")
-	
-	
+	drill_particles = get_node("Sprite/Drill/DrillParticles")
+	drill_sound = get_node("Sprite/Drill/DrillSound")
+	drill_sound_end_timer = get_node("Sprite/Drill/DrillSound/DrillSoundEndTimer")
 	if PlayerData.position != Vector2(0,0):
 		self.global_position = PlayerData.position
 	
@@ -53,6 +58,7 @@ func _process(delta):
 	update_debug_labels()
 	_update_shadow_opacity()
 	_update_animation()
+	_update_thruster()
 
 func _physics_process(delta):
 	if current_drill_block == null:
@@ -64,6 +70,16 @@ func _physics_process(delta):
 	
 	_subtract_fuel(delta)
 
+func _update_thruster():
+	
+	if is_thrusters_on:
+		get_node("Sprite/Thruster").emitting = true
+		if not get_node("Sprite/RocketSoundPlayer").playing:
+			get_node("Sprite/RocketSoundPlayer").play()
+	else:
+		get_node("Sprite/Thruster").emitting = false
+		get_node("Sprite/RocketSoundPlayer").stop()
+
 func _update_shadow_opacity():
 	corner_shadow.energy = min(1, position.y / 720)
 
@@ -71,15 +87,14 @@ func _drilling_move(delta):
 	self.position = self.position.linear_interpolate(Vector2(self.position.x, current_drill_block.global_position.y + 32), 2.0 * delta)
 	self.position = self.position.linear_interpolate(Vector2(current_drill_block.global_position.x + 32, self.position.y), 4.0 * delta)
 	
+	# Drilling finish
 	if self.position.distance_to(current_drill_block.global_position + Vector2(32,32)) < 10:
 		current_drill_block.destroy()
+		drill_sound_end_timer.start()
 		$CollisionShape2D.disabled = false
 		current_drill_block = null
-		if was_drilling_down:
-			drill_sprite_mover.play_backwards("move_down")
-		if was_drilling_up:
-			drill_sprite_mover.play_backwards("move_up")
-		
+		is_drilling = false
+		get_node("Sprite/Drill/DrillResetTimer").start()
 		drill_sprite.play("idle")
 		was_drilling_down = false
 		was_drilling_up = false
@@ -95,14 +110,23 @@ func _drill_colides_with_block(drill) -> bool:
 
 func _start_drilling(drill: Node, is_bottom_drill, is_up_drill):
 	if _drill_colides_with_block(drill):
+				is_drilling = false
+				drill_sound_end_timer.stop()
+				if not drill_sound.playing:
+					drill_sound.play()
 				if is_bottom_drill:
 					was_drilling_down = true
 					drill_sprite.play("elongate")
-					drill_sprite_mover.play("move_down")
+					if floor(drill_sprite.rotation_degrees) != 90:
+						drill_sprite_mover.play("move_down")
 				else:
+					if floor(drill_sprite.rotation_degrees) == 90:
+						drill_sprite_mover.play_backwards("move_down")
+					if floor(drill_sprite.rotation_degrees) == -90:
+						drill_sprite_mover.play_backwards("move_up")
 					drill_sprite.play("drill")
 				
-				
+				drill_particles.emitting = true
 				var collider = drill.get_collider()
 				if collider.has_mineral:
 					PlayerData.add_mineral(collider.mineral_type)
@@ -125,7 +149,9 @@ func input() -> void:
 	var acceleration = PlayerData.acceleration
 	var max_speed = PlayerData.max_speed
 	
+	is_thrusters_on = false
 	if Input.is_action_pressed("ui_up"):
+		is_thrusters_on = true
 		velocity.y = velocity.y - PlayerData.thurster_power
 		is_moving = true
 	elif Input.is_action_pressed("ui_down"):
@@ -205,3 +231,17 @@ func update_debug_labels() -> void:
 func _on_Drill_animation_finished():
 	if drill_sprite.animation == "elongate":
 		drill_sprite.play("elongate_drill")
+
+
+func _on_DrillResetTimer_timeout():
+	print("reseted")
+	print(floor(rad2deg(drill_sprite.rotation)))
+	if floor(rad2deg(drill_sprite.rotation)) == 90:
+		drill_sprite_mover.play("move_center_from_bottom")
+	if floor(rad2deg(drill_sprite.rotation)) == -90:
+		drill_sprite_mover.play("move_center_from_up")
+
+
+func _on_DrillSoundEnd_timeout():
+	print("timeout")
+	drill_sound.stop()

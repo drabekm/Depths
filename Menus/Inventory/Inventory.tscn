@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Menus/Inventory/Inventory.gd" type="Script" id=1]
 [ext_resource path="res://fontDump/textFont.tres" type="DynamicFont" id=2]
 [ext_resource path="res://fontDump/headerFont.tres" type="DynamicFont" id=3]
 [ext_resource path="res://Menus/UITheme.tres" type="Theme" id=4]
+[ext_resource path="res://Sound/Menu/ButtonPressedAudio.tscn" type="PackedScene" id=5]
 
 [node name="Inventory" type="Control"]
 pause_mode = 2
@@ -39,13 +40,13 @@ __meta__ = {
 
 [node name="MarginContainer" type="MarginContainer" parent="CenterContainer"]
 margin_left = 323.0
-margin_top = 183.0
+margin_top = 168.0
 margin_right = 700.0
-margin_bottom = 417.0
+margin_bottom = 432.0
 
 [node name="ColorRect2" type="ColorRect" parent="CenterContainer/MarginContainer"]
 margin_right = 377.0
-margin_bottom = 234.0
+margin_bottom = 264.0
 rect_min_size = Vector2( 100, 40 )
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -53,11 +54,11 @@ color = Color( 0, 0, 0, 0.6 )
 
 [node name="MarginContainer" type="MarginContainer" parent="CenterContainer/MarginContainer"]
 margin_right = 377.0
-margin_bottom = 234.0
+margin_bottom = 264.0
 
 [node name="Rows" type="VBoxContainer" parent="CenterContainer/MarginContainer/MarginContainer"]
 margin_right = 377.0
-margin_bottom = 234.0
+margin_bottom = 264.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -104,7 +105,7 @@ margin_bottom = 193.0
 [node name="Spacing" type="Label" parent="CenterContainer/MarginContainer/MarginContainer/Rows/Center4"]
 margin_left = 184.0
 margin_right = 192.0
-margin_bottom = 39.0
+margin_bottom = 69.0
 text = "
 "
 
@@ -114,6 +115,8 @@ margin_right = 377.0
 margin_bottom = 234.0
 custom_fonts/font = ExtResource( 2 )
 text = "Back to game"
+
+[node name="ButtonPressedAudio" parent="." instance=ExtResource( 5 )]
 [connection signal="resized" from="CenterContainer" to="." method="_on_CenterContainer_resized"]
 [connection signal="sort_children" from="CenterContainer" to="." method="_on_CenterContainer_sort_children"]
 [connection signal="pressed" from="CenterContainer/MarginContainer/MarginContainer/Rows/ExitButton" to="." method="_on_ExitButton_pressed"]

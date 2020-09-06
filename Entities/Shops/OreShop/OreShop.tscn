@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=2]
+[gd_scene load_steps=31 format=2]
 
 [ext_resource path="res://Entities/Shops/BaseShop/BaseShop.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Entities/Shops/OreShop/OreShop.gd" type="Script" id=2]
@@ -42,15 +42,20 @@ colors = PoolColorArray( 0, 0, 0, 1, 0.285156, 0.285156, 0.285156, 1 )
 [sub_resource type="GradientTexture" id=3]
 gradient = SubResource( 2 )
 
-[sub_resource type="CurveTexture" id=4]
+[sub_resource type="Curve" id=4]
+min_value = -1.0
+_data = [ Vector2( 0, 1 ), 0.0, 0.0, 0, 0, Vector2( 1, 1 ), 0.0, 0.0, 0, 0 ]
 
-[sub_resource type="Curve" id=5]
+[sub_resource type="CurveTexture" id=5]
+curve = SubResource( 4 )
+
+[sub_resource type="Curve" id=6]
 _data = [ Vector2( 0.0424528, 0.835227 ), 0.0, -1.07291, 0, 0, Vector2( 1, 1 ), 0.0, 0.0, 0, 0 ]
 
-[sub_resource type="CurveTexture" id=6]
-curve = SubResource( 5 )
+[sub_resource type="CurveTexture" id=7]
+curve = SubResource( 6 )
 
-[sub_resource type="ParticlesMaterial" id=7]
+[sub_resource type="ParticlesMaterial" id=8]
 emission_shape = 2
 emission_box_extents = Vector3( 25, 1, 1 )
 flag_disable_z = true
@@ -61,9 +66,9 @@ orbit_velocity = 0.0
 orbit_velocity_random = 0.0
 scale = 8.0
 scale_random = 0.5
-scale_curve = SubResource( 6 )
+scale_curve = SubResource( 7 )
 color_ramp = SubResource( 3 )
-hue_variation_curve = SubResource( 4 )
+hue_variation_curve = SubResource( 5 )
 
 [node name="OreShop" instance=ExtResource( 1 )]
 script = ExtResource( 2 )
@@ -71,8 +76,8 @@ script = ExtResource( 2 )
 [node name="Building" parent="." index="0"]
 scale = Vector2( 3, 3 )
 frames = SubResource( 1 )
-animation = "player_near"
-frame = 12
+animation = "idle"
+frame = 3
 playing = true
 
 [node name="Background" parent="CanvasLayer/UI" index="0"]
@@ -147,6 +152,6 @@ __meta__ = {
 position = Vector2( 102.53, -90.5097 )
 amount = 80
 lifetime = 2.0
-process_material = SubResource( 7 )
+process_material = SubResource( 8 )
 [connection signal="pressed" from="CanvasLayer/UI/ButtonSellAll" to="." method="_on_ButtonSellAll_pressed"]
 [connection signal="pressed" from="CanvasLayer/UI/ButtonExit" to="." method="_on_ButtonExit_pressed"]

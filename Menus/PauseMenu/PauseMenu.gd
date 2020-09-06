@@ -26,15 +26,18 @@ func hide():
 
 
 func _on_Continue_pressed():
+	$ButtonPressedAudio.play()
 	hide()
 
 
 func _on_Settings_pressed():
 	# todo: open settings
+	$ButtonPressedAudio.play()
 	pass
 
 
 func _on_Exit_pressed():
+	$ButtonPressedAudio.play()
 	get_tree().paused = false
 	MenuStatus.pause_menu_opened = false
 	Saver.is_in_game = false

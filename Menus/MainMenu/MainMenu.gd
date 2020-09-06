@@ -13,12 +13,16 @@ enum CHANGE_STATE{
 var top_score_scene = preload("res://Menus/TopScoreMenu/TopScore.tscn")
 var settings_scene = preload("res://Menus/Settings/SettingsMenu.tscn")
 var game_scene = preload("res://Maps/ChunkTestWorld.tscn")
+var button_press: AudioStreamPlayer
+
 
 var current_change = CHANGE_STATE.none
 
 func _ready():
 	_load_translations()
+	Saver.load_data()
 	get_node("Transitioner").open()
+	button_press = get_node("ButtonPressedAudio")
 	if Saver.continue_data_ready:
 		get_node("VBoxContainer/Continue").disabled = false
 
@@ -31,11 +35,13 @@ func _load_translations():
 
 
 func _on_NewGame_pressed():
+	button_press.play()
 	Saver.is_in_game = true
 	MenuStatus.GameIsNew()
 	Saver.delete_save_files()
 	PlayerData.reset()
 	GlobalMapData.reset()
+	Earthquake.reset()
 	get_node("Transitioner").close()
 	
 	if current_change == CHANGE_STATE.none:
@@ -43,6 +49,7 @@ func _on_NewGame_pressed():
 
 
 func _on_Continue_pressed():
+	button_press.play()
 	Saver.is_in_game = true
 	MenuStatus.GameIsContinue()
 	get_node("Transitioner").close()
@@ -51,18 +58,21 @@ func _on_Continue_pressed():
 
 
 func _on_Scores_pressed():
+	button_press.play()
 	get_node("Transitioner").close()
 	if current_change == CHANGE_STATE.none:
 		current_change = CHANGE_STATE.scores
 
 
 func _on_Settings_pressed():
+	button_press.play()
 	get_node("Transitioner").close()
 	if current_change == CHANGE_STATE.none:
 		current_change = CHANGE_STATE.settings
 
 
 func _on_Exit_pressed():
+	button_press.play()
 	get_node("Transitioner").close()
 	if current_change == CHANGE_STATE.none:
 		current_change = CHANGE_STATE.quit
