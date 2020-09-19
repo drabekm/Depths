@@ -5,8 +5,8 @@ var door_sprite: AnimatedSprite
 
 func _on_ready():
 	door_sprite = get_node("Building/Door")
-	var upgrades = get_node("CanvasLayer/UI/CategoryUpgrades/FuelUpgrades/Upgrades").get_children()
-	upgrades += get_node("CanvasLayer/UI/CategoryUpgrades/HullUpgrades/Upgrades").get_children()
+	var upgrades = get_node("CanvasLayer/UI/MarginContainer/VBoxContainer/CategoryUpgrades/FuelUpgrades/Upgrades").get_children()
+	upgrades += get_node("CanvasLayer/UI/MarginContainer/VBoxContainer/CategoryUpgrades/HullUpgrades/Upgrades").get_children()
 	
 	
 	for upgrade_item in upgrades:
@@ -20,7 +20,7 @@ func _close_shop():
 	get_node("CanvasLayer/UI/NotEnoughMoneyDialog").hide()
 
 func _hide_all_upgrades():
-	var upgrade_lists = get_node("CanvasLayer/UI/CategoryUpgrades").get_children()
+	var upgrade_lists = get_node("CanvasLayer/UI/MarginContainer/VBoxContainer/CategoryUpgrades").get_children()
 	for upgrade_list in upgrade_lists:
 		upgrade_list.visible = false
 
@@ -32,11 +32,11 @@ func _player_left():
 
 func _on_ButtonFuel_pressed():
 	_hide_all_upgrades()
-	get_node("CanvasLayer/UI/CategoryUpgrades/FuelUpgrades").visible = true
+	get_node("CanvasLayer/UI/MarginContainer/VBoxContainer/CategoryUpgrades/FuelUpgrades").visible = true
 
 func _on_ButtonHull_pressed():
 	_hide_all_upgrades()
-	get_node("CanvasLayer/UI/CategoryUpgrades/HullUpgrades").visible = true
+	get_node("CanvasLayer/UI/MarginContainer/VBoxContainer/CategoryUpgrades/HullUpgrades").visible = true
 
 func _on_ButtonEngine_pressed():
 	_hide_all_upgrades()

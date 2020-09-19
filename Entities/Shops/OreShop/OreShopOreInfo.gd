@@ -5,6 +5,12 @@ extends "res://Menus/Inventory/OreInfo.gd"
 
 signal has_been_sold
 
+func _ready():
+	.init(ore_type)
+	$InfoColumns/ButtonSellOne.text = Translator.translate($InfoColumns/ButtonSellOne.text)
+	$InfoColumns/ButtonSellAll.text = Translator.translate($InfoColumns/ButtonSellAll.text)
+	pass
+
 func _on_ButtonSellOne_pressed():
 	if PlayerData.inventory[ore_type] > 0:
 		PlayerData.inventory[ore_type] -= 1

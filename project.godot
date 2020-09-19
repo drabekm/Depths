@@ -19,6 +19,7 @@ run/main_scene="res://Maps/ChunkTestWorld.tscn"
 config/icon="res://icon.png"
 config/language=0
 config/scoreserver=""
+config/firststart=true
 
 [audio]
 

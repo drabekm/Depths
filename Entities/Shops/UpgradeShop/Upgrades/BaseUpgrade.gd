@@ -23,9 +23,17 @@ signal not_enough_money(upgrade_name)
 func _ready():
 	buy_button = get_node("ButtonBuy")
 	info_button = get_node("ButtonInfo")
+	_translate_labels_and_buttons()
+	buy_button.text = Translator.translate(buy_button.text)
+
+func _translate_labels_and_buttons():
+	var nodes = get_tree().get_nodes_in_group("translate")
+	for node in nodes:
+		if node is Label or node is Button:
+			node.text = Translator.translate(node.text)
 
 func _set_buy_button_price(price: int):
-	buy_button.text = "Buy: [" + str(price) + "]"
+	buy_button.text += "[" + str(price) + "]"
 
 func _on_ButtonBuy_pressed():
 	_buy()

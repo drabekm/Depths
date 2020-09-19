@@ -14,9 +14,8 @@ var ore_type: int
 
 func init(ore_type: int):
 	get_node("InfoColumns/Icon").texture = load(ore_icons[ore_type])
-	get_node("InfoColumns/Text").text = ore_names[ore_type] + ": " + str(PlayerData.inventory[ore_type])
+	get_node("InfoColumns/Text").text = Translator.translate(ore_names[ore_type]) + ": " + str(PlayerData.inventory[ore_type])
 	self.ore_type = ore_type
-	# TODO: ore_name resHelper
 
 func update_count():
 	get_node("InfoColumns/Text").text = ore_names[ore_type] + ": " + str(PlayerData.inventory[ore_type])

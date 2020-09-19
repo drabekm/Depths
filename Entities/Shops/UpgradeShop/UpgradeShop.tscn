@@ -60,7 +60,7 @@ script = ExtResource( 3 )
 scale = Vector2( 3, 3 )
 frames = SubResource( 1 )
 animation = "idle"
-frame = 3
+frame = 5
 playing = true
 
 [node name="Door" type="AnimatedSprite" parent="Building" index="0"]
@@ -69,205 +69,243 @@ frames = SubResource( 2 )
 animation = "idle"
 playing = true
 
+[node name="UI" parent="CanvasLayer" index="0"]
+visible = true
+
 [node name="Background" parent="CanvasLayer/UI" index="0"]
 margin_top = -1.25992
 margin_bottom = -1.25989
 color = Color( 0.188235, 0.227451, 0.313726, 1 )
 
-[node name="Title" type="Label" parent="CanvasLayer/UI" index="1"]
+[node name="NotEnoughMoneyDialog" type="AcceptDialog" parent="CanvasLayer/UI" index="1"]
+margin_left = 410.821
+margin_top = 281.738
+margin_right = 580.821
+margin_bottom = 339.738
+window_title = "Not enough money"
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/UI" index="2"]
 anchor_right = 1.0
-margin_left = 354.189
-margin_top = 32.5949
-margin_right = -341.811
-margin_bottom = 92.5949
+anchor_bottom = 1.0
+custom_constants/margin_right = 10
+custom_constants/margin_top = 10
+custom_constants/margin_left = 10
+custom_constants/margin_bottom = 10
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/UI/MarginContainer" index="0"]
+margin_left = 10.0
+margin_top = 10.0
+margin_right = 1014.0
+margin_bottom = 590.0
+custom_constants/separation = 15
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Title" type="Label" parent="CanvasLayer/UI/MarginContainer/VBoxContainer" index="0" groups=[
+"translate",
+]]
+margin_right = 1004.0
+margin_bottom = 68.0
 custom_fonts/font = ExtResource( 7 )
-text = "Upgrades"
+text = "Upgradeshop.title"
 align = 1
 valign = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="CategorySwitches" type="HBoxContainer" parent="CanvasLayer/UI" index="2"]
-anchor_left = 0.5
-anchor_top = 0.284
-anchor_right = 0.5
-anchor_bottom = 0.284
-margin_left = -181.045
-margin_top = -21.1719
-margin_right = 230.955
-margin_bottom = 18.8281
+[node name="CategorySwitches" type="HBoxContainer" parent="CanvasLayer/UI/MarginContainer/VBoxContainer" index="1"]
+margin_top = 83.0
+margin_right = 1004.0
+margin_bottom = 120.0
 custom_constants/separation = 20
+alignment = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="ButtonFuel" type="Button" parent="CanvasLayer/UI/CategorySwitches" index="0"]
-margin_right = 43.0
-margin_bottom = 40.0
+[node name="ButtonFuel" type="Button" parent="CanvasLayer/UI/MarginContainer/VBoxContainer/CategorySwitches" index="0" groups=[
+"translate",
+]]
+margin_left = 82.0
+margin_right = 228.0
+margin_bottom = 37.0
 custom_fonts/font = ExtResource( 6 )
-text = "Fuel"
+text = "upgradeshop.Fuel"
 __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="ButtonHull" type="Button" parent="CanvasLayer/UI/CategorySwitches" index="1"]
-margin_left = 63.0
-margin_right = 103.0
-margin_bottom = 40.0
+[node name="ButtonHull" type="Button" parent="CanvasLayer/UI/MarginContainer/VBoxContainer/CategorySwitches" index="1" groups=[
+"translate",
+]]
+margin_left = 248.0
+margin_right = 391.0
+margin_bottom = 37.0
 custom_fonts/font = ExtResource( 6 )
-text = "Hull"
+text = "upgradeshop.Hull"
 __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="ButtonEngine" type="Button" parent="CanvasLayer/UI/CategorySwitches" index="2"]
-margin_left = 123.0
-margin_right = 184.0
-margin_bottom = 40.0
+[node name="ButtonEngine" type="Button" parent="CanvasLayer/UI/MarginContainer/VBoxContainer/CategorySwitches" index="2" groups=[
+"translate",
+]]
+margin_left = 411.0
+margin_right = 575.0
+margin_bottom = 37.0
 custom_fonts/font = ExtResource( 6 )
-text = "Engine"
+text = "upgradeshop.Engine"
 __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="ButtonCargo" type="Button" parent="CanvasLayer/UI/CategorySwitches" index="3"]
-margin_left = 204.0
-margin_right = 263.0
-margin_bottom = 40.0
+[node name="ButtonCargo" type="Button" parent="CanvasLayer/UI/MarginContainer/VBoxContainer/CategorySwitches" index="3" groups=[
+"translate",
+]]
+margin_left = 595.0
+margin_right = 757.0
+margin_bottom = 37.0
 custom_fonts/font = ExtResource( 6 )
-text = "Cargo"
+text = "upgradeshop.Cargo"
 __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="ButtonDrill" type="Button" parent="CanvasLayer/UI/CategorySwitches" index="4"]
-margin_left = 283.0
-margin_right = 325.0
-margin_bottom = 40.0
+[node name="ButtonDrill" type="Button" parent="CanvasLayer/UI/MarginContainer/VBoxContainer/CategorySwitches" index="4" groups=[
+"translate",
+]]
+margin_left = 777.0
+margin_right = 922.0
+margin_bottom = 37.0
 custom_fonts/font = ExtResource( 6 )
-text = "Drill"
+text = "upgradeshop.Drill"
 __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="ButtonCooling" type="Button" parent="CanvasLayer/UI/CategorySwitches" index="5"]
-margin_left = 345.0
-margin_right = 412.0
-margin_bottom = 40.0
-custom_fonts/font = ExtResource( 6 )
-text = "Cooling"
-__meta__ = {
-"_edit_lock_": true
-}
-
-[node name="CategoryUpgrades" type="MarginContainer" parent="CanvasLayer/UI" index="3"]
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-margin_top = -392.0
+[node name="CategoryUpgrades" type="MarginContainer" parent="CanvasLayer/UI/MarginContainer/VBoxContainer" index="2"]
+margin_top = 135.0
+margin_right = 1004.0
+margin_bottom = 490.0
+size_flags_vertical = 3
 custom_constants/margin_right = 40
 custom_constants/margin_left = 40
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="FuelUpgrades" type="ScrollContainer" parent="CanvasLayer/UI/CategoryUpgrades" index="0"]
+[node name="FuelUpgrades" type="ScrollContainer" parent="CanvasLayer/UI/MarginContainer/VBoxContainer/CategoryUpgrades" index="0"]
 margin_left = 40.0
-margin_right = 984.0
-margin_bottom = 392.0
+margin_right = 964.0
+margin_bottom = 355.0
 
-[node name="Upgrades" type="VBoxContainer" parent="CanvasLayer/UI/CategoryUpgrades/FuelUpgrades" index="0"]
-margin_right = 944.0
+[node name="Upgrades" type="VBoxContainer" parent="CanvasLayer/UI/MarginContainer/VBoxContainer/CategoryUpgrades/FuelUpgrades" index="0"]
+margin_right = 912.0
 margin_bottom = 486.0
 size_flags_horizontal = 3
 
-[node name="FuelUpgrade" parent="CanvasLayer/UI/CategoryUpgrades/FuelUpgrades/Upgrades" index="0" instance=ExtResource( 2 )]
+[node name="FuelUpgrade" parent="CanvasLayer/UI/MarginContainer/VBoxContainer/CategoryUpgrades/FuelUpgrades/Upgrades" index="0" instance=ExtResource( 2 )]
 anchor_right = 0.0
-margin_right = 932.0
+margin_right = 912.0
 margin_bottom = 94.0
+theme = null
 
-[node name="FuelUpgrade2" parent="CanvasLayer/UI/CategoryUpgrades/FuelUpgrades/Upgrades" index="1" instance=ExtResource( 2 )]
+[node name="FuelUpgrade2" parent="CanvasLayer/UI/MarginContainer/VBoxContainer/CategoryUpgrades/FuelUpgrades/Upgrades" index="1" instance=ExtResource( 2 )]
 anchor_right = 0.0
 margin_top = 98.0
-margin_right = 932.0
+margin_right = 912.0
 margin_bottom = 192.0
+theme = null
 type = 1
 
-[node name="FuelUpgrade3" parent="CanvasLayer/UI/CategoryUpgrades/FuelUpgrades/Upgrades" index="2" instance=ExtResource( 2 )]
+[node name="FuelUpgrade3" parent="CanvasLayer/UI/MarginContainer/VBoxContainer/CategoryUpgrades/FuelUpgrades/Upgrades" index="2" instance=ExtResource( 2 )]
 anchor_right = 0.0
 margin_top = 196.0
-margin_right = 932.0
+margin_right = 912.0
 margin_bottom = 290.0
+theme = null
 type = 2
 
-[node name="FuelUpgrade4" parent="CanvasLayer/UI/CategoryUpgrades/FuelUpgrades/Upgrades" index="3" instance=ExtResource( 2 )]
+[node name="FuelUpgrade4" parent="CanvasLayer/UI/MarginContainer/VBoxContainer/CategoryUpgrades/FuelUpgrades/Upgrades" index="3" instance=ExtResource( 2 )]
 anchor_right = 0.0
 margin_top = 294.0
-margin_right = 932.0
+margin_right = 912.0
 margin_bottom = 388.0
+theme = null
 type = 3
 
-[node name="FuelUpgrade5" parent="CanvasLayer/UI/CategoryUpgrades/FuelUpgrades/Upgrades" index="4" instance=ExtResource( 2 )]
+[node name="FuelUpgrade5" parent="CanvasLayer/UI/MarginContainer/VBoxContainer/CategoryUpgrades/FuelUpgrades/Upgrades" index="4" instance=ExtResource( 2 )]
 anchor_right = 0.0
 margin_top = 392.0
-margin_right = 932.0
+margin_right = 912.0
 margin_bottom = 486.0
+theme = null
 type = 4
 
-[node name="HullUpgrades" type="ScrollContainer" parent="CanvasLayer/UI/CategoryUpgrades" index="1"]
+[node name="HullUpgrades" type="ScrollContainer" parent="CanvasLayer/UI/MarginContainer/VBoxContainer/CategoryUpgrades" index="1"]
 visible = false
 margin_left = 40.0
-margin_right = 984.0
-margin_bottom = 392.0
+margin_right = 964.0
+margin_bottom = 355.0
 
-[node name="Upgrades" type="VBoxContainer" parent="CanvasLayer/UI/CategoryUpgrades/HullUpgrades" index="0"]
-margin_right = 944.0
+[node name="Upgrades" type="VBoxContainer" parent="CanvasLayer/UI/MarginContainer/VBoxContainer/CategoryUpgrades/HullUpgrades" index="0"]
+margin_right = 924.0
 margin_bottom = 646.0
 size_flags_horizontal = 3
 
-[node name="HullUpgrade" parent="CanvasLayer/UI/CategoryUpgrades/HullUpgrades/Upgrades" index="0" instance=ExtResource( 4 )]
+[node name="HullUpgrade" parent="CanvasLayer/UI/MarginContainer/VBoxContainer/CategoryUpgrades/HullUpgrades/Upgrades" index="0" instance=ExtResource( 4 )]
 anchor_right = 0.0
-margin_right = 944.0
-margin_bottom = 65.0
+margin_right = 932.0
+margin_bottom = 126.0
+theme = null
 
-[node name="HullUpgrade2" parent="CanvasLayer/UI/CategoryUpgrades/HullUpgrades/Upgrades" index="1" instance=ExtResource( 4 )]
+[node name="HullUpgrade2" parent="CanvasLayer/UI/MarginContainer/VBoxContainer/CategoryUpgrades/HullUpgrades/Upgrades" index="1" instance=ExtResource( 4 )]
 anchor_right = 0.0
-margin_top = 69.0
-margin_right = 944.0
-margin_bottom = 134.0
+margin_top = 130.0
+margin_right = 932.0
+margin_bottom = 256.0
+theme = null
 type = 1
 
-[node name="HullUpgrade3" parent="CanvasLayer/UI/CategoryUpgrades/HullUpgrades/Upgrades" index="2" instance=ExtResource( 4 )]
+[node name="HullUpgrade3" parent="CanvasLayer/UI/MarginContainer/VBoxContainer/CategoryUpgrades/HullUpgrades/Upgrades" index="2" instance=ExtResource( 4 )]
 anchor_right = 0.0
-margin_top = 138.0
-margin_right = 944.0
-margin_bottom = 203.0
+margin_top = 260.0
+margin_right = 932.0
+margin_bottom = 386.0
+theme = null
 type = 2
 
-[node name="HullUpgrade4" parent="CanvasLayer/UI/CategoryUpgrades/HullUpgrades/Upgrades" index="3" instance=ExtResource( 4 )]
+[node name="HullUpgrade4" parent="CanvasLayer/UI/MarginContainer/VBoxContainer/CategoryUpgrades/HullUpgrades/Upgrades" index="3" instance=ExtResource( 4 )]
 anchor_right = 0.0
-margin_top = 207.0
-margin_right = 944.0
-margin_bottom = 272.0
+margin_top = 390.0
+margin_right = 932.0
+margin_bottom = 516.0
+theme = null
 type = 3
 
-[node name="HullUpgrade5" parent="CanvasLayer/UI/CategoryUpgrades/HullUpgrades/Upgrades" index="4" instance=ExtResource( 4 )]
+[node name="HullUpgrade5" parent="CanvasLayer/UI/MarginContainer/VBoxContainer/CategoryUpgrades/HullUpgrades/Upgrades" index="4" instance=ExtResource( 4 )]
 anchor_right = 0.0
-margin_top = 276.0
-margin_right = 944.0
-margin_bottom = 341.0
+margin_top = 520.0
+margin_right = 932.0
+margin_bottom = 646.0
+theme = null
 type = 4
 
-[node name="NotEnoughMoneyDialog" type="AcceptDialog" parent="CanvasLayer/UI" index="4"]
-margin_left = 410.821
-margin_top = 281.738
-margin_right = 580.821
-margin_bottom = 339.738
-window_title = "Not enough money"
-[connection signal="pressed" from="CanvasLayer/UI/CategorySwitches/ButtonFuel" to="." method="_on_ButtonFuel_pressed"]
-[connection signal="pressed" from="CanvasLayer/UI/CategorySwitches/ButtonHull" to="." method="_on_ButtonHull_pressed"]
-[connection signal="pressed" from="CanvasLayer/UI/CategorySwitches/ButtonEngine" to="." method="_on_ButtonEngine_pressed"]
-[connection signal="pressed" from="CanvasLayer/UI/CategorySwitches/ButtonCargo" to="." method="_on_ButtonCargo_pressed"]
-[connection signal="pressed" from="CanvasLayer/UI/CategorySwitches/ButtonDrill" to="." method="_on_ButtonDrill_pressed"]
-[connection signal="pressed" from="CanvasLayer/UI/CategorySwitches/ButtonCooling" to="." method="_on_ButtonCooling_pressed"]
+[node name="Button" type="Button" parent="CanvasLayer/UI/MarginContainer/VBoxContainer" index="3" groups=[
+"translate",
+]]
+margin_top = 505.0
+margin_right = 1004.0
+margin_bottom = 580.0
+rect_min_size = Vector2( 0, 75 )
+text = "shop.exit"
+[connection signal="pressed" from="CanvasLayer/UI/MarginContainer/VBoxContainer/CategorySwitches/ButtonFuel" to="." method="_on_ButtonFuel_pressed"]
+[connection signal="pressed" from="CanvasLayer/UI/MarginContainer/VBoxContainer/CategorySwitches/ButtonHull" to="." method="_on_ButtonHull_pressed"]
+[connection signal="pressed" from="CanvasLayer/UI/MarginContainer/VBoxContainer/CategorySwitches/ButtonEngine" to="." method="_on_ButtonEngine_pressed"]
+[connection signal="pressed" from="CanvasLayer/UI/MarginContainer/VBoxContainer/CategorySwitches/ButtonCargo" to="." method="_on_ButtonCargo_pressed"]
+[connection signal="pressed" from="CanvasLayer/UI/MarginContainer/VBoxContainer/CategorySwitches/ButtonDrill" to="." method="_on_ButtonDrill_pressed"]

@@ -1,0 +1,208 @@
+[gd_scene load_steps=14 format=2]
+
+[ext_resource path="res://Menus/FirstStart/english_dark.png" type="Texture" id=1]
+[ext_resource path="res://Menus/FirstStart/czech_dark.png" type="Texture" id=2]
+[ext_resource path="res://Menus/FirstStart/czech.png" type="Texture" id=3]
+[ext_resource path="res://Menus/FirstStart/english.png" type="Texture" id=4]
+[ext_resource path="res://Menus/UITheme.tres" type="Theme" id=5]
+[ext_resource path="res://Menus/FirstStart/FirstStart.gd" type="Script" id=6]
+[ext_resource path="res://Helpers/Transitioner.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Sound/Menu/button.ogg" type="AudioStream" id=8]
+
+[sub_resource type="DynamicFontData" id=1]
+font_path = "res://fontDump/header_font.ttf"
+
+[sub_resource type="DynamicFont" id=2]
+size = 35
+font_data = SubResource( 1 )
+
+[sub_resource type="DynamicFontData" id=3]
+font_path = "res://fontDump/text_font.ttf"
+
+[sub_resource type="DynamicFont" id=4]
+size = 40
+font_data = SubResource( 3 )
+
+[sub_resource type="Animation" id=5]
+resource_name = "Text"
+length = 3.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("MarginContainer/VBoxContainer/WelcomeMessage:percent_visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0.0, 1.0 ]
+}
+
+[node name="FirstStart" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+theme = ExtResource( 5 )
+script = ExtResource( 6 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_bottom = 62.0
+custom_constants/margin_right = 5
+custom_constants/margin_top = 5
+custom_constants/margin_left = 5
+custom_constants/margin_bottom = 5
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+margin_left = 5.0
+margin_top = 5.0
+margin_right = 1019.0
+margin_bottom = 657.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Title" type="Label" parent="MarginContainer/VBoxContainer"]
+margin_right = 1014.0
+margin_bottom = 50.0
+custom_fonts/font = SubResource( 2 )
+text = "Depths - beta"
+align = 1
+valign = 1
+
+[node name="WelcomeMessage" type="Label" parent="MarginContainer/VBoxContainer"]
+margin_top = 53.0
+margin_right = 1014.0
+margin_bottom = 378.0
+rect_min_size = Vector2( 0, 325 )
+text = "Welcome to Depths!
+I made this game because I enjoyed playing games like Mars Miner as a kid. I loved the destructable terrain, this was in a time before minecraft so something like that felt really unique.  So I decied to make my own version of it. It's probably not the best, but I had fun while making it
+
+When I started  I felt really confident that I would finish it and be able to put in all the features I wanted. I keep telling myself this lie and every time I start to believe it. In fact I feel like this is just about 60 % finished. Maybe I'll finish it before the next summer competition start.
+
+Enjoy!"
+autowrap = true
+percent_visible = 0.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="LanguageSelect" type="VBoxContainer" parent="MarginContainer/VBoxContainer"]
+margin_top = 383.0
+margin_right = 1014.0
+margin_bottom = 530.0
+custom_constants/separation = 5
+alignment = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="LanguageLabel" type="Label" parent="MarginContainer/VBoxContainer/LanguageSelect"]
+margin_right = 1014.0
+margin_bottom = 37.0
+text = "Select a language"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Buttons" type="HBoxContainer" parent="MarginContainer/VBoxContainer/LanguageSelect"]
+margin_top = 42.0
+margin_right = 1014.0
+margin_bottom = 147.0
+custom_constants/separation = 50
+alignment = 1
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="English" type="VBoxContainer" parent="MarginContainer/VBoxContainer/LanguageSelect/Buttons"]
+margin_left = 418.0
+margin_right = 482.0
+margin_bottom = 105.0
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="EnglishButton" type="TextureButton" parent="MarginContainer/VBoxContainer/LanguageSelect/Buttons/English"]
+margin_right = 64.0
+margin_bottom = 64.0
+rect_min_size = Vector2( 64, 64 )
+toggle_mode = true
+pressed = true
+texture_normal = ExtResource( 1 )
+texture_pressed = ExtResource( 4 )
+expand = true
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="EnglishLabel" type="Label" parent="MarginContainer/VBoxContainer/LanguageSelect/Buttons/English"]
+margin_top = 68.0
+margin_right = 64.0
+margin_bottom = 105.0
+text = "English"
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Czech" type="VBoxContainer" parent="MarginContainer/VBoxContainer/LanguageSelect/Buttons"]
+margin_left = 532.0
+margin_right = 596.0
+margin_bottom = 105.0
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="CzechButton" type="TextureButton" parent="MarginContainer/VBoxContainer/LanguageSelect/Buttons/Czech"]
+margin_right = 64.0
+margin_bottom = 64.0
+rect_min_size = Vector2( 64, 64 )
+toggle_mode = true
+shortcut_in_tooltip = false
+texture_normal = ExtResource( 2 )
+texture_pressed = ExtResource( 3 )
+expand = true
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="CzechLable" type="Label" parent="MarginContainer/VBoxContainer/LanguageSelect/Buttons/Czech"]
+margin_top = 68.0
+margin_right = 64.0
+margin_bottom = 105.0
+text = "Czech"
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Button" type="Button" parent="MarginContainer/VBoxContainer"]
+margin_top = 534.0
+margin_right = 1014.0
+margin_bottom = 591.0
+custom_fonts/font = SubResource( 4 )
+text = "Start the game"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/Text = SubResource( 5 )
+
+[node name="Transitioner" parent="." instance=ExtResource( 7 )]
+visible = false
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 8 )
+[connection signal="button_down" from="MarginContainer/VBoxContainer/LanguageSelect/Buttons/English/EnglishButton" to="." method="_on_EnglishButton_button_down"]
+[connection signal="button_down" from="MarginContainer/VBoxContainer/LanguageSelect/Buttons/Czech/CzechButton" to="." method="_on_CzechButton_button_down"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/Button" to="." method="_on_Button_pressed"]
+[connection signal="transition_finished" from="Transitioner" to="." method="_on_Transitioner_transition_finished"]

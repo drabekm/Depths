@@ -30,7 +30,38 @@
   "settings.other.czech" : ["Česky", "Czech"],
   "settings.other.english" : ["Anglicky", "English"],
 
+  "shopinfo.money" : ["Peníze:", "Money:"],
+  "shopinfo.inventory" : ["Inventář:", "Inventory:"],
+  "shop.exit" : ["Odejít", "Exit"],
+  "fuelshop.title" : ["Pumpa", "Fuel station"],
+  "fuelshop.1litre" : ["Cena za litr:", "Price per litre:"],
+  "fuelshop.5litre" : ["Cena za 5 litrů:", "Price per 5 litres:"],
+  "fuelshop.1litre.button" : ["1 litr", "1 litre:"],
+  "fuelshop.5litre.button" : ["5 litrů", "5 litre:"],
+  "fuelshop.full.button" : ["Plná", "Fill full:"],
 
+  "refinery.title" : ["Rafinerie", "Refinery"],
+  "ore.info.sellone" : ["Prodej 1", "Sell 1"],
+  "ore.info.sellall" : ["Prodej vše", "Sell all"],
+
+  "repairshop.title" : ["Opravna", "Repair shop"],
+  "repairshop.button.repair1" : ["Oprav 1", "Repair 1"],
+  "repairshop.button.repair5" : ["Oprav 5", "Repair 5"],
+  "repairshop.button.repair20" : ["Oprav 20", "Repair 20"],
+  "repairshop.label.repair1" : ["Cena: 2", "Price: 2"],
+  "repairshop.label.repair5" : ["Cena: 10", "Price: 10"],
+  "repairshop.label.repair20" : ["Cena: 40", "Price: 40"],
+  "repairshop.button.repairall" : ["Oprav vše", "Repair all"],
+
+  "upgradeshop.title" : ["Vylepšení", "Upgrades"],
+  "upgradeshop.fuel" : ["Palivo", "Fuel"],
+  "upgradeshop.hull" : ["Trup", "Hull"],
+  "upgradeshop.engine" : ["Motor", "Engine"],
+  "upgradeshop.cargo" : ["Nákladní prostor", "Cargo size"],
+  "upgradeshop.drill" : ["Vrták", "Drill"],
+  "upgradeshop.buy" : ["Koupit: ", "Buy: "],
+  
+  "upgrade.fuel.description.type.1": ["Malá nádrž", "Small fuel"],
 
   "ore.copper" : ["Měď", "Copper"],
   "ore.iron" : ["Železo", "Iron"],

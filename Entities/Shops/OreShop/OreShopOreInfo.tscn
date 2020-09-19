@@ -14,32 +14,33 @@ margin_bottom = 47.0
 script = ExtResource( 3 )
 
 [node name="InfoColumns" parent="." index="0"]
-margin_left = 227.0
-margin_top = 156.0
-margin_right = 439.0
-margin_bottom = 191.0
-
-[node name="Icon" parent="InfoColumns" index="0"]
-margin_bottom = 35.0
+margin_left = 129.0
+margin_top = 155.0
+margin_right = 537.0
+margin_bottom = 192.0
 
 [node name="Text" parent="InfoColumns" index="1"]
-margin_top = 3.0
-margin_bottom = 32.0
+margin_right = 154.0
+rect_min_size = Vector2( 150, 0 )
 
-[node name="ButtonSellOne" type="Button" parent="InfoColumns" index="2"]
-margin_left = 8.0
-margin_right = 108.0
-margin_bottom = 35.0
+[node name="ButtonSellOne" type="Button" parent="InfoColumns" index="2" groups=[
+"translate",
+]]
+margin_left = 158.0
+margin_right = 285.0
+margin_bottom = 37.0
 rect_min_size = Vector2( 100, 0 )
 custom_fonts/font = ExtResource( 2 )
-text = "Sell 1"
+text = "ore.info.sellone"
 
-[node name="ButtonSellAll" type="Button" parent="InfoColumns" index="3"]
-margin_left = 112.0
-margin_right = 212.0
-margin_bottom = 35.0
+[node name="ButtonSellAll" type="Button" parent="InfoColumns" index="3" groups=[
+"translate",
+]]
+margin_left = 289.0
+margin_right = 408.0
+margin_bottom = 37.0
 rect_min_size = Vector2( 100, 0 )
 custom_fonts/font = ExtResource( 2 )
-text = "Sell All"
+text = "ore.info.sellall"
 [connection signal="pressed" from="InfoColumns/ButtonSellOne" to="." method="_on_ButtonSellOne_pressed"]
 [connection signal="pressed" from="InfoColumns/ButtonSellAll" to="." method="_on_ButtonSellAll_pressed"]

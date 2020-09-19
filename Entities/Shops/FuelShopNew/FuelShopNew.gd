@@ -6,10 +6,11 @@ var fuel_info
 var fuel_tank
 var monitor_sprite: AnimatedSprite
 
-const PRICE_PER_UNIT = 2
+const PRICE_PER_UNIT = 4
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	_translate_labels_and_buttons()
 	fuel_tank = get_node("CanvasLayer/UI/FuelTank")
 	fuel_info = get_node("CanvasLayer/UI/FuelTank/FuelInfo")
 	monitor_sprite = get_node("Building/Monitor")
@@ -18,6 +19,14 @@ func _update_fuel_info():
 	fuel_info.text = str(PlayerData.fuel) + "/" + str(PlayerData.max_fuel)
 	fuel_tank.max_value = PlayerData.max_fuel
 	fuel_tank.value = PlayerData.fuel
+	get_node("CanvasLayer/UI/Info/Money/Value").text = PlayerData.money
+
+func _translate_labels_and_buttons():
+	var nodes = get_tree().get_nodes_in_group("Translate")
+	for node in nodes:
+		if node is Label or node is Button:
+			node.text = Translator.translate(node.text)
+			print(node.text)
 
 func _player_entered():
 	monitor_sprite.play("run")
@@ -38,7 +47,23 @@ func _on_ButtonFillTank_pressed():
 		if PlayerData.money >= PRICE_PER_UNIT:
 			PlayerData.fuel = floor(PlayerData.fuel)
 			PlayerData.fuel += 1
-			PlayerData.money -= 2
+			PlayerData.money -= PRICE_PER_UNIT
 		else:
 			break
 	_update_fuel_info()
+
+
+func _on_1l_pressed():
+	if PlayerData.money >= PRICE_PER_UNIT:
+		PlayerData.fuel = floor(PlayerData.fuel)
+		PlayerData.fuel += 1
+		PlayerData.money -= PRICE_PER_UNIT
+		_update_fuel_info()
+
+
+func _on_5l_pressed():
+	if PlayerData.money >= PRICE_PER_UNIT * 5:
+		PlayerData.fuel = floor(PlayerData.fuel)
+		PlayerData.fuel += 5
+		PlayerData.money -= PRICE_PER_UNIT * 5
+		_update_fuel_info()

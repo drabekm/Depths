@@ -4,11 +4,11 @@ extends "res://Entities/Shops/UpgradeShop/Upgrades/BaseUpgrade.gd"
 
 func _init():
 	 descriptions = [
-	"upgrade.fuel.descriptiopn.type.1",
-	"upgrade.fuel.descriptiopn.type.2",
-	"upgrade.fuel.descriptiopn.type.3",
-	"upgrade.fuel.descriptiopn.type.4",
-	"upgrade.fuel.descriptiopn.type.5"
+	"upgrade.fuel.description.type.1",
+	"upgrade.fuel.description.type.2",
+	"upgrade.fuel.description.type.3",
+	"upgrade.fuel.description.type.4",
+	"upgrade.fuel.description.type.5"
 	]
 	
 	 upgrade_values = [

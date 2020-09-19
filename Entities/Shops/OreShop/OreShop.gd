@@ -7,8 +7,16 @@ const oreInfo = preload("res://Entities/Shops/OreShop/OreShopOreInfo.tscn")
 var inventory_rows
 
 func _ready():
+	_translate_labels_and_buttons()
 	inventory_rows = get_node("CanvasLayer/UI/Inventory")
 	_load_ores()
+
+func _translate_labels_and_buttons():
+	var nodes = get_tree().get_nodes_in_group("translate")
+	for node in nodes:
+		if node is Label or node is Button:
+			node.text = Translator.translate(node.text)
+			print(node.text)
 
 func _load_ores():
 	for i in PlayerData.inventory.keys():
@@ -36,7 +44,7 @@ func _player_left():
 
 func _update_stats():
 	print("update")
-	get_node("CanvasLayer/UI/Stats/Money").text = "Money: " + str(PlayerData.money)
+	get_node("CanvasLayer/UI/Stats/HBoxContainer/Value").text = "Money: " + str(PlayerData.money)
 	get_node("CanvasLayer/UI/Stats/Inventory").text = str(PlayerData.capacity) + "/" + str(PlayerData.max_capacity)
 
 
