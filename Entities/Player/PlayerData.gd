@@ -22,7 +22,7 @@ var thurster_power = 20
 
 var score: int = 0
 var money: int = 1000
-
+var max_depth = 0
 var position: Vector2 = Vector2(0,0)
 
 var player_name: String = "Testing Name"
@@ -49,6 +49,8 @@ func reset():
 	
 	 position = Vector2(0,0)
 	
+	 max_depth = 0
+	
 	 score = 0
 	 money = 1000
 
@@ -61,6 +63,10 @@ var inventory = {
 func _process(delta):
 	if not is_alive():
 		emit_signal("player_dead")
+	
+	var depth = floor((PlayerData.position.y) / (GlobalMapData.BLOCK_SIZE * 2)) + 1
+	if depth > max_depth:
+		max_depth = depth
 
 func remove_fuel(value):
 	fuel -= value

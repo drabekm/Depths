@@ -42,6 +42,27 @@ func get_helper_noise_value(x: float, y:float) -> float:
 
 var deleted_blocks = {} # all deleted blocks in chunks
 # it's stored as a dictionary of chunk name -> deleted blocks array
+var restored_blocks = {} # blocks that were drilled out
+# but restored wit lava
+
+func restore_blocks():
+	var chunk_handler = get_tree().get_nodes_in_group("chunk_handler")[0]
+	for x in range(-5, 5):
+		for y in range(1, PlayerData.max_depth):
+			var chunk_key = str(x) + "," + str(y)
+			if not restored_blocks.has(chunk_key):
+				if deleted_blocks.has(chunk_key):
+					restored_blocks[chunk_key] = deleted_blocks[chunk_key]
+			else:
+				if restored_blocks.has(chunk_key) and deleted_blocks.has(chunk_key):
+					var restored_blocks_array = restored_blocks[chunk_key]
+					var deleted_blocks_array = deleted_blocks[chunk_key]
+					for deleted_block in deleted_blocks_array:
+						if not restored_blocks_array.has(deleted_block):
+							restored_blocks_array.append(deleted_block)
+					restored_blocks[chunk_key] = restored_blocks_array
+			deleted_blocks.erase(chunk_key)
+			chunk_handler.refresh_chunk(chunk_key)
 
 func add_deleted_block(block_position: Vector2, chunk_name: String):
 	if chunk_name in deleted_blocks:
@@ -51,8 +72,12 @@ func add_deleted_block(block_position: Vector2, chunk_name: String):
 
 func get_deleted_blocks(chunk_name: String):
 	if deleted_blocks.has(chunk_name):
-		var test = deleted_blocks.get(chunk_name)
 		return deleted_blocks.get(chunk_name)
+	return []
+
+func get_restored_blocks(chunk_name: String):
+	if restored_blocks.has(chunk_name):
+		return restored_blocks.get(chunk_name)
 	return []
 
 func reset():

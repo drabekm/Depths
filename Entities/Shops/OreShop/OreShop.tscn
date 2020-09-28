@@ -36,37 +36,37 @@ animations = [ {
 "speed": 10.0
 } ]
 
-[sub_resource type="DynamicFontData" id=3]
+[sub_resource type="DynamicFontData" id=2]
 font_path = "res://fontDump/text_font.ttf"
 
-[sub_resource type="DynamicFont" id=9]
+[sub_resource type="DynamicFont" id=3]
 size = 30
-font_data = SubResource( 3 )
+font_data = SubResource( 2 )
 
-[sub_resource type="DynamicFont" id=10]
+[sub_resource type="DynamicFont" id=4]
 size = 37
-font_data = SubResource( 3 )
+font_data = SubResource( 2 )
 
-[sub_resource type="Gradient" id=2]
+[sub_resource type="Gradient" id=5]
 colors = PoolColorArray( 0, 0, 0, 1, 0.285156, 0.285156, 0.285156, 1 )
 
-[sub_resource type="GradientTexture" id=11]
-gradient = SubResource( 2 )
+[sub_resource type="GradientTexture" id=6]
+gradient = SubResource( 5 )
 
-[sub_resource type="Curve" id=4]
+[sub_resource type="Curve" id=7]
 min_value = -1.0
 _data = [ Vector2( 0, 1 ), 0.0, 0.0, 0, 0, Vector2( 1, 1 ), 0.0, 0.0, 0, 0 ]
 
-[sub_resource type="CurveTexture" id=5]
-curve = SubResource( 4 )
+[sub_resource type="CurveTexture" id=8]
+curve = SubResource( 7 )
 
-[sub_resource type="Curve" id=6]
+[sub_resource type="Curve" id=9]
 _data = [ Vector2( 0.0424528, 0.835227 ), 0.0, -1.07291, 0, 0, Vector2( 1, 1 ), 0.0, 0.0, 0, 0 ]
 
-[sub_resource type="CurveTexture" id=7]
-curve = SubResource( 6 )
+[sub_resource type="CurveTexture" id=10]
+curve = SubResource( 9 )
 
-[sub_resource type="ParticlesMaterial" id=8]
+[sub_resource type="ParticlesMaterial" id=11]
 emission_shape = 2
 emission_box_extents = Vector3( 25, 1, 1 )
 flag_disable_z = true
@@ -77,9 +77,9 @@ orbit_velocity = 0.0
 orbit_velocity_random = 0.0
 scale = 8.0
 scale_random = 0.5
-scale_curve = SubResource( 7 )
-color_ramp = SubResource( 11 )
-hue_variation_curve = SubResource( 5 )
+scale_curve = SubResource( 10 )
+color_ramp = SubResource( 6 )
+hue_variation_curve = SubResource( 8 )
 
 [node name="OreShop" instance=ExtResource( 1 )]
 script = ExtResource( 2 )
@@ -88,11 +88,7 @@ script = ExtResource( 2 )
 scale = Vector2( 3, 3 )
 frames = SubResource( 1 )
 animation = "idle"
-frame = 2
 playing = true
-
-[node name="UI" parent="CanvasLayer" index="0"]
-visible = true
 
 [node name="Background" parent="CanvasLayer/UI" index="0"]
 color = Color( 0.180392, 0.203922, 0.156863, 1 )
@@ -174,7 +170,7 @@ margin_left = 39.0
 margin_top = 323.0
 margin_right = 283.0
 margin_bottom = 411.0
-custom_fonts/font = SubResource( 9 )
+custom_fonts/font = SubResource( 3 )
 text = "ore.info.sellall"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -190,7 +186,7 @@ margin_left = 31.0
 margin_top = -121.0
 margin_right = -33.0
 margin_bottom = -39.0
-custom_fonts/font = SubResource( 10 )
+custom_fonts/font = SubResource( 4 )
 text = "shop.Exit"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -200,6 +196,6 @@ __meta__ = {
 position = Vector2( 102.53, -90.5097 )
 amount = 80
 lifetime = 2.0
-process_material = SubResource( 8 )
+process_material = SubResource( 11 )
 [connection signal="pressed" from="CanvasLayer/UI/ButtonSellAll" to="." method="_on_ButtonSellAll_pressed"]
 [connection signal="pressed" from="CanvasLayer/UI/ButtonExit" to="." method="_on_ButtonExit_pressed"]

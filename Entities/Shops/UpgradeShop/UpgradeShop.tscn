@@ -60,7 +60,7 @@ script = ExtResource( 3 )
 scale = Vector2( 3, 3 )
 frames = SubResource( 1 )
 animation = "idle"
-frame = 5
+frame = 3
 playing = true
 
 [node name="Door" type="AnimatedSprite" parent="Building" index="0"]
@@ -68,9 +68,6 @@ position = Vector2( 24, 34 )
 frames = SubResource( 2 )
 animation = "idle"
 playing = true
-
-[node name="UI" parent="CanvasLayer" index="0"]
-visible = true
 
 [node name="Background" parent="CanvasLayer/UI" index="0"]
 margin_top = -1.25992
@@ -205,7 +202,7 @@ margin_right = 964.0
 margin_bottom = 355.0
 
 [node name="Upgrades" type="VBoxContainer" parent="CanvasLayer/UI/MarginContainer/VBoxContainer/CategoryUpgrades/FuelUpgrades" index="0"]
-margin_right = 912.0
+margin_right = 924.0
 margin_bottom = 486.0
 size_flags_horizontal = 3
 

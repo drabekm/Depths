@@ -16,14 +16,13 @@ func _update_hull_info():
 	hull_info.text = str(PlayerData.health) + "/" + str(PlayerData.max_health)
 	hull_tank.max_value = PlayerData.max_health
 	hull_tank.value = PlayerData.health
-	money.text = PlayerData.money
+	money.text = str(PlayerData.money)
 
 func _translate_labels_and_buttons():
 	var nodes = get_tree().get_nodes_in_group("translate")
 	for node in nodes:
 		if node is Label or node is Button:
 			node.text = Translator.translate(node.text)
-			print(node.text)
 
 func _player_entered():
 	get_node("Building").play("player_enter")

@@ -15,7 +15,7 @@ _global_script_class_icons={
 
 [application]
 
-run/main_scene="res://Maps/ChunkTestWorld.tscn"
+run/main_scene="res://Menus/MainMenu/MainMenu.tscn"
 config/icon="res://icon.png"
 config/language=0
 config/scoreserver=""

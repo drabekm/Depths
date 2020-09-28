@@ -63,7 +63,7 @@ script = ExtResource( 2 )
 [node name="Building" parent="." index="0"]
 scale = Vector2( 3, 3 )
 frames = SubResource( 1 )
-frame = 2
+frame = 5
 playing = true
 
 [node name="Monitor" type="AnimatedSprite" parent="Building" index="0"]
@@ -71,9 +71,6 @@ position = Vector2( -14, 25 )
 frames = SubResource( 2 )
 animation = "idle"
 playing = true
-
-[node name="UI" parent="CanvasLayer" index="0"]
-visible = true
 
 [node name="Background" parent="CanvasLayer/UI" index="0"]
 color = Color( 0.223529, 0.141176, 0.141176, 1 )

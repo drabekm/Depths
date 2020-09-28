@@ -16,16 +16,19 @@ func spawn_blocks():
 	self.position = Vector2(GlobalMapData.BLOCK_SIZE * GlobalMapData.CHUNK_SIZE * indexX * 2, GlobalMapData.BLOCK_SIZE * GlobalMapData.CHUNK_SIZE * indexY * 2)
 	
 	var deleted_blocks = GlobalMapData.get_deleted_blocks(self.name)
-	
+	var restored_blocks = GlobalMapData.get_restored_blocks(self.name)
 	# generate blocks
 	for y in range(0, GlobalMapData.CHUNK_SIZE):
 		for x in range(0, GlobalMapData.CHUNK_SIZE):
 			var block_instance = block.instance()
+			block_instance.add_to_group(self.name)
 			var block_position = Vector2((GlobalMapData.BLOCK_SIZE * 2) * x, (GlobalMapData.BLOCK_SIZE * 2) * y)
 			
+			var isRestoredBlock = false
 			if deleted_blocks.has(str(block_position)) or deleted_blocks.has(block_position):
 				continue
-			
+			if restored_blocks.has(str(block_position)) or restored_blocks.has(block_position):
+				isRestoredBlock = true
 			var global_block_position = Vector2(block_position.x + self.position.x, block_position.y + self.position.y)
 			
 #			if _is_water(x,y):
@@ -46,8 +49,8 @@ func spawn_blocks():
 			
 			
 			give_block_material(block_instance, global_block_position.x, global_block_position.y)
-#			give_block_mineral(block_instance, block_position.x, block_position.y)
-			give_block_mineral(block_instance, indexX * GlobalMapData.CHUNK_SIZE + x * 2, indexY * GlobalMapData.CHUNK_SIZE + y)
+			if not isRestoredBlock:
+				give_block_mineral(block_instance, indexX * GlobalMapData.CHUNK_SIZE + x * 2, indexY * GlobalMapData.CHUNK_SIZE + y)
 			
 			
 			
@@ -68,6 +71,12 @@ func give_block_material(var block, posX, posY):
 		block.set_body(BlockEnums.MaterialTypes.STONE)
 	else:
 		block.set_body(BlockEnums.MaterialTypes.STRONG_STONE)
+
+func refresh():
+	var chunk_blocks = get_tree().get_nodes_in_group(self.name)
+	for chunk_block in chunk_blocks:
+		chunk_block.queue_free()
+	spawn_blocks()
 
 # the noise function really needs some works before it 
 # generates ores in some usable way

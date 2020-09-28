@@ -80,6 +80,10 @@ func check_chunks():
 			if not chunk_containers_node.has_node(chunk_name):
 				spawn_chunk(x,y)
 
+func refresh_chunk(var chunk_name: String):
+	if chunk_containers_node.has_node(chunk_name):
+		chunk_containers_node.get_node(chunk_name).refresh()
+
 func spawn_chunk(var xChunkPos, var yChunkPos):
 	#Chunks can't exist above ground level
 	if yChunkPos < 0:

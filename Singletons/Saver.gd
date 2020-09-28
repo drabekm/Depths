@@ -55,6 +55,7 @@ func _save_player():
 	
 	data["score"] = PlayerData.score
 	data["money"] = PlayerData.money
+	data["max_depth"] = PlayerData.max_depth
 	
 	_save_json("player_data", JSON.print(data))
 
@@ -94,7 +95,7 @@ func _load_player() -> bool:
 		
 		PlayerData.score = player_data["score"] 
 		PlayerData.money = player_data["money"] 
-		
+		PlayerData.max_depth = player_data["max_depth"]
 		PlayerData.position = str2var("Vector2" + player_data["position"])
 		return true
 	return false

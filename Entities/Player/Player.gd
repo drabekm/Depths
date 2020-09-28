@@ -180,6 +180,9 @@ func input() -> void:
 			velocity.x = lerp(velocity.x, 0, SPEED_SLOWDOWN)
 		else:
 			velocity.x = lerp(velocity.x, 0, SPEED_SLOWDOWN_AIR)
+	
+	if Input.is_action_just_pressed("ui_page_up"):
+		GlobalMapData.restore_blocks()
 
 func _update_animation():
 	if is_moving and sprite.animation != "moving":
