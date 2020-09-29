@@ -63,7 +63,7 @@ script = ExtResource( 2 )
 [node name="Building" parent="." index="0"]
 scale = Vector2( 3, 3 )
 frames = SubResource( 1 )
-frame = 5
+frame = 6
 playing = true
 
 [node name="Monitor" type="AnimatedSprite" parent="Building" index="0"]

@@ -88,6 +88,7 @@ script = ExtResource( 2 )
 scale = Vector2( 3, 3 )
 frames = SubResource( 1 )
 animation = "idle"
+frame = 1
 playing = true
 
 [node name="Background" parent="CanvasLayer/UI" index="0"]

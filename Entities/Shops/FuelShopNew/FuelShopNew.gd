@@ -19,7 +19,7 @@ func _update_fuel_info():
 	fuel_info.text = str(PlayerData.fuel) + "/" + str(PlayerData.max_fuel)
 	fuel_tank.max_value = PlayerData.max_fuel
 	fuel_tank.value = PlayerData.fuel
-	get_node("CanvasLayer/UI/Info/Money/Value").text = PlayerData.money
+	get_node("CanvasLayer/UI/Info/Money/Value").text = str(PlayerData.money)
 
 func _translate_labels_and_buttons():
 	var nodes = get_tree().get_nodes_in_group("Translate")

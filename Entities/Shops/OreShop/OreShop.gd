@@ -7,9 +7,10 @@ const oreInfo = preload("res://Entities/Shops/OreShop/OreShopOreInfo.tscn")
 var inventory_rows
 
 func _ready():
-	_translate_labels_and_buttons()
+	
 	inventory_rows = get_node("CanvasLayer/UI/Inventory")
 	_load_ores()
+	_translate_labels_and_buttons()
 
 func _translate_labels_and_buttons():
 	var nodes = get_tree().get_nodes_in_group("translate")
@@ -44,8 +45,8 @@ func _player_left():
 
 func _update_stats():
 	print("update")
-	get_node("CanvasLayer/UI/Stats/HBoxContainer/Value").text = "Money: " + str(PlayerData.money)
-	get_node("CanvasLayer/UI/Stats/Inventory").text = str(PlayerData.capacity) + "/" + str(PlayerData.max_capacity)
+	get_node("CanvasLayer/UI/Stats/Money/Value").text = str(PlayerData.money)
+	get_node("CanvasLayer/UI/Stats/Inventory/Value").text = str(PlayerData.capacity) + "/" + str(PlayerData.max_capacity)
 
 
 func _on_ButtonSellAll_pressed():

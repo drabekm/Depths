@@ -14,12 +14,17 @@ func _physics_process(delta):
 		self.global_position = Vector2(PlayerData.position.x ,self.global_position.y - (default_speed * delta))
 	else:
 		self.global_position = PlayerData.position
+	
+	if earthquake_triggered and global_position.y <= GlobalMapData.CHUNK_SIZE * GlobalMapData.BLOCK_SIZE:
+		earthquake_triggered = false
+		self.visible = true
+		$BigParticles.emitting = false
+		Earthquake.reset()
 
 func _on_earthquake_triggered():
 	earthquake_triggered = true
 	self.visible = true
 	$BigParticles.emitting = true
-
 
 func _on_RisingLava_body_entered(body):
 	PlayerData.remove_health(999999)

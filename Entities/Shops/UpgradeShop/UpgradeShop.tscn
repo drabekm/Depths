@@ -60,7 +60,7 @@ script = ExtResource( 3 )
 scale = Vector2( 3, 3 )
 frames = SubResource( 1 )
 animation = "idle"
-frame = 3
+frame = 6
 playing = true
 
 [node name="Door" type="AnimatedSprite" parent="Building" index="0"]

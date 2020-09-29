@@ -57,6 +57,8 @@ func reset():
 var inventory = {
 	BlockEnums.MineralTypes.COPPER : 0,
 	BlockEnums.MineralTypes.IRON : 0,
+	BlockEnums.MineralTypes.GOLD : 0,
+	BlockEnums.MineralTypes.PLATINUM : 0,
 	BlockEnums.MineralTypes.DIAMOND : 0
 }
 

@@ -65,5 +65,7 @@
 
   "ore.copper" : ["Měď", "Copper"],
   "ore.iron" : ["Železo", "Iron"],
+  "ore.gold" : ["Zlato", "Gold"],
+  "ore.platinum" : ["Platina", "Platinum"],
   "ore.diamond" : ["Diamant", "Diamond"]
 }

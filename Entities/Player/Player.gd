@@ -55,6 +55,7 @@ func _ready():
 	set_physics_process(true)
 
 func _process(delta):
+	
 	update_debug_labels()
 	_update_shadow_opacity()
 	_update_animation()
@@ -84,11 +85,11 @@ func _update_shadow_opacity():
 	corner_shadow.energy = min(1, position.y / 720)
 
 func _drilling_move(delta):
-	self.position = self.position.linear_interpolate(Vector2(self.position.x, current_drill_block.global_position.y + 32), 2.0 * delta)
-	self.position = self.position.linear_interpolate(Vector2(current_drill_block.global_position.x + 32, self.position.y), 4.0 * delta)
+	self.global_position = self.global_position.linear_interpolate(Vector2(self.global_position.x, current_drill_block.global_position.y + 32), 2.0 * delta)
+	self.global_position = self.global_position.linear_interpolate(Vector2(current_drill_block.global_position.x + 32, self.global_position.y), 4.0 * delta)
 	
 	# Drilling finish
-	if self.position.distance_to(current_drill_block.global_position + Vector2(32,32)) < 10:
+	if self.global_position.distance_to(current_drill_block.global_position + Vector2(32,32)) < 10:
 		current_drill_block.destroy()
 		drill_sound_end_timer.start()
 		$CollisionShape2D.disabled = false
@@ -201,7 +202,12 @@ func _movement() -> void:
 	velocity.y = velocity.y + GRAVITY_ACC
 	var previous_vertical_velocity = velocity.y
 	velocity = move_and_slide(velocity, Vector2(0,-1))
-	PlayerData.position = self.global_position
+	if (self.global_position.x < GlobalMapData.CHUNK_SIZE * GlobalMapData.BLOCK_SIZE * -9 + 20):
+		self.global_position.x = GlobalMapData.CHUNK_SIZE * GlobalMapData.BLOCK_SIZE * -9 + 20
+	elif (self.global_position.x > GlobalMapData.CHUNK_SIZE * GlobalMapData.BLOCK_SIZE * 9 - 20):
+		self.global_position.x = GlobalMapData.CHUNK_SIZE * GlobalMapData.BLOCK_SIZE * 9 - 20
+	else:
+		PlayerData.position = self.global_position
 	
 	if self.is_on_floor():
 		_remove_health_from_speed_collision(previous_vertical_velocity)
@@ -237,7 +243,6 @@ func _on_Drill_animation_finished():
 
 
 func _on_DrillResetTimer_timeout():
-	print("reseted")
 	print(floor(rad2deg(drill_sprite.rotation)))
 	if floor(rad2deg(drill_sprite.rotation)) == 90:
 		drill_sprite_mover.play("move_center_from_bottom")
@@ -246,5 +251,4 @@ func _on_DrillResetTimer_timeout():
 
 
 func _on_DrillSoundEnd_timeout():
-	print("timeout")
 	drill_sound.stop()

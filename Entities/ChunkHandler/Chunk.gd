@@ -97,8 +97,12 @@ func give_block_mineral(var block, posX, posY):
 		mineral_type = _level_1_ore_generation(posX, posY, noise_value)
 	elif posY < 25:
 		mineral_type = _level_2_ore_generation(posX, posY, noise_value)
-	else:
+	elif posY < 40:
 		mineral_type = _level_3_ore_generation(posX, posY, noise_value)
+	elif posY < 55:
+		mineral_type = _level_4_ore_generation(posX, posY, noise_value)
+	else:
+		mineral_type = _level_5_ore_generation(posX, posY, noise_value)
 	
 	if mineral_type != null:
 		block.set_mineral(mineral_type)
@@ -154,10 +158,38 @@ func _level_2_ore_generation(x,y, noise_value):
 
 func _level_3_ore_generation(x,y, noise_value):
 	if noise_value > 0.78:
-		return BlockEnums.MineralTypes.DIAMOND
+		return BlockEnums.MineralTypes.GOLD
 	elif noise_value > 0.68:
 		return BlockEnums.MineralTypes.IRON
 	elif noise_value > 0.50:
+		return BlockEnums.MineralTypes.COPPER
+	
+	return null
+
+
+func _level_4_ore_generation(x,y, noise_value):
+	if noise_value > 0.70:
+		return BlockEnums.MineralTypes.PLATINUM
+	elif noise_value > 0.60:
+		return BlockEnums.MineralTypes.GOLD
+	elif noise_value > 0.50:
+		return BlockEnums.MineralTypes.IRON
+	elif noise_value > 0.38:
+		return BlockEnums.MineralTypes.COPPER
+	
+	return null
+
+
+func _level_5_ore_generation(x,y, noise_value):
+	if noise_value > 0.55:
+		return BlockEnums.MineralTypes.DIAMOND
+	elif noise_value > 0.48:
+		return BlockEnums.MineralTypes.PLATINUM
+	elif noise_value > 0.40:
+		return BlockEnums.MineralTypes.GOLD
+	elif noise_value > 0.35:
+		return BlockEnums.MineralTypes.IRON
+	elif noise_value > 0.30:
 		return BlockEnums.MineralTypes.COPPER
 	
 	return null

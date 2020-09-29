@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/04 Shell Shock Shake.ogg-c1c8ec14e1fe2049be1c22f4c83fcd3f.oggstr"
+
+[deps]
+
+source_file="res://Music/04 Shell Shock Shake.ogg"
+dest_files=[ "res://.import/04 Shell Shock Shake.ogg-c1c8ec14e1fe2049be1c22f4c83fcd3f.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

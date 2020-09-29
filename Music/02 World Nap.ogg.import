@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/02 World Nap.ogg-f7292f376d72e65fd1a3d8cea56aa8e7.oggstr"
+
+[deps]
+
+source_file="res://Music/02 World Nap.ogg"
+dest_files=[ "res://.import/02 World Nap.ogg-f7292f376d72e65fd1a3d8cea56aa8e7.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

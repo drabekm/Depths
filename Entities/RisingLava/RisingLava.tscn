@@ -14,12 +14,12 @@ animations = [ {
 [sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 812.18, 10 )
 
-[sub_resource type="Gradient" id=6]
+[sub_resource type="Gradient" id=3]
 offsets = PoolRealArray( 0.126638, 1 )
 colors = PoolColorArray( 0.985352, 0.169425, 0.0423393, 1, 0.379883, 0.379883, 0.379883, 1 )
 
-[sub_resource type="GradientTexture" id=7]
-gradient = SubResource( 6 )
+[sub_resource type="GradientTexture" id=4]
+gradient = SubResource( 3 )
 
 [sub_resource type="ParticlesMaterial" id=5]
 emission_shape = 2
@@ -32,15 +32,15 @@ initial_velocity_random = 0.68
 orbit_velocity = 0.0
 orbit_velocity_random = 0.0
 scale = 13.0
-color_ramp = SubResource( 7 )
+color_ramp = SubResource( 4 )
 
-[sub_resource type="Gradient" id=8]
+[sub_resource type="Gradient" id=6]
 colors = PoolColorArray( 0.0976563, 0.0976563, 0.0976563, 1, 0.421875, 0.421875, 0.421875, 1 )
 
-[sub_resource type="GradientTexture" id=9]
-gradient = SubResource( 8 )
+[sub_resource type="GradientTexture" id=7]
+gradient = SubResource( 6 )
 
-[sub_resource type="ParticlesMaterial" id=10]
+[sub_resource type="ParticlesMaterial" id=8]
 emission_shape = 2
 emission_box_extents = Vector3( 600, 1, 1 )
 flag_disable_z = true
@@ -52,7 +52,7 @@ angular_velocity = 236.42
 orbit_velocity = 0.0
 orbit_velocity_random = 0.0
 scale = 6.0
-color_ramp = SubResource( 9 )
+color_ramp = SubResource( 7 )
 
 [node name="RisingLava" type="Area2D"]
 collision_layer = 0
@@ -79,7 +79,7 @@ process_material = SubResource( 5 )
 position = Vector2( 489.295, 587.631 )
 amount = 32
 lifetime = 2.0
-process_material = SubResource( 10 )
+process_material = SubResource( 8 )
 
 [node name="SpeedTimer" type="Timer" parent="."]
 wait_time = 0.2

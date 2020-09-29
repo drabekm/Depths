@@ -15,7 +15,7 @@ _global_script_class_icons={
 
 [application]
 
-run/main_scene="res://Menus/MainMenu/MainMenu.tscn"
+run/main_scene="res://Maps/ChunkTestWorld.tscn"
 config/icon="res://icon.png"
 config/language=0
 config/scoreserver=""
@@ -23,9 +23,9 @@ config/firststart=true
 
 [audio]
 
-master=50
-music=65
-effects=75
+master=1.0
+music=0.2
+effects=1.0
 
 [autoload]
 

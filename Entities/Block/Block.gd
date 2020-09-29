@@ -4,18 +4,22 @@ extends StaticBody2D
 
 const material_textures = [preload("res://Entities/Block/Textures/blocks/dirt/dirtt.png"),
 				 preload("res://Entities/Block/Textures/blocks/stone/stone.png"),
-				 preload("res://Entities/Block/Textures/strong_stone.png"),
+				 preload("res://Entities/Block/Textures/blocks/dark_stone/darkstone.png"),
 				 preload("res://Entities/Block/Textures/indestructable.png")]
 
 # Special case textures
 const dirt_top_texture = preload("res://Entities/Block/Textures/blocks/dirt/dirt_top.png")
 const stone_dirt_texture = preload("res://Entities/Block/Textures/blocks/stone/stone_dirt_top.png")
+const dark_stone_top_texture = preload("res://Entities/Block/Textures/blocks/dark_stone/darkstone_top.png")
+
 
 const mineral_textures =  [preload("res://Entities/Block/Textures/copper.png"),
 						 preload("res://Entities/Block/Textures/iron.png"),
+						 preload("res://Entities/Block/Textures/gold.png"),
+						 preload("res://Entities/Block/Textures/platinum.png"),
 						 preload("res://Entities/Block/Textures/diamonds.png")]
 
-const mineral_scores = [50, 100, 1000]
+const mineral_scores = [20, 50, 100, 200, 500]
 
 const liquid_scene = preload("res://Entities/Liquids/Liquid.tscn")
 
@@ -54,6 +58,8 @@ func set_body(material_type: int):
 		get_node("Body").texture = dirt_top_texture
 	elif chunk_index.y == 2 and self.position.y == 0:
 		get_node("Body").texture = stone_dirt_texture
+	elif chunk_index.y == 5 and self.position.y == 0:
+		get_node("Body").texture = dark_stone_top_texture
 	else:
 		get_node("Body").texture = material_textures[material_type]
 #	get_node("Body").texture = material_textures[material_type]
