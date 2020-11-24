@@ -1,0 +1,62 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Menus/UITheme.tres" type="Theme" id=1]
+[ext_resource path="res://fontDump/headerFont.tres" type="DynamicFont" id=2]
+[ext_resource path="res://Menus/BeforeStart/BeforeStart.gd" type="Script" id=3]
+
+[node name="BeforeStart" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+theme = ExtResource( 1 )
+script = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CenterContainer" type="CenterContainer" parent="MarginContainer"]
+margin_right = 1024.0
+margin_bottom = 600.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/CenterContainer"]
+margin_left = 159.0
+margin_top = 149.0
+margin_right = 864.0
+margin_bottom = 450.0
+custom_constants/separation = 20
+
+[node name="Label" type="Label" parent="MarginContainer/CenterContainer/VBoxContainer"]
+margin_right = 705.0
+margin_bottom = 68.0
+custom_fonts/font = ExtResource( 2 )
+text = "Before start menu"
+
+[node name="Label2" type="Label" parent="MarginContainer/CenterContainer/VBoxContainer"]
+margin_top = 88.0
+margin_right = 705.0
+margin_bottom = 125.0
+text = "Still very much work in progress"
+align = 1
+
+[node name="LineEdit" type="LineEdit" parent="MarginContainer/CenterContainer/VBoxContainer"]
+margin_top = 145.0
+margin_right = 705.0
+margin_bottom = 213.0
+custom_fonts/font = ExtResource( 2 )
+text = "UserName"
+clear_button_enabled = true
+placeholder_text = "UserName"
+
+[node name="Button" type="Button" parent="MarginContainer/CenterContainer/VBoxContainer"]
+margin_top = 233.0
+margin_right = 705.0
+margin_bottom = 301.0
+custom_fonts/font = ExtResource( 2 )
+text = "Start game"
+[connection signal="pressed" from="MarginContainer/CenterContainer/VBoxContainer/Button" to="." method="_on_Button_pressed"]

@@ -60,7 +60,7 @@ script = ExtResource( 3 )
 scale = Vector2( 3, 3 )
 frames = SubResource( 1 )
 animation = "idle"
-frame = 6
+frame = 5
 playing = true
 
 [node name="Door" type="AnimatedSprite" parent="Building" index="0"]
@@ -203,24 +203,25 @@ margin_bottom = 355.0
 
 [node name="Upgrades" type="VBoxContainer" parent="CanvasLayer/UI/MarginContainer/VBoxContainer/CategoryUpgrades/FuelUpgrades" index="0"]
 margin_right = 924.0
-margin_bottom = 486.0
+margin_bottom = 192.0
 size_flags_horizontal = 3
 
 [node name="FuelUpgrade" parent="CanvasLayer/UI/MarginContainer/VBoxContainer/CategoryUpgrades/FuelUpgrades/Upgrades" index="0" instance=ExtResource( 2 )]
 anchor_right = 0.0
-margin_right = 912.0
+margin_right = 924.0
 margin_bottom = 94.0
 theme = null
 
 [node name="FuelUpgrade2" parent="CanvasLayer/UI/MarginContainer/VBoxContainer/CategoryUpgrades/FuelUpgrades/Upgrades" index="1" instance=ExtResource( 2 )]
 anchor_right = 0.0
 margin_top = 98.0
-margin_right = 912.0
+margin_right = 924.0
 margin_bottom = 192.0
 theme = null
 type = 1
 
 [node name="FuelUpgrade3" parent="CanvasLayer/UI/MarginContainer/VBoxContainer/CategoryUpgrades/FuelUpgrades/Upgrades" index="2" instance=ExtResource( 2 )]
+visible = false
 anchor_right = 0.0
 margin_top = 196.0
 margin_right = 912.0
@@ -229,18 +230,20 @@ theme = null
 type = 2
 
 [node name="FuelUpgrade4" parent="CanvasLayer/UI/MarginContainer/VBoxContainer/CategoryUpgrades/FuelUpgrades/Upgrades" index="3" instance=ExtResource( 2 )]
+visible = false
 anchor_right = 0.0
-margin_top = 294.0
+margin_top = 196.0
 margin_right = 912.0
-margin_bottom = 388.0
+margin_bottom = 290.0
 theme = null
 type = 3
 
 [node name="FuelUpgrade5" parent="CanvasLayer/UI/MarginContainer/VBoxContainer/CategoryUpgrades/FuelUpgrades/Upgrades" index="4" instance=ExtResource( 2 )]
+visible = false
 anchor_right = 0.0
-margin_top = 392.0
-margin_right = 912.0
-margin_bottom = 486.0
+margin_top = 196.0
+margin_right = 924.0
+margin_bottom = 290.0
 theme = null
 type = 4
 
@@ -252,44 +255,47 @@ margin_bottom = 355.0
 
 [node name="Upgrades" type="VBoxContainer" parent="CanvasLayer/UI/MarginContainer/VBoxContainer/CategoryUpgrades/HullUpgrades" index="0"]
 margin_right = 924.0
-margin_bottom = 646.0
+margin_bottom = 256.0
 size_flags_horizontal = 3
 
 [node name="HullUpgrade" parent="CanvasLayer/UI/MarginContainer/VBoxContainer/CategoryUpgrades/HullUpgrades/Upgrades" index="0" instance=ExtResource( 4 )]
 anchor_right = 0.0
-margin_right = 932.0
+margin_right = 924.0
 margin_bottom = 126.0
 theme = null
 
 [node name="HullUpgrade2" parent="CanvasLayer/UI/MarginContainer/VBoxContainer/CategoryUpgrades/HullUpgrades/Upgrades" index="1" instance=ExtResource( 4 )]
 anchor_right = 0.0
 margin_top = 130.0
-margin_right = 932.0
+margin_right = 924.0
 margin_bottom = 256.0
 theme = null
 type = 1
 
 [node name="HullUpgrade3" parent="CanvasLayer/UI/MarginContainer/VBoxContainer/CategoryUpgrades/HullUpgrades/Upgrades" index="2" instance=ExtResource( 4 )]
+visible = false
 anchor_right = 0.0
 margin_top = 260.0
-margin_right = 932.0
+margin_right = 912.0
 margin_bottom = 386.0
 theme = null
 type = 2
 
 [node name="HullUpgrade4" parent="CanvasLayer/UI/MarginContainer/VBoxContainer/CategoryUpgrades/HullUpgrades/Upgrades" index="3" instance=ExtResource( 4 )]
+visible = false
 anchor_right = 0.0
-margin_top = 390.0
-margin_right = 932.0
-margin_bottom = 516.0
+margin_top = 260.0
+margin_right = 912.0
+margin_bottom = 386.0
 theme = null
 type = 3
 
 [node name="HullUpgrade5" parent="CanvasLayer/UI/MarginContainer/VBoxContainer/CategoryUpgrades/HullUpgrades/Upgrades" index="4" instance=ExtResource( 4 )]
+visible = false
 anchor_right = 0.0
-margin_top = 520.0
-margin_right = 932.0
-margin_bottom = 646.0
+margin_top = 260.0
+margin_right = 912.0
+margin_bottom = 386.0
 theme = null
 type = 4
 

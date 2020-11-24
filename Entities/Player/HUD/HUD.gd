@@ -16,7 +16,15 @@ func _ready():
 	depth_label = get_node("HUDRoot/TopValueTexts/DepthLabelPair/Depth")
 	score_label = get_node("HUDRoot/ScoreLabelPair/Score")
 	money_label = get_node("HUDRoot/TopValueTexts/MoneyLabelPair/Money")
+	_translate_labels_and_buttons()
 	set_process(true)
+
+func _translate_labels_and_buttons():
+	var nodes = get_tree().get_nodes_in_group("translate")
+	for node in nodes:
+		if node is Label or node is Button:
+			node.text = Translator.translate(node.text)
+			print(node.text)
 
 func _process(delta):
 	if MenuStatus.shop_opened or MenuStatus.inventory_opened or MenuStatus.pause_menu_opened or MenuStatus.game_over_opened:

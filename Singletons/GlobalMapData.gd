@@ -48,7 +48,7 @@ var restored_blocks = {} # blocks that were drilled out
 func restore_blocks():
 	var chunk_handler = get_tree().get_nodes_in_group("chunk_handler")[0]
 	for x in range(-9, 9):
-		for y in range(1, PlayerData.max_depth):
+		for y in range(2, PlayerData.max_depth):
 			var chunk_key = str(x) + "," + str(y)
 			if not restored_blocks.has(chunk_key):
 				if deleted_blocks.has(chunk_key):

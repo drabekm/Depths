@@ -10,8 +10,8 @@ func _on_player_dead():
 
 func _show():
 	get_tree().paused = true
-	$Panel/CenterContainer/VBoxContainer/Score/Value.text = PlayerData.score
-	$Panel/CenterContainer/VBoxContainer/MaxDepth/Value.text = PlayerData.max_depth
+	$Panel/CenterContainer/VBoxContainer/Score/Value.text = str(PlayerData.score)
+	$Panel/CenterContainer/VBoxContainer/MaxDepth/Value.text = str(PlayerData.max_depth)
 	self.visible = true
 
 func _hide():

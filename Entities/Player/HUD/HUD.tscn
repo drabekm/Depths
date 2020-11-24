@@ -129,45 +129,51 @@ __meta__ = {
 }
 
 [node name="DepthLabelPair" type="HBoxContainer" parent="HUDRoot/TopValueTexts"]
-margin_right = 185.0
+margin_right = 213.0
 margin_bottom = 37.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Label" type="Label" parent="HUDRoot/TopValueTexts/DepthLabelPair"]
-margin_right = 61.0
+[node name="Label" type="Label" parent="HUDRoot/TopValueTexts/DepthLabelPair" groups=[
+"translate",
+]]
+margin_right = 82.0
 margin_bottom = 37.0
-text = "Depth: "
+text = "hud.depth"
 
 [node name="Depth" type="Label" parent="HUDRoot/TopValueTexts/DepthLabelPair"]
-margin_left = 65.0
-margin_right = 185.0
+margin_left = 86.0
+margin_right = 206.0
 margin_bottom = 37.0
 rect_min_size = Vector2( 120, 0 )
 text = "0 "
 
 [node name="MoneyLabelPair" type="HBoxContainer" parent="HUDRoot/TopValueTexts"]
 margin_top = 41.0
-margin_right = 185.0
+margin_right = 213.0
 margin_bottom = 78.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Label" type="Label" parent="HUDRoot/TopValueTexts/MoneyLabelPair"]
-margin_right = 61.0
+[node name="Label" type="Label" parent="HUDRoot/TopValueTexts/MoneyLabelPair" groups=[
+"translate",
+]]
+margin_right = 89.0
 margin_bottom = 37.0
-text = "Money:"
+text = "hud.money"
 
 [node name="Money" type="Label" parent="HUDRoot/TopValueTexts/MoneyLabelPair"]
-margin_left = 65.0
-margin_right = 185.0
+margin_left = 93.0
+margin_right = 213.0
 margin_bottom = 37.0
 rect_min_size = Vector2( 120, 0 )
 text = "0"
 
-[node name="ScoreLabelPair" type="HBoxContainer" parent="HUDRoot"]
+[node name="ScoreLabelPair" type="HBoxContainer" parent="HUDRoot" groups=[
+"translate",
+]]
 margin_left = 349.766
 margin_top = -4.72885
 margin_right = 530.766
@@ -177,17 +183,19 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Label" type="Label" parent="HUDRoot/ScoreLabelPair"]
-margin_right = 57.0
+[node name="Label" type="Label" parent="HUDRoot/ScoreLabelPair" groups=[
+"translate",
+]]
+margin_right = 82.0
 margin_bottom = 37.0
-text = "Score:"
+text = "hud.score"
 __meta__ = {
 "_edit_lock_": true
 }
 
 [node name="Score" type="Label" parent="HUDRoot/ScoreLabelPair"]
-margin_left = 61.0
-margin_right = 181.0
+margin_left = 86.0
+margin_right = 206.0
 margin_bottom = 37.0
 rect_min_size = Vector2( 120, 0 )
 text = "0 "

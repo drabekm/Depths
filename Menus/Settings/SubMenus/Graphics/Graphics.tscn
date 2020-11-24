@@ -15,9 +15,9 @@ margin_left = 293.0
 margin_right = 691.0
 
 [node name="FullScreen" type="HBoxContainer" parent="MarginContainer/Rows/ScrollContainer/Options" index="0"]
-margin_top = 41.0
+margin_top = 62.0
 margin_right = 398.0
-margin_bottom = 78.0
+margin_bottom = 99.0
 
 [node name="Label" type="Label" parent="MarginContainer/Rows/ScrollContainer/Options/FullScreen" index="0" groups=[
 "translate",
@@ -34,9 +34,9 @@ margin_right = 381.0
 setting_key = "display/window/size/fullscreen"
 
 [node name="Vsync" type="HBoxContainer" parent="MarginContainer/Rows/ScrollContainer/Options" index="1"]
-margin_top = 82.0
+margin_top = 103.0
 margin_right = 398.0
-margin_bottom = 119.0
+margin_bottom = 140.0
 
 [node name="Label" type="Label" parent="MarginContainer/Rows/ScrollContainer/Options/Vsync" index="0" groups=[
 "translate",
@@ -53,6 +53,7 @@ margin_right = 352.0
 setting_key = "display/window/vsync/use_vsync"
 
 [node name="FPS" type="HBoxContainer" parent="MarginContainer/Rows/ScrollContainer/Options" index="2"]
+visible = false
 margin_top = 123.0
 margin_right = 398.0
 margin_bottom = 160.0
@@ -72,9 +73,9 @@ margin_right = 371.0
 setting_key = "debug/settings/stdout/print_fps"
 
 [node name="Spacer" type="HBoxContainer" parent="MarginContainer/Rows/ScrollContainer/Options" index="3"]
-margin_top = 164.0
+margin_top = 144.0
 margin_right = 398.0
-margin_bottom = 201.0
+margin_bottom = 181.0
 
 [node name="Label" type="Label" parent="MarginContainer/Rows/ScrollContainer/Options/Spacer" index="0" groups=[
 "translate",
@@ -85,9 +86,9 @@ rect_min_size = Vector2( 170, 0 )
 align = 1
 
 [node name="Workaround wrapper" type="VBoxContainer" parent="MarginContainer/Rows/ScrollContainer/Options" index="4"]
-margin_top = 205.0
+margin_top = 185.0
 margin_right = 398.0
-margin_bottom = 279.0
+margin_bottom = 259.0
 custom_constants/separation = 0
 
 [node name="WorkAround" type="HBoxContainer" parent="MarginContainer/Rows/ScrollContainer/Options/Workaround wrapper" index="0"]
@@ -116,6 +117,3 @@ margin_right = 398.0
 margin_bottom = 74.0
 text = "settings.graphics.workaroundtext"
 align = 1
-
-[node name="Transitioner" parent="." index="1"]
-visible = true

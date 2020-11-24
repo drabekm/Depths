@@ -1,14 +1,17 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=14 format=2]
 
-[ext_resource path="res://icon.png" type="Texture" id=1]
+[ext_resource path="res://Entities/RisingLava/Sprite-0002.png" type="Texture" id=1]
 [ext_resource path="res://Entities/RisingLava/RisingLava.gd" type="Script" id=2]
+[ext_resource path="res://Entities/RisingLava/Sprite-0003.png" type="Texture" id=3]
+[ext_resource path="res://Entities/RisingLava/Sprite-0004.png" type="Texture" id=4]
+[ext_resource path="res://Entities/RisingLava/Sprite-0005.png" type="Texture" id=5]
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
-"frames": [ ExtResource( 1 ) ],
+"frames": [ ExtResource( 1 ), ExtResource( 3 ), ExtResource( 4 ), ExtResource( 5 ) ],
 "loop": true,
 "name": "default",
-"speed": 5.0
+"speed": 10.0
 } ]
 
 [sub_resource type="RectangleShape2D" id=2]
@@ -55,18 +58,20 @@ scale = 6.0
 color_ramp = SubResource( 7 )
 
 [node name="RisingLava" type="Area2D"]
-collision_layer = 0
+collision_layer = 4
 collision_mask = 4
 script = ExtResource( 2 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
-position = Vector2( 558.355, 568.383 )
-scale = Vector2( 18.396, 1 )
+position = Vector2( 511.328, 634.633 )
+scale = Vector2( 33.6559, 13.3165 )
 z_index = 1
 frames = SubResource( 1 )
+frame = 2
+playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2( 424.009, 543.993 )
+position = Vector2( 426.529, 541.473 )
 shape = SubResource( 2 )
 
 [node name="BigParticles" type="Particles2D" parent="."]

@@ -9,15 +9,15 @@ export var is_imortal: bool = false # for debug
 var health: int = 100
 var max_health: int = 100
 
-var fuel: float = 100
-var max_fuel: int = 100
-var fuel_consumption = 0.5
+var fuel: float = 30
+var max_fuel: int = 30
+var fuel_consumption = 0.7
 
 var capacity: int = 0
 var max_capacity: int = 20
 
-var max_speed: int = 650 # 350
-var acceleration: int = 25 # 15
+var max_speed: int = 450 # 350
+var acceleration: int = 20 # 15
 var thurster_power = 20
 
 var score: int = 0

@@ -15,7 +15,7 @@ _global_script_class_icons={
 
 [application]
 
-run/main_scene="res://Maps/ChunkTestWorld.tscn"
+run/main_scene="res://Menus/Intro/Intro.tscn"
 config/icon="res://icon.png"
 config/language=0
 config/scoreserver=""
@@ -39,7 +39,6 @@ Earthquake="*res://Singletons/Earthquake.tscn"
 
 [display]
 
-window/vsync/use_vsync=false
 window/stretch/mode="2d"
 
 [input]

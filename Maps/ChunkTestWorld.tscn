@@ -60,7 +60,7 @@ visible = false
 [node name="LiquidHandler" parent="." instance=ExtResource( 10 )]
 
 [node name="RisingLava" parent="." instance=ExtResource( 11 )]
-position = Vector2( -361.433, 49.3883 )
+position = Vector2( -283.034, -494.06 )
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
 

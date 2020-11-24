@@ -12,7 +12,7 @@ enum CHANGE_STATE{
 
 var top_score_scene = preload("res://Menus/TopScoreMenu/TopScore.tscn")
 var settings_scene = preload("res://Menus/Settings/SettingsMenu.tscn")
-var game_scene = preload("res://Maps/ChunkTestWorld.tscn")
+var game_scene = preload("res://Menus/BeforeStart/BeforeStart.tscn")
 var button_press: AudioStreamPlayer
 
 

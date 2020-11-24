@@ -10,12 +10,14 @@ func _ready():
 	set_physics_process(true)
 
 func _physics_process(delta):
+	print(self.visible)
 	if earthquake_triggered:
-		self.global_position = Vector2(PlayerData.position.x ,self.global_position.y - (default_speed * delta))
+		self.global_position = Vector2(PlayerData.position.x - 450 ,self.global_position.y - (default_speed * delta))
 	else:
 		self.global_position = PlayerData.position
 	
 	if earthquake_triggered and global_position.y <= GlobalMapData.CHUNK_SIZE * GlobalMapData.BLOCK_SIZE:
+		GlobalMapData.restore_blocks()
 		earthquake_triggered = false
 		self.visible = true
 		$BigParticles.emitting = false

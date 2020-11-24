@@ -42,8 +42,10 @@ func _process(delta):
 		else:
 			button_marker.visible = false
 
+#player_node.is_on_floor() and
+
 func _input(event):
-	if event.is_action_pressed("function") and is_player_near and player_node.is_on_floor() and not (MenuStatus.inventory_opened or MenuStatus.pause_menu_opened or MenuStatus.shop_opened):
+	if event.is_action_pressed("function") and is_player_near and  not (MenuStatus.inventory_opened or MenuStatus.pause_menu_opened or MenuStatus.shop_opened):
 		if !shop_oppened:
 			_open_shop()
 		elif shop_oppened:

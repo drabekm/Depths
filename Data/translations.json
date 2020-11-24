@@ -61,11 +61,21 @@
   "upgradeshop.drill" : ["Vrták", "Drill"],
   "upgradeshop.buy" : ["Koupit: ", "Buy: "],
   
-  "upgrade.fuel.description.type.1": ["Malá nádrž", "Small fuel"],
+  "upgrade.fuel.description.type.1": ["Malá nádrž", "Small fuel tank"],
+  "upgrade.fuel.description.type.2": ["Větší nádrž", "Bigger fuel tank"],
+
+  "upgrade.hull.descriptiopn.type.1" : ["Odolné šasí", "Better chasis"],
+	"upgrade.hull.descriptiopn.type.2" : ["Odolnější šasí", "Stronger chasis"],
 
   "ore.copper" : ["Měď", "Copper"],
   "ore.iron" : ["Železo", "Iron"],
   "ore.gold" : ["Zlato", "Gold"],
   "ore.platinum" : ["Platina", "Platinum"],
-  "ore.diamond" : ["Diamant", "Diamond"]
+  "ore.diamond" : ["Diamant", "Diamond"],
+
+  "hud.score": ["Skóre:", "Score:"],
+  "hud.money": ["Peníze:", "Money:"],
+  "hud.depth": ["Hloubka:", "Depth:"]
+
+
 }

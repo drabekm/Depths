@@ -58,7 +58,7 @@ func set_body(material_type: int):
 		get_node("Body").texture = dirt_top_texture
 	elif chunk_index.y == 2 and self.position.y == 0:
 		get_node("Body").texture = stone_dirt_texture
-	elif chunk_index.y == 5 and self.position.y == 0:
+	elif chunk_index.y == 4 and self.position.y == 0:
 		get_node("Body").texture = dark_stone_top_texture
 	else:
 		get_node("Body").texture = material_textures[material_type]

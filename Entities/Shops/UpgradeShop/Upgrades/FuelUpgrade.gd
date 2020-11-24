@@ -26,9 +26,14 @@ func _init():
 	"res://icon.png",
 	"res://icon.png"
 	]
-	 values = [30, 45, 65, 80, 100]
+	 values = [40, 55, 65, 80, 100]
 	 prices = [300, 500, 1000, 1500, 3000]
 
+func _translate_labels_and_buttons():
+	var nodes = get_tree().get_nodes_in_group("Translate")
+	for node in nodes:
+		if node is Label or node is Button:
+			node.text = Translator.translate(node.text)
 
 func _ready():
 	get_node("Icon").texture = load(textures[type])

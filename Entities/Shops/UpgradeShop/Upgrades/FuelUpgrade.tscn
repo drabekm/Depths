@@ -6,8 +6,20 @@
 [node name="FuelUpgrade" instance=ExtResource( 1 )]
 script = ExtResource( 2 )
 
+[node name="Icon" parent="." index="0"]
+margin_bottom = 99.0
+
+[node name="Text" parent="." index="1"]
+margin_bottom = 99.0
+
 [node name="Description" parent="Text" index="0"]
+margin_bottom = 37.0
 text = "upgrade.fuel.descriptiopn.type.1"
 
 [node name="UpgradeValue" parent="Text" index="1"]
+margin_top = 57.0
+margin_bottom = 94.0
 text = "upgrade.fuel.descriptiopn.type.1"
+
+[node name="ButtonBuy" parent="." index="3"]
+margin_bottom = 99.0

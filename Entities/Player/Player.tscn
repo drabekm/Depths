@@ -103,14 +103,14 @@ animations = [ {
 "name": "drill",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 19 ), ExtResource( 23 ), ExtResource( 14 ), ExtResource( 22 ), ExtResource( 16 ) ],
-"loop": false,
-"name": "elongate",
-"speed": 5.0
-}, {
 "frames": [ ExtResource( 15 ), ExtResource( 18 ), ExtResource( 17 ), ExtResource( 10 ), ExtResource( 9 ) ],
 "loop": true,
 "name": "elongate_drill",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 19 ), ExtResource( 23 ), ExtResource( 14 ), ExtResource( 22 ), ExtResource( 16 ) ],
+"loop": false,
+"name": "elongate",
 "speed": 5.0
 } ]
 
@@ -201,6 +201,7 @@ extents = Vector2( 32, 32 )
 [node name="Player" type="KinematicBody2D" groups=[
 "Player",
 ]]
+collision_layer = 5
 script = ExtResource( 2 )
 
 [node name="Sprite" type="AnimatedSprite" parent="."]
